@@ -3,6 +3,7 @@ class Space < ActiveRecord::Base
   belongs_to :planet
   has_many :orders, through: :reservations
   has_many :reservations
+  before_validation :create_slug
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :price, presence: true
@@ -10,6 +11,14 @@ class Space < ActiveRecord::Base
   validates :planet_id, presence: true
   has_attached_file :image_url, styles: { medium: "250x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image_url, content_type: /\Aimage\/.*\Z/
+
+  def to_param
+    "#{self.slug}"
+  end
+
+  def create_slug
+    self.slug = name.parameterize if !name.nil?
+  end
 
   def status
     if available

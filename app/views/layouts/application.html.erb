@@ -30,7 +30,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <% planets.each do |planet| %>
-                <li><%= link_to planet.title, "/#{planet.slug}" %></li>
+                <li><%= link_to planet.name, "/#{planet.slug}" %></li>
               <% end %>
             </ul>
           </li>
