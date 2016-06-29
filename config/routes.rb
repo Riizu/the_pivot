@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
 
-  resources :socks, only: [:index, :show]
+  resources :spaces, only: [:index]
 
   resources :cart_socks, only: [:create, :destroy, :update]
 
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     get "/dashboard", to: "users#show"
     resources :socks
   end
+
+  get "spaces/:space_slug", to: "spaces#show", as: :space
 
   get "/:id", to: "navigations#show"
 end
