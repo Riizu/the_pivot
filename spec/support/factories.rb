@@ -19,7 +19,6 @@ FactoryGirl.define do
     name { generate(:space_name) }
     price
     description "Test description"
-    available "true"
     planet
     style
     occupancy
