@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>All Socks</h2>
+  <h2>All Spaces</h2>
 <table id="sock-table" class="table table-hover">
   <thead>
   <tr>
@@ -13,14 +13,14 @@
 </thead>
 
 <tbody>
-  <% @socks.each do |sock| %>
+  <% @spaces.each do |space| %>
     <tr>
-    <td><%= sock.name %></td>
-    <td><%= "#{sock.category.title}, #{sock.foot}, #{sock.style.name}, #{sock.size.value}" %></td>
-    <td><%= number_to_currency(sock.price) %></td>
-    <td><%= sock.status %></td>
+    <td><%= space.name %></td>
+    <td><%= "#{space.planet.name}, #{space.style.name}" %></td>
+    <td><%= number_to_currency(space.price) %></td>
+    <td><%= space.status %></td>
     <div class="container"><td><%= image_tag sock.image_url.url(:thumb), class: "img-responsive", :crop => :fill %></td></div>
-    <td><%= link_to "Edit", edit_admin_sock_path(sock) %>
+    <td><%= link_to "Edit", edit_admin_space_path(space) %>
     </tr>
   <% end %>
 </tbody>

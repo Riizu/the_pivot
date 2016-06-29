@@ -1,6 +1,6 @@
-<h2 class="category-style-descriptor"><%= @title.pluralize(@socks.count) %> (<%= @socks.count %>)</h2>
-<div class="container socks row-well" id="all_socks">
-  <% @socks.each do |sock| %>
+<h2 class="planet-style-descriptor"><%= @title.pluralize(@spaces.count) %> (<%= @spaces.count %>)</h2>
+<div class="container spaces row-well" id="all_spaces">
+  <% @spaces.each do |sock| %>
   <div class="col-md-4 col-sm-6 one-sock">
     <div id="sock-index-image">
       <%= image_tag sock.image_url.url(:medium), size: "250x300" %>

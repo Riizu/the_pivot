@@ -1,17 +1,17 @@
 class NavigationsController < ApplicationController
   def show
-    category = Category.find_by_slug(params[:id])
+    planet = Planet.find_by_slug(params[:id])
     style = Style.find_by_slug(params[:id])
-    route_category_or_style(category, style)
+    route_planet_or_style(planet, style)
   end
 
-  def route_category_or_style(category, style)
-    if category
-      @title = category.title
-      @socks = category.socks
+  def route_planet_or_style(planet, style)
+    if planet
+      @title = planet.name
+      @spaces = planet.spaces
     elsif style
       @title = style.name
-      @socks = style.socks
+      @spaces = style.spaces
     else
       render file: "public/404"
     end

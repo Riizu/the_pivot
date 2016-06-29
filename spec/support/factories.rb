@@ -20,6 +20,8 @@ FactoryGirl.define do
     price
     description "Test description"
     available "true"
+    style { create(:style) }
+    planet { create(:planet) }
   end
 
   sequence :space_name do |n|

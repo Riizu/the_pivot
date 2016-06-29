@@ -27,8 +27,8 @@ module ApplicationHelper
     end
   end
 
-  def categories
-    Category.all
+  def planets
+    Planet.all
   end
 
   def styles

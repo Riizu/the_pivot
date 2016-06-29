@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
 
-  resources :socks, only: [:index, :show]
+  resources :spaces, only: [:index, :show]
 
-  resources :cart_socks, only: [:create, :destroy, :update]
+  resources :cart_spaces, only: [:create, :destroy, :update]
 
   resources :orders, only: [:index, :show, :create]
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create]
 
-  get "/cart", to: "cart_socks#show"
+  get "/cart", to: "spaces#show"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
-    resources :socks
+    resources :spaces
   end
 
   get "/:id", to: "navigations#show"

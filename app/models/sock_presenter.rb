@@ -1,17 +1,17 @@
 class SockPresenter
   attr_reader :template
 
-  def initialize(sock, template)
-    @sock = sock
+  def initialize(space, template)
+    @space = space
     @template = template
   end
 
   def retired
-    if @sock.retired
+    if @space.retired
       "Item Retired"
     else
-      template.button_to("Add to Cart", "/cart_socks",
-                         params: { sock_id: @sock.id }, class: "btn btn-custom btn-person")
+      template.button_to("Add to Cart", "/cart_spaces",
+                         params: { space_id: @space.id }, class: "btn btn-custom btn-person")
     end
   end
 end
