@@ -9,6 +9,7 @@ class Space < ActiveRecord::Base
   validates :price, presence: true
   validates :style_id, presence: true
   validates :planet_id, presence: true
+  validates :occupancy, presence: true
   has_attached_file :image_url, styles: { medium: "250x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image_url, content_type: /\Aimage\/.*\Z/
 
@@ -18,14 +19,6 @@ class Space < ActiveRecord::Base
 
   def create_slug
     self.slug = name.parameterize unless name.nil?
-  end
-
-  def status
-    if available
-      "#{name.capitalize} is available"
-    else
-      "#{name.capitalize} is currently unavailable for purchase"
-    end
   end
 
   def self.new_space(space_params)

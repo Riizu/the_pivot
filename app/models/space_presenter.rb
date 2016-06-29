@@ -6,12 +6,12 @@ class SpacePresenter
     @template = template
   end
 
-  def retired
-    if !@space.available
-      "This space is currently unavailable"
-    else
-      template.button_to("Reserve this Space", "/cart_spaces",
-                         params: { space_id: @space.id }, class: "btn btn-custom btn-person")
-    end
-  end
+  # def approved
+  #   if @space.approved
+  #     "This space is currently unavailable"
+  #   else
+  #     template.button_to("Reserve this Space", "/cart_spaces",
+  #                        params: { space_id: @space.id }, class: "btn btn-custom btn-person")
+  #   end
+  # end
 end
