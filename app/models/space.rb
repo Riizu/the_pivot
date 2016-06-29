@@ -17,7 +17,7 @@ class Space < ActiveRecord::Base
   end
 
   def create_slug
-    self.slug = name.parameterize if !name.nil?
+    self.slug = name.parameterize unless name.nil?
   end
 
   def status
@@ -35,11 +35,11 @@ class Space < ActiveRecord::Base
               image_url:    space_params[:image_url],
               style_id:     Style.find_by(name: space_params[:style]).id,
               planet_id:    Planet.find_by(title: space_params[:planet]).id,
-            )
+             )
   end
 
   def update_space(space_params)
-    update(name:          space_params[:name],
+    update( name:         space_params[:name],
             price:        space_params[:price],
             description:  space_params[:description],
             image_url:    space_params[:image_url],

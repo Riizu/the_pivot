@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   has_many :orders
 
   has_secure_password validations: false
-  validates :name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true, if: "uid.nil?"
   validates :password, presence: true, confirmation: true, if: "uid.nil?"
 

@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   end
 
   get "spaces/:space_slug", to: "spaces#show", as: :space
+
   get "/:id", to: "navigations#show"
 end

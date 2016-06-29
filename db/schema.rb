@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628212137) do
+ActiveRecord::Schema.define(version: 20160629194402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20160628212137) do
     t.integer  "image_url_file_size"
     t.datetime "image_url_updated_at"
     t.string   "description"
+    t.string   "slug"
+    t.integer  "occupancy"
   end
 
   add_index "spaces", ["planet_id"], name: "index_spaces_on_planet_id", using: :btree
@@ -76,7 +78,6 @@ ActiveRecord::Schema.define(version: 20160628212137) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "name"
     t.string  "username"
     t.string  "password_digest"
     t.integer "role"
@@ -87,6 +88,8 @@ ActiveRecord::Schema.define(version: 20160628212137) do
     t.string  "oauth_token_secret"
     t.string  "email"
     t.string  "phone_number"
+    t.string  "first_name"
+    t.string  "last_name"
   end
 
   add_foreign_key "orders", "users"

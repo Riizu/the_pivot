@@ -3,37 +3,37 @@ require "rails_helper"
 RSpec.feature "User Logs In and Logs Out" do
   context "Login tests" do
     scenario "existing user can login" do
-    User.create(name: "Charlie", username: "Charlie123", password: "password")
-    visit login_path
-    fill_in "Username", with: "Charlie123"
-    fill_in "Password", with: "password"
-    click_button "Login"
+      User.create(name: "Charlie", username: "Charlie123", password: "password")
+      visit login_path
+      fill_in "Username", with: "Charlie123"
+      fill_in "Password", with: "password"
+      click_button "Login"
 
-    assert page.has_content?("Logged in as Charlie")
-    assert page.has_content?("Logout")
-  end
+      assert page.has_content?("Logged in as Charlie")
+      assert page.has_content?("Logout")
+    end
 
     scenario "guest cannot login" do
-    visit login_path
-    fill_in "Username", with: "Clarence"
-    fill_in "Password", with: "password"
-    click_button "Login"
+      visit login_path
+      fill_in "Username", with: "Clarence"
+      fill_in "Password", with: "password"
+      click_button "Login"
 
-    assert page.has_content?("Invalid login. Please try again.")
-    assert page.has_content?("Login")
-  end
+      assert page.has_content?("Invalid login. Please try again.")
+      assert page.has_content?("Login")
+    end
 
     scenario "registered user cannot login with wrong password" do
-    User.create(name: "Charlie", username: "Charlie123",
-                       password: "password")
+      User.create(name: "Charlie", username: "Charlie123",
+                         password: "password")
 
-    visit login_path
-    fill_in "Username", with: "Charlie123"
-    fill_in "Password", with: "notmypassword"
-    click_button "Login"
+      visit login_path
+      fill_in "Username", with: "Charlie123"
+      fill_in "Password", with: "notmypassword"
+      click_button "Login"
 
-    assert page.has_content?("Invalid login. Please try again.")
-    assert page.has_content?("Login")
+      assert page.has_content?("Invalid login. Please try again.")
+      assert page.has_content?("Login")
     end
   end
 

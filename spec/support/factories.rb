@@ -22,6 +22,7 @@ FactoryGirl.define do
     available "true"
     planet
     style
+    occupancy
   end
 
   sequence :space_name do |n|
@@ -32,18 +33,44 @@ FactoryGirl.define do
     n
   end
 
+  sequence :occupancy do |n|
+    n
+  end
+
   factory :user do
-    name { generate(:name_of_user) }
+    first_name { generate(:first_name_of_user) }
+    last_name { generate(:last_name_of_user) }
     username { generate(:username) }
     password "password"
     password_confirmation "password"
+    email "test@example.com"
+    phone_number "123-456-7890"
+
+    factory :user_with_orders do
+      transient do
+        orders_count 5
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:order, evaluator.orders_count, user: user)
+      end
+    end
   end
 
   sequence :username do |n|
     "person#{n}"
   end
 
-  sequence :name_of_user do |n|
-    "name#{n}"
+  sequence :first_name_of_user do |n|
+    "first name#{n}"
+  end
+
+  sequence :last_name_of_user do |n|
+    "last name#{n}"
+  end
+
+  factory :order do
+    user
+    status "completed"
   end
 end
