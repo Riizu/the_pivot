@@ -1,40 +1,40 @@
-class Admin::SocksController < Admin::BaseController
+class Admin::SpacesController < Admin::BaseController
   def index
-    @socks = Sock.all
+    @spaces = Space.all
   end
 
   def new
-    @sock = Sock.new
+    @space = Space.new
   end
 
   def create
-    @sock = Sock.new_sock(sock_params)
-    if @sock.save
-      flash[:success] = "Successfully created new sock!"
-      redirect_to admin_socks_path
+    @space = Space.new_space(space_params)
+    if @space.save
+      flash[:success] = "Successfully created new space!"
+      redirect_to admin_spaces_path
     else
-      flash.now[:error] = @sock.errors.full_messages.join(", ")
+      flash.now[:error] = @space.errors.full_messages.join(", ")
       render :new
     end
   end
 
   def edit
-    @sock = Sock.find(params[:id])
+    @space = Space.find(params[:id])
   end
 
   def update
-    @sock = Sock.find(params[:id])
-    if @sock.update_sock(sock_params)
-      flash[:success] = "Successfully updated sock!"
-      redirect_to admin_socks_path
+    @space = Space.find(params[:id])
+    if @space.update_space(space_params)
+      flash[:success] = "Successfully updated space!"
+      redirect_to admin_spaces_path
     else
-      flash.now[:error] = @sock.errors.full_messages.join(", ")
+      flash.now[:error] = @space.errors.full_messages.join(", ")
       render :edit
     end
   end
   private
 
-  def sock_params
-    params.require(:sock).permit(:name, :price, :image_url, :foot, :style, :category, :size)
+  def space_params
+    params.require(:space).permit(:name, :price, :image_url, :foot, :style, :planet)
   end
 end

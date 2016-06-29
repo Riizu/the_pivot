@@ -25,12 +25,12 @@
             <li><%= button %></li>
           <% end %>
           <li><%= link_to "Cart (#{@cart.contents.count})", cart_path %></li>
-          <li><a href="/socks">All Socks</a></li>
+          <li><a href="/spaces">All Spaces</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Planets <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <% categories.each do |category| %>
-                <li><%= link_to category.title, "/#{category.slug}" %></li>
+              <% planets.each do |planet| %>
+                <li><%= link_to planet.name, "/#{planet.slug}" %></li>
               <% end %>
             </ul>
           </li>

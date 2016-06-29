@@ -1,7 +1,7 @@
-class Category < ActiveRecord::Base
-  has_many :socks
+class Planet < ActiveRecord::Base
+  has_many :spaces
   before_validation :create_slug
-  validates :title, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
 
   def to_param
@@ -9,6 +9,6 @@ class Category < ActiveRecord::Base
   end
 
   def create_slug
-    self.slug = title.parameterize if !title.nil?
+    self.slug = name.parameterize if !name.nil?
   end
 end

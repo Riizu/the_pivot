@@ -1,14 +1,13 @@
-<div class="container" id="cart-socks">
+<div class="container" id="cart-spaces">
   <div class="row cart-sock">
-  <% @socks.each do |sock| %>
+  <% @spaces.each do |space| %>
   <div class="col-md-4 col-sm-6">
       <%= image_tag sock.image_url.url(:thumb) %>
-      <h3><%= link_to sock.name.capitalize, sock_path(sock) %></h3>
+      <h3><%= link_to sock.name.capitalize, space_path(space) %></h3>
       <p><%= sock.price %>,
-      <%= sock.foot %>,
-      <%= sock.category.title %>,
-      <%= sock.size.value %>,
-      <%= sock.style.name %></p>
+      <%= space.foot %>,
+      <%= space.planet.name %>,
+      <%= space.style.name %></p>
       Quantity: <%= @cart.count_of(sock.id) %>
       <div class="quantity-button">
         <%= button_to "-", cart_sock_path(sock, direction: "minus"), method: :patch, class: "btn btn-custom btn-person" %><%= button_to "+", cart_sock_path(sock, direction: "plus"), method: :patch, class: "btn btn-custom btn-person" %>
@@ -22,7 +21,7 @@
     <h4>Cart Total: <%= number_to_currency(@cart.total_price) %></h4>
     <div class="quantity-button">
       <%= checkout_option %>
-      <%= button_to "Keep Shopping", socks_path, method: :get, class: "btn btn-custom btn-person" %>
+      <%= button_to "Keep Shopping", spaces_path, method: :get, class: "btn btn-custom btn-person" %>
     </div>
   </div>
 </div>

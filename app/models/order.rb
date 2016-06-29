@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  has_many :socks, through: :order_items
+  has_many :spaces, through: :order_items
   has_many :order_items
 
   def total_price
