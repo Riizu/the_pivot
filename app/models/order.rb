@@ -1,24 +1,23 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  has_many :socks, through: :order_items
-  has_many :order_items
+  has_many :spaces, through: :reservations
+  has_many :reservations
 
   def total_price
-    order_items.map do |order_item|
-      order_item.quantity * order_item.sock_price.to_f
+    reservations.map do |reservation|
+      reservation.quantity * reservation.space_price.to_f
     end.reduce(:+)
   end
 
   def total_quantity
-    order_items.map(&:quantity).reduce(:+)
+    reservations.map(&:quantity).reduce(:+)
   end
 
-  def create_order_items(cart_contents)
-    cart_contents.map do |sock_id, quantity|
-      OrderItem.create(order_id:    id,
-                       sock_id:     sock_id,
-                       quantity:    quantity,
-                       sock_price:  Sock.find(sock_id).price)
+  def create_reservations(cart_contents)
+    cart_contents.map do |space_id, quantity|
+      Reservation.create(order_id:    id,
+                       space_id:     space_id,
+                       total:  Space.find(space_id).price)
     end
   end
 

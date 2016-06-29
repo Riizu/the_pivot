@@ -36,13 +36,17 @@ FactoryGirl.define do
     n
   end
 
+  sequence :email do |n|
+    "#{n}@email.com"
+  end
+
   factory :user do
     first_name { generate(:first_name_of_user) }
     last_name { generate(:last_name_of_user) }
     username { generate(:username) }
     password "password"
     password_confirmation "password"
-    email "test@example.com"
+    email { generate(:email) }
     phone_number "123-456-7890"
 
     factory :user_with_orders do
