@@ -1,6 +1,7 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.all
+    planet = Planet.find_by(name: params[:planet])
+    @spaces = Space.where(planet: planet, occupancy: params[:occupancy])
   end
 
   def show

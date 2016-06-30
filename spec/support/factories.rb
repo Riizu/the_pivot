@@ -21,7 +21,7 @@ FactoryGirl.define do
     description "Test description"
     planet
     style
-    occupancy
+    occupancy 4
   end
 
   sequence :space_name do |n|
@@ -29,10 +29,6 @@ FactoryGirl.define do
   end
 
   sequence :price do |n|
-    n
-  end
-
-  sequence :occupancy do |n|
     n
   end
 
@@ -48,6 +44,16 @@ FactoryGirl.define do
     password_confirmation "password"
     email { generate(:email) }
     phone_number "123-456-7890"
+
+    # factory :user_with_spaces do
+    #   transient do
+    #     spaces_count 5
+    #   end
+    #
+    #   after(:create) do |user, evaluator|
+    #     create_list(:space, evaluator.spaces_count, user: user)
+    #   end
+    # end
 
     factory :user_with_orders do
       transient do
