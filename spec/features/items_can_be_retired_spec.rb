@@ -1,11 +1,21 @@
 require "rails_helper"
 
-RSpec.feature "items can be retired" do
-  scenario "user can't add retired item to cart" do
-    sock = create(:sock)
-    sock.update_attributes(retired: true)
-    visit sock_path(sock)
-    expect(page).to_not have_button("Add to Cart")
-    expect(page).to have_content("Item Retired")
+RSpec.feature "spaces can be approved" do
+  scenario "user can't see an unapproved space" do
+    space = create(:space)
+
+    visit space_path(space)
+
+    expect(current_path).to eq '/'
+    expect(page).to have_content("That space is currently not available.")
+  end
+
+  scenario "user can see an approved space" do
+    space = create(:space)
+    space.update_attributes(approved: true)
+
+    visit space_path(space)
+    
+    expect(page).to have_button("Reserve this Space")
   end
 end

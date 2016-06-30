@@ -1,13 +1,21 @@
 <div class="form-box">
   <%= form_for(@user) do |f| %>
-  <h4><%= f.label :name %>
-  <span class="form-field-name"><%= f.text_field :name %></span></h4>
+  <h4><%= f.label :first_name %>
+  <span class="form-field-first-name"><%= f.text_field :first_name %></span></h4>
+  <h4><%= f.label :last_name %>
+  <span class="form-field-last-name"><%= f.text_field :last_name %></span></h4>
   <h4><%= f.label :username %>
   <span class="form-field-username"><%= f.text_field :username %></span></h4>
   <h4><%= f.label :password %>
   <span class="form-field-password"><%= f.password_field :password %></span></h4>
   <h4><%= f.label :password_confirmation %>
   <span class="form-field-passwordconf"><%= f.password_field :password_confirmation %></span></h4>
+  <h4><%= f.label :email %>
+  <span class="form-field-email"><%= f.text_field :email %></span></h4>
+  <h4><%= f.label :email_confirmation %>
+  <span class="form-field-emailconf"><%= f.text_field :email_confirmation %></span></h4>
+  <h4><%= f.label :phone_number %>
+  <span class="form-field-phone-number"><%= f.text_field :phone_number %></span></h4>
   <%= f.submit button, class: "text-center"%>
   <% end %>
 </div>

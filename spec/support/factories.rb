@@ -7,56 +7,79 @@ FactoryGirl.define do
     "#{n}_style"
   end
 
-  factory :category do
-    title
+  factory :planet do
+    name { generate(:planet_name) }
   end
 
-  sequence :title, ["A", "B", "C", "D"].cycle do |n|
-    "#{n}_title"
+  sequence :planet_name do |n|
+    "#{n}_planet"
   end
 
-  factory :size do
-    value
-  end
-
-  sequence :value do |n|
-    "#{n} value"
-  end
-
-  factory :sock do
-    name { generate(:sock_name) }
-    foot
+  factory :space do
+    name { generate(:space_name) }
     price
-    image_url "http://im.uniqlo.com/images/uk/pc/goods/168190/item/15_168190_middles.jpg"
+    description "Test description"
+    planet
     style
-    category
-    size
+    occupancy 4
   end
 
-  sequence :sock_name do |n|
-    "#{n} sock name"
-  end
-
-  sequence :foot, ["L", "R"].cycle do |n|
-    "#{n} foot"
+  sequence :space_name do |n|
+    "#{n} space name"
   end
 
   sequence :price do |n|
     n
   end
 
+  sequence :email do |n|
+    "#{n}@email.com"
+  end
+
   factory :user do
-    name { generate(:name_of_user) }
+    first_name { generate(:first_name_of_user) }
+    last_name { generate(:last_name_of_user) }
     username { generate(:username) }
     password "password"
     password_confirmation "password"
+    email { generate(:email) }
+    phone_number "123-456-7890"
+
+    # factory :user_with_spaces do
+    #   transient do
+    #     spaces_count 5
+    #   end
+    #
+    #   after(:create) do |user, evaluator|
+    #     create_list(:space, evaluator.spaces_count, user: user)
+    #   end
+    # end
+
+    factory :user_with_orders do
+      transient do
+        orders_count 5
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:order, evaluator.orders_count, user: user)
+      end
+    end
   end
 
   sequence :username do |n|
     "person#{n}"
   end
 
-  sequence :name_of_user do |n|
-    "#{n}name"
+  sequence :first_name_of_user do |n|
+    "first name#{n}"
+  end
+
+  sequence :last_name_of_user do |n|
+    "last name#{n}"
+  end
+
+  factory :order do
+    user
+    status "completed"
   end
 end

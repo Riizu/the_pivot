@@ -11,29 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613214018) do
+ActiveRecord::Schema.define(version: 20160629210530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "categories", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "slug"
-  end
-
-  create_table "order_items", force: :cascade do |t|
-    t.integer  "sock_id"
-    t.integer  "order_id"
-    t.integer  "quantity"
-    t.decimal  "sock_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
-  add_index "order_items", ["sock_id"], name: "index_order_items_on_sock_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -44,31 +25,50 @@ ActiveRecord::Schema.define(version: 20160613214018) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
-  create_table "sizes", force: :cascade do |t|
-    t.string   "value"
+  create_table "planets", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
 
-  create_table "socks", force: :cascade do |t|
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "space_id"
+    t.integer  "order_id"
+    t.decimal  "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+  end
+
+  add_index "reservations", ["order_id"], name: "index_reservations_on_order_id", using: :btree
+  add_index "reservations", ["space_id"], name: "index_reservations_on_space_id", using: :btree
+
+  create_table "spaces", force: :cascade do |t|
     t.string   "name"
-    t.string   "foot"
     t.decimal  "price"
     t.integer  "style_id"
-    t.integer  "category_id"
-    t.integer  "size_id"
+    t.integer  "planet_id"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.boolean  "retired",                default: false
+    t.boolean  "approved",               default: false
     t.string   "image_url_file_name"
     t.string   "image_url_content_type"
     t.integer  "image_url_file_size"
     t.datetime "image_url_updated_at"
+    t.string   "description"
+    t.string   "slug"
+    t.integer  "occupancy"
   end
 
-  add_index "socks", ["category_id"], name: "index_socks_on_category_id", using: :btree
-  add_index "socks", ["size_id"], name: "index_socks_on_size_id", using: :btree
-  add_index "socks", ["style_id"], name: "index_socks_on_style_id", using: :btree
+  add_index "spaces", ["planet_id"], name: "index_spaces_on_planet_id", using: :btree
+  add_index "spaces", ["style_id"], name: "index_spaces_on_style_id", using: :btree
+
+  create_table "spaces_users", id: false, force: :cascade do |t|
+    t.integer "user_id",  null: false
+    t.integer "space_id", null: false
+  end
 
   create_table "styles", force: :cascade do |t|
     t.string   "name"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20160613214018) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "name"
     t.string  "username"
     t.string  "password_digest"
     t.integer "role"
@@ -87,12 +86,15 @@ ActiveRecord::Schema.define(version: 20160613214018) do
     t.string  "uid"
     t.string  "oauth_token"
     t.string  "oauth_token_secret"
+    t.string  "email"
+    t.string  "phone_number"
+    t.string  "first_name"
+    t.string  "last_name"
   end
 
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "socks"
   add_foreign_key "orders", "users"
-  add_foreign_key "socks", "categories"
-  add_foreign_key "socks", "sizes"
-  add_foreign_key "socks", "styles"
+  add_foreign_key "reservations", "orders"
+  add_foreign_key "reservations", "spaces"
+  add_foreign_key "spaces", "planets"
+  add_foreign_key "spaces", "styles"
 end

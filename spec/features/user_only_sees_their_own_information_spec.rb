@@ -10,9 +10,9 @@ RSpec.feature "User only has access to their own data" do
       order2 = user2.orders.create
 
       visit "/orders"
-      expect(page).to_not have_content(user2.name)
+      expect(page).to_not have_content(user2.first_name)
       expect(page).to_not have_content(order2.id)
-      expect(page).to have_content(user1.name)
+      expect(page).to have_content(user1.first_name)
       expect(page).to have_content(order1.id)
     end
   end

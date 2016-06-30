@@ -7,10 +7,10 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-def add_to_cart(sock, num = 1)
+def add_to_cart(space, num = 1)
   num.times do
-    visit sock_path(sock)
-    click_on "Add to Cart"
+    visit space_path(space)
+    click_on "Reserve this Space"
   end
 end
 

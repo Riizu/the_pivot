@@ -1,12 +1,15 @@
-<div class="container dashboard-header">
-  <h1>
-    So your dryer played you...<br>
-    <%= current_user.name.capitalize %>, you've come to the right place.
-  </h1>
+<%= "#{@user.first_name} #{@user.last_name}" %>
 
-  <div class="dashboard-buttons">
-    <%= button_to "Tweet About Us", new_tweet_path, class: "btn btn-custom btn-person", method: :get %>
-    <%= button_to "Orders", orders_path, method: :get, class: "btn btn-custom btn-person" %>
-    <%= button_to "Edit Account Info", edit_user_path(@user), method: :get, class: "btn btn-custom btn-person" %>
+<div class="container spaces row-well" id="all_spaces">
+  <% @spaces.each do |space| %>
+  <div class="col-md-4 col-sm-6 one-planet">
+    <div id="space-index-image">
+      <%= image_tag space.image_url.url(:medium), size: "250x300" %>
+    </div>
+    <div id="space-index-info">
+      <h4 class="space-label"><%= link_to space.name, space_path(space) %></h4>
+      $<%= space.price %>
+    </div>
   </div>
+  <% end %>
 </div>

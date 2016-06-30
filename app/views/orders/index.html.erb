@@ -8,6 +8,7 @@
   <tr>
     <th>Order ID</th>
     <th>Date Ordered</th>
+    <th>Order Status</th>
   </tr>
 </thead>
 
@@ -16,6 +17,7 @@
   <% @orders.each do |order| %>
   <td><%= link_to "#{order.id}", order_path(order) %></td>
   <td><%= order.created_at.strftime("Order placed on %A, %B %d, %Y at %I:%M %p") %></td>
+  <td><%= order.status %></td>
   </tr>
   <% end %>
 </tbody>

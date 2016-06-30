@@ -1,0 +1,14 @@
+<h1 class="text-center"><%= @space.name %></h1><br>
+<div class="col-md-3 col-md-offset-4">
+  <%= image_tag @space.image_url.url(:medium) %>
+</div>
+<div class="col-md-3">
+  <p class="price"><%= number_to_currency(@space.price) %></p><br>
+  <p>Description: <%= @space.description %><br><br>
+     Occupancy: <%= @space.occupancy %><br><br>
+     Planet: <%= @space.planet.name %><br><br>
+     Style: <%= @space.style.name %><br><br></p>
+</div>
+<div class="quantity-button space-show col-md-12">
+  <%=   button_to("Reserve this Space", "/reservations", params: { space_id: @space.id }, class: "btn btn-custom btn-person") %>
+</div>
