@@ -18,3 +18,5 @@
 /config/application.yml
 
 /features_old
+
+.byebug_history
