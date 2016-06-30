@@ -1,5 +1,5 @@
 class Style < ActiveRecord::Base
-  has_many :socks
+  has_many :spaces
   before_validation :create_slug
 
   validates :name, presence: true, uniqueness: true

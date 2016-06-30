@@ -15,10 +15,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user
-      @user = current_user
+    @user = User.find_by(username: params[:id])
+    if @user && @user.spaces
+      @spaces = @user.spaces
     else
-      render file: 'public/404'
+      flash[:warning] = "This user currently has no spaces."
+      redirect_to root_url
     end
   end
 
@@ -47,6 +49,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :email, :email_confirmation, :phone_number)
   end
 end

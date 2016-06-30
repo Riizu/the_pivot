@@ -16,7 +16,6 @@
   <tr>
   <td><%= @order.id %></td>
   <td><%= @order.created_at.strftime("Order placed on %A, %B %d, %Y at %I:%M %p") %></td>
-  <td><%= @order.total_price %></td>
   </tr>
 </tbody>
 </table>
@@ -35,18 +34,13 @@
 
 <tbody>
   <tr>
-  <% @order.order_items.each do |order_item| %>
-  <td><%= link_to "#{order_item.sock.name}", sock_path(order_item.sock_id) %></td>
-  <td><%= order_item.quantity %></td>
-  <td><%= order_item.sock_price %></td>
-  <td><%= order_item.item_price %></td>
+  <% @order.reservations.each do |reservation| %>
+  <td><%= link_to "#{reservation.space.name}", sock_path(reservation.space_id) %></td>
+  <td><%= reservation.total %></td>
   </tr>
   <% end %>
   <tr>
     <td><strong>Totals</strong></td>
-    <td><strong><%= @order.total_quantity %></strong></td>
-    <td></td>
-    <td><strong><%= @order.total_price %></strong></td>
   </tr>
 </tbody>
 </table>

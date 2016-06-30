@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :spaces, only: [:index]
 
-  resources :cart_socks, only: [:create, :destroy, :update]
+  resources :reservations, only: [:create, :destroy, :update]
 
   resources :orders, only: [:index, :show, :create]
 
@@ -13,13 +13,13 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create]
 
-  get "/cart", to: "cart_socks#show"
+  get "/cart", to: "reservations#show"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  get "/dashboard", to: "users#show"
+  get "/dashboard", to: "dashboard#show"
 
   get "/auth/twitter", as: :twitter_login
   get "/auth/twitter/callback", to: "sessions#create"
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   get "spaces/:space_slug", to: "spaces#show", as: :space
+  get "planets/:planet_slug", to: "planets#show", as: :planet
 
-  get "/:id", to: "navigations#show"
+  get "/:id", to: "users#show"
 end

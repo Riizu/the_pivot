@@ -1,5 +1,4 @@
-<%= "#{@user.first_name} #{@user.last_name}" %>
-
+<h2 class="category-style-descriptor"><%= @planet.name.pluralize(@spaces.count) %> (<%= @spaces.count %>)</h2>
 <div class="container spaces row-well" id="all_spaces">
   <% @spaces.each do |space| %>
   <div class="col-md-4 col-sm-6 one-planet">

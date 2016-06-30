@@ -1,8 +1,13 @@
 class Space < ActiveRecord::Base
   belongs_to :style
   belongs_to :planet
-  has_many :orders, through: :reservations
+
   has_many :reservations
+  has_many :spaces_users
+  
+  has_many :orders, through: :reservations
+  has_many :users, through: :spaces_users
+
   before_validation :create_slug
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
