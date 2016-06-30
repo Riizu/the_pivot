@@ -7,6 +7,7 @@
     <div id="sock-index-info">
       <h4 class="sock-label"><%= link_to space.name, space_path(space.slug) %></h4>
       <%= number_to_currency(space.price) %>
+      <%= space.description %>
     </div>
   </div>
   <% end %>
