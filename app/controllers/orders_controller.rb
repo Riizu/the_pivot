@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
-    @order_items = @order.order_items
+    @reservations = @order.reservations
   end
 
   def create

@@ -10,5 +10,11 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find_by(slug: params[:space_slug])
+    if @space.approved
+      @space
+    else
+      flash[:warning] = "That space is currently not available."
+      redirect_to root_url
+    end
   end
 end
