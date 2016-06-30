@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :orders
+  has_many :spaces_users
+
+  has_many :spaces, through: :spaces_users
 
   has_secure_password validations: false
   validates :first_name, presence: true
