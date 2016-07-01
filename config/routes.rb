@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   get "spaces/:space_slug", to: "spaces#show", as: :space
   get "planets/:planet_slug", to: "planets#show", as: :planet
+  get "styles/:style_slug", to: "styles#show", as: :style
 
   get "/:id", to: "users#show"
 end
