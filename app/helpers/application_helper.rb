@@ -13,7 +13,7 @@ module ApplicationHelper
       # button_array << current_admin_display
     else
       button_array << link_to("Login", login_path)
-      button_array << link_to("Login with Twitter", twitter_login_path)
+      # button_array << link_to("Login with Twitter", twitter_login_path)
     end
     return button_array
   end
