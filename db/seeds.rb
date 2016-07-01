@@ -11,8 +11,8 @@ class Seed
     orders = []
     10.times do
       order = Order.new(
-      user_id: user_id,
-      status:  "completed"
+        user_id: user_id,
+        status:  "completed"
       )
       orders << order
     end
@@ -121,17 +121,17 @@ class Seed
   def create_planets
     puts "Creating Planets"
     Planet.create(
-    name: "Hoth"
+      name: "Hoth"
     )
     Planet.create(
-    name: "Tatooine"
+      name: "Tatooine"
     )
     Planet.create(
-    name: "Coruscant"
+      name: "Coruscant"
     )
     15.times do
       Planet.create(
-      name: Faker::StarWars.planet
+        name: Faker::StarWars.planet
       )
     end
     puts "Created Planets"
