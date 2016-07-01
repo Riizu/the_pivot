@@ -4,7 +4,7 @@ class Space < ActiveRecord::Base
 
   has_many :reservations
   has_many :spaces_users
-  
+
   has_many :orders, through: :reservations
   has_many :users, through: :spaces_users
 
