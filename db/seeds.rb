@@ -142,7 +142,7 @@ class Seed
     styles = ["Hot", "Cold", "Dry", "Tropical"]
     styles.each do |style|
       Style.create(
-      name: style
+        name: style
       )
     end
     puts "Created Styles"
