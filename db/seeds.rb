@@ -1,15 +1,3 @@
-# user_1 = User.create(username: "test", password: "password", email: "email@example.com", first_name: "John", last_name: "Doe", phone_number: "123-456-7890")
-# user_2 = User.create(username: "test2", password: "password", email: "email2@example.com", first_name: "Jane", last_name: "Doe", phone_number: "123-456-7890")
-#
-# hoth = Planet.create(name: "Hoth")
-# tattoine = Planet.create(name: "Tattoine")
-#
-# hot = Style.create(name: "Hot")
-# cold = Style.create(name: "Cold")
-#
-# user_1.spaces.create(name: "Winter Wonderland", price: "5.99", description: "Cold is SO hot right now.", occupancy: 50, planet: hoth, style: cold)
-# user_2.spaces.create(name: "Desert Paradise", price: "5.99", description: "Hot is SO hot right now.", occupancy: 50, planet: tattoine, style: hot)
-
 class Seed
   def initialize
     create_style
@@ -23,8 +11,8 @@ class Seed
     orders = []
     10.times do
       order = Order.new(
-        user_id: user_id,
-        status:  "completed"
+      user_id: user_id,
+      status:  "completed"
       )
       orders << order
     end
@@ -124,8 +112,8 @@ class Seed
       user = User.find(rand(2..20))
       user.password = "password"
       user.save
-        space.users << user
-        space.save
+      space.users << user
+      space.save
     end
     puts "Created Spaces"
   end
@@ -133,17 +121,17 @@ class Seed
   def create_planets
     puts "Creating Planets"
     Planet.create(
-      name: "Hoth"
+    name: "Hoth"
     )
     Planet.create(
-      name: "Tatooine"
+    name: "Tatooine"
     )
     Planet.create(
-      name: "Coruscant"
+    name: "Coruscant"
     )
     15.times do
       Planet.create(
-        name: Faker::StarWars.planet
+      name: Faker::StarWars.planet
       )
     end
     puts "Created Planets"
@@ -154,7 +142,7 @@ class Seed
     styles = ["Hot", "Cold", "Dry", "Tropical"]
     styles.each do |style|
       Style.create(
-        name: style
+      name: style
       )
     end
     puts "Created Styles"
