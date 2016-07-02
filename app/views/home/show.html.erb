@@ -1,9 +1,32 @@
-<div class="search">
+<h1 class="tagline_home">"Chewie, we're home!"</h1>
+
+<div class="search row">
   <%= form_tag(spaces_path, method: "get") do %>
-    <%= text_field_tag(:planet) %>
-    <%= text_field_tag(:occupancy) %>
-    <%= text_field_tag(:start_date) %>
-    <%= text_field_tag(:end_date) %>
-    <%= submit_tag("search") %>
+
+    <div class="col-md-2" id="no-gutter-home">
+    <%= label_tag "Planet", nil, class: "white" %><br/>
+    <%= text_field_tag "planet", nil, class: "form-control" %>
+  </div>
+
+    <div class="col-md-2" id="no-gutter-home">
+    <%= label_tag "Occupancy", nil, class: "white" %><br />
+    <%= text_field_tag "occupancy", nil, class: "form-control" %>
+  </div>
+
+    <div class="col-md-2" id="no-gutter-home">
+    <%= label_tag "Check in", nil, class: "white" %><br/>
+    <%= text_field_tag "start_date", nil, placeholder: "mm/dd/yyyy", class: "form-control" %>
+  </div>
+
+    <div class="col-md-2" id="no-gutter-home">
+    <%= label_tag "Check out", nil, class: "white" %><br/>
+    <%= text_field_tag "end_date", nil, placeholder: "mm/dd/yyyy", class: "form-control" %>
+  </div>
+
+  <div class="col-md-1 button-padding" id="no-gutter-home">
+      <!-- <%= label_tag "Search" %><br/> -->
+  <%= submit_tag "search", class: "btn btn-default" %>
+</div>
+
   <% end %>
 </div>

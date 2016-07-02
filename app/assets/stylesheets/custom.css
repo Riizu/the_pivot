@@ -43,11 +43,15 @@
   color: rgb(248, 238, 100);
 }
 
-#sock-index-info {
+.white {
+  color: rgb(255, 255, 255);
+}
+
+#space-index-info {
   text-align: center;
 }
 
-#sock-index-image {
+#space-index-image {
   border-radius: 6px;
   padding-top: 15px;
   text-align: center;
@@ -201,7 +205,7 @@
   padding: 10px;
 }
 
-.cart-sock {
+.cart-space {
   text-align: center;
 }
 
@@ -221,4 +225,34 @@
 .sock-show {
   display: flex;
   justify-content: center;
+}
+
+.search {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 29%;
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+
+.tagline_home {
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: 37%;
+  left: 35%;
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+
+#no-gutter-home {
+  position: relative;
+  min-height: 1px;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+.button-padding {
+  padding-top: 25px;
 }
