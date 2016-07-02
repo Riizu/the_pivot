@@ -1,10 +1,32 @@
 $( document ).ready(function() {
-  var today = new Date();
-  $( "#datepicker-checkin" ).datepicker({
-    minDate: today
-  });
+  var checkInInput = $('#datepicker-checkin');
+  var checkOutInput = $('#datepicker-checkout');
+  setUpCheckInDatePicker();
+  setUpCheckOutDatePicker();
+  setUpCheckInListener();
 
-  $('#datepicker-checkout').datepicker({
-    minDate: today
-  })
+  function setUpCheckInDatePicker() {
+    var today = new Date();
+    $(checkInInput).datepicker({
+      minDate: today
+    });
+  }
+
+  function setUpCheckOutDatePicker(today) {
+    if (today === undefined)
+      today = new Date();
+    $(checkOutInput).datepicker({
+      minDate: today
+    });
+  }
+
+  function setUpCheckInListener() {
+    $(checkInInput).on('change', function() {
+      var date = $(checkInInput).val();
+      $(checkOutInput).datepicker("destroy");
+      if (date === '')
+        date = new Date();
+      setUpCheckOutDatePicker(date);
+    });
+  }
 });
