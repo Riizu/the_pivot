@@ -4,11 +4,13 @@ $( document ).ready(function() {
   setUpCheckInDatePicker();
   setUpCheckOutDatePicker();
   setUpCheckInListener();
+  setUpCheckOutListener();
 
-  function setUpCheckInDatePicker() {
+  function setUpCheckInDatePicker(maxDate) {
     var today = new Date();
     $(checkInInput).datepicker({
-      minDate: today
+      minDate: today,
+      maxDate: maxDate
     });
   }
 
@@ -27,6 +29,16 @@ $( document ).ready(function() {
       if (date === '')
         date = new Date();
       setUpCheckOutDatePicker(date);
+    });
+  }
+
+  function setUpCheckOutListener() {
+    $(checkOutInput).on('change', function() {
+      var date = $(checkOutInput).val();
+      $(checkInInput).datepicker("destroy");
+      if (date === '')
+        date = new Date();
+      setUpCheckInDatePicker(date);
     });
   }
 });
