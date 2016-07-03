@@ -15,12 +15,12 @@
 
     <div class="col-md-2" id="no-gutter-home">
     <%= label_tag "Check in", nil, class: "white" %><br/>
-    <%= text_field_tag "start_date", nil, placeholder: "mm/dd/yyyy", class: "form-control" %>
+    <%= text_field_tag "start_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkin" %>
   </div>
 
     <div class="col-md-2" id="no-gutter-home">
     <%= label_tag "Check out", nil, class: "white" %><br/>
-    <%= text_field_tag "end_date", nil, placeholder: "mm/dd/yyyy", class: "form-control" %>
+    <%= text_field_tag "end_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkout" %>
   </div>
 
   <div class="col-md-1 button-padding" id="no-gutter-home">
