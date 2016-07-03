@@ -1,6 +1,8 @@
 $( document ).ready(function() {
   var checkInInput = $('#datepicker-checkin');
   var checkOutInput = $('#datepicker-checkout');
+  var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+  var yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
   setUpCheckInDatePicker();
   setUpCheckOutDatePicker();
   setUpCheckInListener();
@@ -8,17 +10,21 @@ $( document ).ready(function() {
 
   function setUpCheckInDatePicker(maxDate) {
     var today = new Date();
+    if (maxDate !== undefined)
+      maxDate = new Date(new Date(maxDate).getTime() - 24 * 60 * 60 * 1000);
     $(checkInInput).datepicker({
       minDate: today,
       maxDate: maxDate
     });
   }
 
-  function setUpCheckOutDatePicker(today) {
-    if (today === undefined)
-      today = new Date();
+  function setUpCheckOutDatePicker(minDate) {
+    if (minDate === undefined)
+      minDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+    else
+      minDate = new Date(new Date(minDate).getTime() + 24 * 60 * 60 * 1000);
     $(checkOutInput).datepicker({
-      minDate: today
+      minDate: minDate
     });
   }
 
