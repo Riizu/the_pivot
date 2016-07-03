@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   get "planets/:planet_slug", to: "planets#show", as: :planet
   get "styles/:style_slug", to: "styles#show", as: :style
 
-  get "/:id", to: "users#show"
+  get "/:id", to: "users#show", as: :listings
+
 end
