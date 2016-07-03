@@ -1,18 +1,22 @@
 <div class="container" id="cart-spaces">
-  <div class="row cart-space">
-  <% @spaces.each do |space| %>
+  <div class="row cart-spaces">
+  <% @reservations.each do |reservation| %>
   <div class="col-md-4 col-sm-6">
-      <%= image_tag space.image_url.url(:thumb) %>
-      <h3><%= link_to space.name.capitalize, space_path(space) %></h3>
-      <p><%= number_to_currency(space.price) %>,
-      <%= space.planet.name %>,
-      <%= space.style.name %></p>
-      <% space.users.each do |user| %>
+      <%= image_tag reservation.image_url.url(:thumb) %>
+      <h3><%= link_to reservation.name.capitalize, reservation_path(reservation) %></h3>
+      <p>
+        <%= number_to_currency(reservation.price) %>,
+        Planet: <%= reservation.planet.name %>,
+        Climate: <%= reservation.style.name %>
+        Start Date: <%= reservation.start_date %>
+        End Date: <%= reservation.end_date %>
+      </p>
+      <% reservation.users.each do |user| %>
         <%= user.first_name %>
         <%= user.last_name %>
       <% end %>
       <div class="quantity-button">
-        <%= button_to "Remove", reservation_path(space.id), method: :delete, class: "btn btn-custom btn-person" %>
+        <%= button_to "Remove", reservation_path(reservation.id), method: :delete, class: "btn btn-custom btn-person" %>
       </div>
     </div>
   <% end %>
@@ -22,7 +26,7 @@
     <h4>Cart Total: <%= number_to_currency(@cart.total_price) %></h4>
     <div class="quantity-button">
       <%= checkout_option %>
-      <%= button_to "Keep Shopping", spaces_path, method: :get, class: "btn btn-custom btn-person" %>
+      <%= button_to "Keep Shopping", reservations_path, method: :get, class: "btn btn-custom btn-person" %>
     </div>
   </div>
 </div>

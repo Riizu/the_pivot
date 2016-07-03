@@ -6,14 +6,18 @@
   <p>Description: <%= @space.description %></p>
 </div>
 <div class="col-md-3 col-md-offset-2">
-  <p class="price">Nightly Rate: <%= number_to_currency(@space.price) %></p><br>
-  <p>Check in Date: <%= text_field_tag "start_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkin" %><br><br>
-     Check out Date: <%= text_field_tag "end_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkout" %><br><br>
-     Occupancy: <%= @space.occupancy %><br><br>
-     Planet: <%= @space.planet.name %><br><br>
-     Style: <%= @space.style.name %><br><br>
-     </p>
-     <div class="quantity-button">
-       <%= button_to("Reserve this Space", "/reservations", params: { space_id: @space.id }, class: "btn btn-custom btn-person") %>
-     </div>
+  <%= form_tag(reservations_path, method: "post") do %>
+    <p class="price">Nightly Rate: <%= number_to_currency(@space.price) %></p><br>
+    <p>
+      Check in Date: <%= text_field_tag "start_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkin" %><br><br>
+      Check out Date: <%= text_field_tag "end_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkout" %><br><br>
+      Occupancy: <%= @space.occupancy %><br><br>
+      Planet: <%= @space.planet.name %><br><br>
+      Style: <%= @space.style.name %><br><br>
+    </p>
+    <div class="quantity-button">
+      <%= hidden_field_tag :space_id, @space.id %>
+      <%= submit_tag "Reserve this Space", class: "btn btn-default" %>
+    </div>
+  <% end %>
 </div>
