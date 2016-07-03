@@ -7,8 +7,8 @@
 </div>
 <div class="col-md-3 col-md-offset-2">
   <p class="price">Nightly Rate: <%= number_to_currency(@space.price) %></p><br>
-  <p>Check in Date: *Date Selector*<br><br>
-     Check out Date: *Date Selector*<br><br>
+  <p>Check in Date: <%= text_field_tag "start_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkin" %><br><br>
+     Check out Date: <%= text_field_tag "end_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkout" %><br><br>
      Occupancy: <%= @space.occupancy %><br><br>
      Planet: <%= @space.planet.name %><br><br>
      Style: <%= @space.style.name %><br><br>
