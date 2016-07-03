@@ -1,8 +1,6 @@
 $( document ).ready(function() {
   var checkInInput = $('#datepicker-checkin');
   var checkOutInput = $('#datepicker-checkout');
-  var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-  var yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
   setUpCheckInDatePicker();
   setUpCheckOutDatePicker();
   setUpCheckInListener();
