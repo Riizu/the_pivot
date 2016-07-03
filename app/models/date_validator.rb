@@ -7,6 +7,10 @@ class DateValidator < ActiveModel::Validator
     end
   end
 
+  def self.validate_cart_reservation(space_id, start_date, end_date)
+    Reservation.new(space_id: space_id, start_date: start_date, end_date: end_date)
+  end
+
   def check_overlaps(new_reservation)
     Reservation.where(space: new_reservation.space).all.each do |existing_reservation|
       check_start_overlap(existing_reservation, new_reservation)
