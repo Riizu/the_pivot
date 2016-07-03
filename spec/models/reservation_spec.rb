@@ -20,6 +20,13 @@ RSpec.describe Reservation, type: :model do
   end
 
   context "validations" do
+    it "will allow creation if no reservations exist" do
+      space = create(:space)
+      order = create(:order)
+      new_reservation = Reservation.new(space: space, order: order, total: 15, start_date: "2016/07/15", end_date: "2016/07/20")
+      expect(new_reservation).to be_valid
+    end
+
     it "won't allow creation if start date is taken" do
       reservation = create(:reservation)
       new_reservation = Reservation.new(space: reservation.space, order: reservation.order, total: 15, start_date: reservation.start_date, end_date: "2016/07/20")

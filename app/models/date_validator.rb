@@ -1,30 +1,41 @@
 class DateValidator < ActiveModel::Validator
 
-  def validate(record)
-    if Reservation.all.count == 0
-        true
+  def validate(new_reservation)
+    if check_for_existing_endpoints(new_reservation)
     else
-      if Reservation.find_by(start_date: record.start_date) || Reservation.find_by(end_date: record.end_date)
-        record.errors[:start_date] << "This date range is unavailable"
-      end
+      check_overlaps(new_reservation)
+    end
+  end
 
-      Reservation.all.each do |reservation|
-        if reservation.start_date < record.end_date && record.end_date <= reservation.end_date
-          record.errors[:start_date] << "This end date is unavailable"
-        end
-      end
+  def check_overlaps(new_reservation)
+    Reservation.where(space: new_reservation.space).all.each do |existing_reservation|
+      check_start_overlap(existing_reservation, new_reservation)
+      check_end_overlap(existing_reservation, new_reservation)
+      check_contains_existing(existing_reservation, new_reservation)
+    end
+  end
 
-      Reservation.all.each do |reservation|
-        if reservation.start_date <= record.start_date && record.start_date < reservation.end_date
-          record.errors[:start_date] << "This start date is unavailable"
-        end
-      end
+  def check_start_overlap(existing_reservation, new_reservation)
+    if existing_reservation.start_date < new_reservation.end_date && new_reservation.end_date <= existing_reservation.end_date
+      new_reservation.errors[:start_date] << "This end date is unavailable"
+    end
+  end
 
-      Reservation.all.each do |reservation|
-        if reservation.start_date >= record.start_date && reservation.end_date <= record.end_date
-          record.errors[:start_date] << "This date range is unavailable"
-        end
-      end
+  def check_end_overlap(existing_reservation, new_reservation)
+    if existing_reservation.start_date <= new_reservation.start_date && new_reservation.start_date < existing_reservation.end_date
+      new_reservation.errors[:start_date] << "This start date is unavailable"
+    end
+  end
+
+  def check_contains_existing(existing_reservation, new_reservation)
+    if existing_reservation.start_date >= new_reservation.start_date && existing_reservation.end_date <= new_reservation.end_date
+      new_reservation.errors[:start_date] << "This date range is unavailable"
+    end
+  end
+
+  def check_for_existing_endpoints(new_reservation)
+    if Reservation.find_by(space: new_reservation.space, start_date: new_reservation.start_date) || Reservation.find_by(space: new_reservation.space, end_date: new_reservation.end_date)
+      new_reservation.errors[:start_date] << "This date range is unavailable"
     end
   end
 end
