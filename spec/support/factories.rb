@@ -82,4 +82,13 @@ FactoryGirl.define do
     user
     status "completed"
   end
+
+  factory :reservation do
+    space
+    order
+    start_date "2016/07/15"
+    end_date "2016/07/18"
+    total 15
+  end
+
 end
