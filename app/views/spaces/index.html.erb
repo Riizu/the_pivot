@@ -1,6 +1,8 @@
+<%= render 'shared/filter_nav' %>
+
 <div class="container socks row-well" id="all_socks">
   <% @spaces.each do |space| %>
-  <div class="col-md-4 col-sm-6 one-sock">
+  <div class="col-md-4 col-sm-6 one-sock" data-style="<%= space.style.name %>">
     <div id="space-index-image">
       <%= image_tag space.image_url.url(:medium), size: "250x300" %>
     </div>

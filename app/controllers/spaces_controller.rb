@@ -2,6 +2,7 @@ class SpacesController < ApplicationController
   def index
     if planet = Planet.find_by(name: params[:planet])
       @spaces = Space.where("planet_id = ? AND occupancy >= ?", planet.id, params[:occupancy].to_i)
+      @styles = @spaces.map {|space| space.style.name }.uniq
     else
       flash[:warning] = "Please include a planet"
       redirect_to root_url
