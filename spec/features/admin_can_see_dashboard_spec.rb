@@ -9,5 +9,8 @@ RSpec.feature "admin can view dashbaord" do
 
     page.should have_button("All Trips")
     page.should have_button("All Listings")
+    page.should have_button("All Planets")
+    page.should have_button("All Climates")
+
   end
 end

@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     get "/dashboard", to: "users#show"
     resources :spaces, only: [:index]
     resources :orders, only: [:index]
+    resources :planets, only: [:index]
+    resources :styles, only: [:index]
   end
 
   get "spaces/:space_slug", to: "spaces#show", as: :space
