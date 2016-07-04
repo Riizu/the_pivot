@@ -8,8 +8,10 @@ require 'rspec/rails'
 require 'capybara/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 def add_to_cart(space, num = 1)
-  num.times do
+  num.times do |n|
     visit space_path(space)
+    fill_in "start_date", with: "2016/08/0#{n+1}"
+    fill_in "end_date", with: "2016/08/0#{n+3}"
     click_on "Reserve this Space"
   end
 end

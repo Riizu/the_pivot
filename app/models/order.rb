@@ -13,11 +13,12 @@ class Order < ActiveRecord::Base
     reservations.map(&:quantity).reduce(:+)
   end
 
-  def create_reservations(cart_contents)
-    cart_contents.map do |space_id, quantity|
-      Reservation.create(order_id:    id,
-                       space_id:     space_id,
-                       total:  Space.find(space_id).price)
+  def create_reservations(cart_reservations)
+    cart_reservations.each do |reservation|
+      self.reservations.create(space_id:   reservation.id,
+                               total:      reservation.total,
+                               start_date: reservation.start_date,
+                               end_date:   reservation.end_date)
     end
   end
 
