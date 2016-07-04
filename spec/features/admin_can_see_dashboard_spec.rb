@@ -7,11 +7,9 @@ RSpec.feature "admin can view dashbaord" do
 
     visit "admin/dashboard"
 
-
-    page.should have_button("All Trips")
-    page.should have_button("All Listings")
-    page.should have_button("All Planets")
-    page.should have_button("All Climates")
-
+    expect(page).to have_button("All Trips")
+    expect(page).to have_button("All Listings")
+    expect(page).to have_button("All Planets")
+    expect(page).to have_button("All Climates")
   end
 end
