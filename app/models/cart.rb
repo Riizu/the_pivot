@@ -14,10 +14,6 @@ class Cart
     contents.count
   end
 
-  def count_of(space_id)
-    contents[space_id.to_s]
-  end
-
   def reservations
     contents.map do |id, values|
       space = Space.find(id)
@@ -27,7 +23,7 @@ class Cart
 
   def total_price
     reservations.reduce(0) do |total, reservation|
-      total + reservation.price.to_d
+      total + reservation.price.to_d * (reservation.night_count)
     end
   end
 
