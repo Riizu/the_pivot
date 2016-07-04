@@ -20,4 +20,7 @@
       <%= submit_tag "Reserve this Space", class: "btn btn-default" %>
     </div>
   <% end %>
+  <% if @space.users.include?(current_user) %>
+    <%= button_to "Edit Space", "/spaces/#{@space.slug}/edit", method: :get, class: "btn btn-default" %><br><br>
+  <% end %>
 </div>
