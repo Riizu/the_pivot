@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   def create
     order = Order.create(user_id: current_user.id, status: "ordered")
-    order.create_reservations(@cart.contents)
+    order.create_reservations(@cart.reservations)
     session.delete(:cart)
     flash[:success] = "Order was successfully placed"
     redirect_to "/orders"

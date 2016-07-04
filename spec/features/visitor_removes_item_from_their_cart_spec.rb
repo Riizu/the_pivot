@@ -8,16 +8,16 @@ RSpec.feature "visitor removes space from cart" do
 
       visit "/cart"
 
-      expect(page).to have_content("Cart Total: $#{space.price}")
+      expect(page).to have_content("Cart Total: $#{space.price*2}")
 
       click_button "Remove"
 
       expect(current_path).to eq("/cart")
       expect(page).to have_css("#flash_success")
-      expect(page).to have_content("Successfully removed #{space.name.pluralize(2)} from your cart.")
+      expect(page).to have_content("Successfully removed #{space.name} from your cart.")
       expect(page).to have_link("#{space.name}")
 
-      expect(page).to_not have_content("Cart Total: $0")
+      expect(page).to have_content("Cart Total: $0.00")
     end
   end
 end

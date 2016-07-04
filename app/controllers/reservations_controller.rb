@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
     if reservation.valid?
       @cart.add_reservation(space.id, space.price, params[:start_date], params[:end_date])
       session[:cart] = @cart.contents
-      flash[:notice] = "Your cart has #{@cart.count_of(space.id)} of #{space.name.pluralize(@cart.count_of(space.id))}."
+      flash[:notice] = "You have added a booking for #{space.name}."
       redirect_to space_path(space)
     else
       flash[:notice] = "That date range is invalid."
@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
   def destroy
     space = Space.find(params[:id])
     @cart.remove_reservation(space.id)
-    link = %Q[<a href="/spaces/#{space.id}"> #{space.name.pluralize(@cart.count_of(space.id))}</a>]
+    link = %Q[<a href="/spaces/#{space.id}"> #{space.name}</a>]
     flash[:success] = "Successfully removed #{link} from your cart."
     redirect_to "/cart"
   end
