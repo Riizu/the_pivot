@@ -34,6 +34,7 @@ gem 'twitter', '~> 5.3.1'
 gem 'omniauth-twitter'
 gem 'stripe'
 gem 'jquery-ui-rails'
+gem 'faker'
 
 gem 'bootstrap-sass'
 # Use Capistrano for deployment
@@ -49,7 +50,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'pry'
-  gem 'faker'
 end
 
 group :development do

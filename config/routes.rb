@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
 
-  resources :spaces, only: [:index]
+  resources :spaces, only: [:index, :new, :create]
 
   resources :reservations, only: [:create, :destroy, :update]
 
@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   end
 
   get "spaces/:space_slug", to: "spaces#show", as: :space
+  get "spaces/:space_slug/edit", to: "spaces#edit", as: :edit_space
+  patch "/spaces/:space_slug", to: "spaces#update"
+
   get "planets/:planet_slug", to: "planets#show", as: :planet
   get "styles/:style_slug", to: "styles#show", as: :style
 

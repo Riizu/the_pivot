@@ -27,12 +27,13 @@ class Space < ActiveRecord::Base
   end
 
   def self.new_space(space_params)
-    Space.new(name:          space_params[:name],
+    Space.new(name:         space_params[:name],
               price:        space_params[:price],
               description:  space_params[:description],
+              occupancy:    space_params[:occupancy],
               image_url:    space_params[:image_url],
               style_id:     Style.find_by(name: space_params[:style]).id,
-              planet_id:    Planet.find_by(title: space_params[:planet]).id,
+              planet_id:    Planet.find_by(name: space_params[:planet]).id
              )
   end
 
@@ -40,9 +41,10 @@ class Space < ActiveRecord::Base
     update( name:         space_params[:name],
             price:        space_params[:price],
             description:  space_params[:description],
+            occupancy:    space_params[:occupancy],
             image_url:    space_params[:image_url],
             style_id:     Style.find_by(name: space_params[:style]).id,
-            category_id:  Planet.find_by(title: space_params[:planet]).id,
+            planet_id:    Planet.find_by(name: space_params[:planet]).id
           )
   end
 end
