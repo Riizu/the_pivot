@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:index]
     resources :planets, only: [:index]
     resources :styles, only: [:index]
+    resources :users, only: [:index, :edit, :update]
   end
 
   get "spaces/:space_slug", to: "spaces#show", as: :space
