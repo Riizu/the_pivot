@@ -26,7 +26,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
-    resources :socks
+    resources :spaces, only: [:index]
+    resources :orders, only: [:index]
   end
 
   get "spaces/:space_slug", to: "spaces#show", as: :space

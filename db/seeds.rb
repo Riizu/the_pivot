@@ -4,6 +4,7 @@ class Seed
     create_users
     create_planets
     create_business_owners
+    create_platform_admin
     create_spaces
   end
 
@@ -83,6 +84,25 @@ class Seed
       user.save
     end
     puts "Created Business Owners"
+  end
+
+  def create_platform_admin
+    puts "Creating Platform Admin"
+    jorge = User.new(
+      first_name:            "Jorge",
+      last_name:             "Tellez",
+      email:                 "jorge@turing.io",
+      password:              "password",
+      password_confirmation: "password",
+      username:              "jorge@turing.io",
+      role:                   1
+    )
+    # jorge.spaces << create_space
+    # jorge.orders << add_orders(jorge.id)
+    jorge.save
+
+    puts "Created Platform Admin"
+
   end
 
   def create_space
