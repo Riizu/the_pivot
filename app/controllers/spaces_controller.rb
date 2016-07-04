@@ -20,7 +20,12 @@ class SpacesController < ApplicationController
   end
 
   def new
-    @space = Space.new
+    if current_user
+      @space = Space.new
+    else
+      flash[:warning] = "You must be logged in to post a space."
+      redirect_to login_path
+    end
   end
 
   def create

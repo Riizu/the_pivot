@@ -50,4 +50,13 @@ RSpec.feature "User can submit a new space" do
         expect(page).to have_content "Name can't be blank"
     end
   end
+
+  context "guest can't create new space" do
+    scenario "they are redirected to login page" do
+      visit "/spaces/new"
+
+      expect(page).to have_content "You must be logged in to post a space."
+      expect(current_path).to eq login_path
+    end
+  end
 end
