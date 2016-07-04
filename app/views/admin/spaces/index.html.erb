@@ -1,0 +1,25 @@
+<div class="container">
+  <h1> All Trips </h1>
+
+  <table id="trips-table" class="table table-hover">
+    <thead>
+    <tr>
+      <th>Space ID</th>
+      <th>User ID</th>
+      <th>Check in</th>
+      <th>Check out</th>
+      <th>Total</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+      <td><%= %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>

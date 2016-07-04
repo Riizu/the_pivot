@@ -10,7 +10,11 @@ RSpec.feature "User can checkout" do
 
       visit '/cart'
 
-      expect(page).to have_content("$7.00, Planet: 7_planet, Climate: 8_style Start Date: 2016/08/03 End Date: 2016/08/05")
+      expect(page).to have_content(space.price)
+      expect(page).to have_content(space.planet.name)
+      expect(page).to have_content(space.style.name)
+      expect(page).to have_content("2016/08/03")
+      expect(page).to have_content("2016/08/05")
 
       click_on "Checkout"
 
