@@ -1,0 +1,31 @@
+<div class="container">
+  <h1> All listings </h1>
+
+  <table id="listings-table" class="table table-hover">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Climate</th>
+      <th>Planet</th>
+      <th>Description</th>
+      <th>Occupancy</th>
+      <th>Approved</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spaces.each do |space| %>
+      <tr>
+      <td><%= space.name %></td>
+      <td><%= space.price %></td>
+      <td><%= space.style_id %></td>
+      <td><%= space.planet_id %></td>
+      <td><%= space.description %></td>
+      <td><%= space.occupancy %></td>
+      <td><%= space.approved %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
