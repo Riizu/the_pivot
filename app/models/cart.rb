@@ -5,41 +5,30 @@ class Cart
     @contents = initial_contents || {}
   end
 
-  def add_space(space_id)
-    contents[space_id.to_s] ||= 0
-    contents[space_id.to_s] += 1
+  def add_reservation(space_id, price, start_date, end_date)
+    contents[space_id.to_s] ||= []
+    contents[space_id.to_s] = [price, start_date, end_date]
   end
 
   def total
-    contents.values.sum
+    contents.count
   end
 
-  def count_of(space_id)
-    contents[space_id.to_s]
-  end
-
-  def spaces
-    contents.map { |space_id, _quantity| Space.find(space_id) }
+  def reservations
+    contents.map do |id, values|
+      space = Space.find(id)
+      CartReservation.new(space, values[0], values[1], values[2])
+    end
   end
 
   def total_price
-    spaces.map do |space|
-      count_of(space.id) * space.price.to_f.round(2)
-    end.reduce(:+)
-  end
-
-  def remove_space(space_id)
-    contents.delete_if { |id, _quantity| id == space_id.to_s }
-  end
-
-  def update_quantity(id, direction)
-    if direction == "plus"
-      contents[id.to_s] += 1
-    elsif direction == "minus" && one?(id)
-      remove_space(id)
-    else
-      contents[id.to_s] -= 1
+    reservations.reduce(0) do |total, reservation|
+      total + reservation.price.to_d * (reservation.night_count)
     end
+  end
+
+  def remove_reservation(space_id)
+    contents.delete_if { |id, _quantity| id == space_id.to_s }
   end
 
   def one?(id)

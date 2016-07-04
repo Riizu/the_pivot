@@ -1,11 +1,14 @@
 require "rails_helper"
 
 RSpec.feature "Visit adds a space to cart" do
-  context "visitor views a space" do
-    scenario "visitor adds that space to the cart" do
+  context "valid reservation" do
+    scenario "visitor adds a valid reservation to the cart" do
       space = create(:space, approved: true)
 
       visit space_path(space)
+
+      fill_in "start_date", with: "2016/08/17"
+      fill_in "end_date", with: "2016/08/19"
       click_on "Reserve this Space"
       click_on "Cart"
 
@@ -17,12 +20,31 @@ RSpec.feature "Visit adds a space to cart" do
         expect(page).to have_content(space.price)
         expect(page).to have_content(space.planet.name)
         expect(page).to have_content(space.style.name)
+        expect(page).to have_content("2016/08/17")
+        expect(page).to have_content("2016/08/19")
       end
 
       within '#total-cart-price' do
-        expect(page).to have_content("Cart Total: $#{space.price}")
+        expect(page).to have_content("Cart Total: $#{space.price * 2}")
         expect(page).to have_content("Total Items in Cart: 1")
       end
+    end
+  end
+
+  context "invalid reservation" do
+    scenario "visitor adds a valid reservation to the cart" do
+      space = create(:space, approved: true)
+      create(:reservation, space: space)
+
+      visit space_path(space)
+
+      fill_in "start_date", with: "2016/07/14"
+      fill_in "end_date", with: "2016/07/16"
+      click_on "Reserve this Space"
+
+      expect(current_path).to eq(space_path(space))
+
+      expect(page).to have_content("That date range is invalid.")
     end
   end
 end

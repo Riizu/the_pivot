@@ -12,7 +12,8 @@ $( document ).ready(function() {
       maxDate = new Date(new Date(maxDate).getTime() - 24 * 60 * 60 * 1000);
     $(checkInInput).datepicker({
       minDate: today,
-      maxDate: maxDate
+      maxDate: maxDate,
+      dateFormat: 'yy-mm-dd'
     });
   }
 
@@ -22,7 +23,8 @@ $( document ).ready(function() {
     else
       minDate = new Date(new Date(minDate).getTime() + 24 * 60 * 60 * 1000);
     $(checkOutInput).datepicker({
-      minDate: minDate
+      minDate: minDate,
+      dateFormat: 'yy-mm-dd'
     });
   }
 

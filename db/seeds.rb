@@ -99,7 +99,8 @@ class Seed
 
   def create_spaces
     puts "Creating Spaces"
-    480.times do
+    # 480.times do
+    20.times do
       space = Space.new(
         name:            Faker::Book.title + Faker::Hipster.words(2).join(" "),
         price:           Faker::Commerce.price,
@@ -107,7 +108,8 @@ class Seed
         planet_id:       rand(1..10),
         approved:        true,
         description:     Faker::Hipster.sentence,
-        occupancy:       rand(2..50)
+        occupancy:       rand(2..50),
+        image_url:       File.open(File.join(Rails.root, "/app/assets/images/tatouine.jpg"))
       )
       user = User.find(rand(2..20))
       user.password = "password"
@@ -129,7 +131,7 @@ class Seed
     Planet.create(
       name: "Coruscant"
     )
-    15.times do
+    20.times do
       Planet.create(
         name: Faker::StarWars.planet
       )

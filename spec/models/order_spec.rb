@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   scenario "creates order items from cart contents" do
     space1, space2, space3 = create_list(:space, 3)
-    cart_contents = { space1.id => 1, space2.id => 2, space3.id => 3 }
-    order = Order.new(user_id: 1, status: "ordered")
+    user = create(:user)
+    cart = Cart.new({ space1.id.to_s => ["3.0", "2016/12/01", "2016/12/03"], space2.id.to_s => ["3.0", "2016/12/03", "2016/12/05"], space3.id.to_s => ["3.0", "2016/12/05", "2016/12/07"] })
+    order = Order.create(user_id: user, status: "ordered")
     expect(Reservation.all.count).to eq(0)
-    order.create_reservations(cart_contents)
+    order.create_reservations(cart.reservations)
     expect(Reservation.all.count).to eq(3)
   end
 
