@@ -20,8 +20,8 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    space = Space.find(params[:space_id])
-    @cart.remove_reservation(space.id, params[:start_date], params[:end_date])
+    space = Space.find(params[:id])
+    @cart.remove_reservation(space.id)
     link = %Q[<a href="/spaces/#{space.id}"> #{space.name.pluralize(@cart.count_of(space.id))}</a>]
     flash[:success] = "Successfully removed #{link} from your cart."
     redirect_to "/cart"
