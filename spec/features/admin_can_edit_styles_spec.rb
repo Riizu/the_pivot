@@ -10,7 +10,7 @@ RSpec.feature "admin can edit a style" do
     visit "admin/dashboard"
 
     click_on "All Climates"
-    click_on "Edit"
+    click_on "Edit #{style.name}"
 
     expect(current_path).to eq("/admin/styles/#{style.slug}/edit")
 
