@@ -6,7 +6,6 @@
     <tr>
       <th>Name</th>
       <th>Edit</th>
-      <th>Delete</th>
     </tr>
   </thead>
 
@@ -14,8 +13,7 @@
     <% @styles.each do |style| %>
       <tr>
       <td><%= style.name %></td>
-      <td><%= %></td>
-      <td><%= %></td>
+      <td><%= link_to "Edit", edit_admin_style_path(style) %></td>
       </tr>
     <% end %>
   </tbody>
