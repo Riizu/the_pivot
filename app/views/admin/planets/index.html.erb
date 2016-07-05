@@ -5,7 +5,7 @@
     <thead>
     <tr>
       <th>Name</th>
-      <th>Edit</th>
+      <th></th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -14,7 +14,7 @@
     <% @planets.each do |planet| %>
       <tr>
       <td><%= planet.name %></td>
-      <td><%= %></td>
+      <td><%= link_to "Edit #{planet.name}", edit_admin_planet_path(planet.id) %></td>
       <td><%= %></td>
       </tr>
     <% end %>
