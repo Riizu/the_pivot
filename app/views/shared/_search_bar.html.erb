@@ -1,0 +1,31 @@
+<div class="navbar navbar-default search-bar">
+  <div class="container-fluid">
+    <%= form_tag(spaces_path, method: "get") do %>
+
+    <div class="col-md-2" id="no-gutter-home">
+      <%= label_tag "Planet" %><br/>
+      <%= text_field_tag "planet", nil, class: "form-control" %>
+    </div>
+
+    <div class="col-md-2" id="no-gutter-home">
+      <%= label_tag "Occupancy" %><br />
+      <%= text_field_tag "occupancy", nil, class: "form-control" %>
+    </div>
+
+    <div class="col-md-2" id="no-gutter-home">
+      <%= label_tag "Check in" %><br/>
+      <%= text_field_tag "start_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkin" %>
+    </div>
+
+    <div class="col-md-2" id="no-gutter-home">
+      <%= label_tag "Check out" %><br/>
+      <%= text_field_tag "end_date", nil, placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkout" %>
+    </div>
+
+    <div class="col-md-1 button-padding" id="no-gutter-home">
+      <%= submit_tag "search", class: "btn btn-default" %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
