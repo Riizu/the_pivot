@@ -26,10 +26,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
-    resources :spaces, only: [:index]
+    resources :spaces, only: [:index, :edit]
+    resources :unapproved_spaces, only: [:index, :update]
     resources :reservations, only: [:index, :edit, :update]
-    resources :planets, only: [:index]
+    resources :planets, only: [:index, :edit]
     resources :styles, only: [:index]
+    resources :users, only: [:index, :edit, :update]
   end
 
   get "spaces/:space_slug", to: "spaces#show", as: :space
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
   patch "/spaces/:space_slug", to: "spaces#update"
 
   get "planets/:planet_slug", to: "planets#show", as: :planet
+  patch "/planets/:planets_slug", to: "planets#update"
+
   get "styles/:style_slug", to: "styles#show", as: :style
 
   get "/:id", to: "users#show", as: :listings

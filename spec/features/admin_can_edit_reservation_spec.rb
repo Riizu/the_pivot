@@ -9,7 +9,7 @@ RSpec.feature "admin can edit reservations" do
 
       visit "/admin/dashboard"
 
-      click_on "All Trips"
+      click_on "All Reservations"
       click_on "Edit"
 
       expect(current_path).to eq edit_admin_reservation_path(reservation)

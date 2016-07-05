@@ -1,16 +1,16 @@
 require "rails_helper"
 
-RSpec.feature "admin can go to all trips view" do
-  scenario "they view all trips table" do
+RSpec.feature "admin can go to all reservations view" do
+  scenario "they view all reservations table" do
     admin = create(:user, role: 1)
     reservation = create(:reservation)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit "admin/dashboard"
 
-    click_on "All Trips"
+    click_on "All Reservations"
 
-    expect(page).to have_content("All Trips")
+    expect(page).to have_content("All Reservations")
     expect(page).to have_content("Space")
     expect(page).to have_content("Owner")
     expect(page).to have_content("Guest")

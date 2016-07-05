@@ -37,6 +37,10 @@ class Space < ActiveRecord::Base
              )
   end
 
+  def approve
+    self.update(approved: true)
+  end
+
   def update_space(space_params)
     update( name:         space_params[:name],
             price:        space_params[:price],

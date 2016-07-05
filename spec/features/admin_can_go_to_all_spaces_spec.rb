@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "admin can go to all listings view" do
-  scenario "they view all listings table" do
+RSpec.feature "admin can go to all spaces view" do
+  scenario "they view all spaces table" do
     admin = create(:user, role: 1)
     space = create(:space)
 
@@ -9,7 +9,7 @@ RSpec.feature "admin can go to all listings view" do
 
     visit "admin/dashboard"
 
-    click_on "All Listings"
+    click_on "All Spaces"
 
     expect(page).to have_content("Name")
     expect(page).to have_content("Price")

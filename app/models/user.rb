@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   has_secure_password validations: false
   validates :first_name, presence: true
   validates :last_name, presence: true, if: "uid.nil?"
-  validates :username, presence: true, uniqueness: true, if: "uid.nil?"
-  validates :password, presence: true, confirmation: true, if: "uid.nil?"
-  validates :email, presence: true, uniqueness: true, confirmation: true, if: "uid.nil?"
+  validates :username, presence: true, uniqueness: true, if: "uid.nil?", on: :create
+  validates :password, presence: true, confirmation: true, if: "uid.nil?", on: :create
+  validates :email, presence: true, uniqueness: true, confirmation: true, if: "uid.nil?", on: :create
 
 
   enum role: %w(default admin)
