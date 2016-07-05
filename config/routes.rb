@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :update]
   end
 
+  get "hosts/:space_slug/new", to: "hosts#new"
+  post "/hosts", to: "hosts#create"
+
   get "spaces/:space_slug", to: "spaces#show", as: :space
   get "spaces/:space_slug/edit", to: "spaces#edit", as: :edit_space
   patch "/spaces/:space_slug", to: "spaces#update"
