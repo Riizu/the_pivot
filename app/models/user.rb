@@ -1,15 +1,15 @@
 class User < ActiveRecord::Base
   has_many :orders
   has_many :spaces_users
-
+  has_many :reservations, through: :orders
   has_many :spaces, through: :spaces_users
 
   has_secure_password validations: false
   validates :first_name, presence: true
   validates :last_name, presence: true, if: "uid.nil?"
-  validates :username, presence: true, uniqueness: true, if: "uid.nil?"
-  validates :password, presence: true, confirmation: true, if: "uid.nil?"
-  validates :email, presence: true, uniqueness: true, confirmation: true, if: "uid.nil?"
+  validates :username, presence: true, uniqueness: true, if: "uid.nil?", on: :create
+  validates :password, presence: true, confirmation: true, if: "uid.nil?", on: :create
+  validates :email, presence: true, uniqueness: true, confirmation: true, if: "uid.nil?", on: :create
 
 
   enum role: %w(default admin)

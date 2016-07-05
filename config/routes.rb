@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
 
-  resources :spaces, only: [:index]
+  resources :spaces, only: [:index, :new, :create]
 
   resources :reservations, only: [:create, :destroy, :update]
 
@@ -26,11 +26,27 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
-    resources :socks
+    resources :spaces, only: [:index, :edit]
+    resources :unapproved_spaces, only: [:index, :update]
+    resources :reservations, only: [:index, :edit, :update]
+    resources :planets, only: [:index, :edit]
+    resources :styles, only: [:index, :edit]
+    resources :users, only: [:index, :edit, :update]
   end
 
-  get "spaces/:space_slug", to: "spaces#show", as: :space
-  get "planets/:planet_slug", to: "planets#show", as: :planet
+  get "hosts/:space_slug/new", to: "hosts#new"
+  post "/hosts", to: "hosts#create"
 
-  get "/:id", to: "users#show"
+  get "spaces/:space_slug", to: "spaces#show", as: :space
+  get "spaces/:space_slug/edit", to: "spaces#edit", as: :edit_space
+  patch "/spaces/:space_slug", to: "spaces#update"
+
+  get "planets/:planet_slug", to: "planets#show", as: :planet
+  patch "/planets/:planets_slug", to: "planets#update"
+
+  get "styles/:style_slug", to: "styles#show", as: :style
+  patch "/styles/:slug", to: "styles#update"
+
+  get "/:id", to: "users#show", as: :listings
+
 end

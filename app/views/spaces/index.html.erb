@@ -1,14 +1,2 @@
-<div class="container socks row-well" id="all_socks">
-  <% @spaces.each do |space| %>
-  <div class="col-md-4 col-sm-6 one-sock">
-    <div id="sock-index-image">
-      <%= image_tag space.image_url.url(:medium), size: "250x300" %>
-    </div>
-    <div id="sock-index-info">
-      <h4 class="sock-label"><%= link_to space.name, space_path(space.slug) %></h4>
-      <%= number_to_currency(space.price) %>
-      <%= space.description %>
-    </div>
-  </div>
-  <% end %>
-</div>
+<%= render 'shared/search_bar', search_hash: @search_hash %>
+<%= render 'shared/search_results' %>

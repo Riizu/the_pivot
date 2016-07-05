@@ -1,63 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SocksAndFound</title>
+  <title>Weekend at Chewie's</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" id="logo" href="/">Socks And Found</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right" id="navbar-links">
-          <% user_button_display.each do |button| %>
-            <li><%= button %></li>
-          <% end %>
-          <li><%= link_to "Cart (#{@cart.contents.count})", cart_path %></li>
-          <li><a href="/socks">All Socks</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <% planets.each do |planet| %>
-                <li><%= link_to planet.name, "/#{planet.slug}" %></li>
-              <% end %>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Styles <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <% styles.each do |style| %>
-                <li><%= link_to style.name, "/#{style.slug}" %></li>
-              <% end %>
-            </ul>
-          </li>
-          <% if current_user %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name if current_user %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><%= link_to "Logout", "/logout", method: :delete %></li>
-                <li><%= link_to "Dashboard", "/dashboard" %></li>
-            </ul>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <% flash.each do |name, message| %>
+  <%= render 'shared/navbar' %>
+
+  <% flash.each do |name, message| %>
     <%= content_tag :div, raw(message), id: "flash_#{name}" %>
-    <% end %>
-<%= yield %>
+  <% end %>
+
+  <%= yield %>
 </body>
 </html>
