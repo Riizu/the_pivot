@@ -14,6 +14,18 @@ RSpec.feature "an existing user can view their individual past orders" do
   end
 
   scenario "they see relevant reservations for the order" do
-    #ADD SOME RESERVATIONS, PUNK
+    reservation = create(:reservation)
+    user = reservation.order.user
+
+    login(user)
+    visit "/orders"
+
+    click_link user.orders.first.id
+    expect(current_path).to eq order_path(user.orders.first)
+    expect(page).to have_content(user.orders.first.id)
+    expect(page).to have_content(user.orders.first.spaces.name)
+    expect(page).to have_content(user.orders.first.reservations.first.total)
+    expect(page).to have_content(user.orders.first.reservations.first.total * user.orders.first.spaces.first.occupancy)
+
   end
 end
