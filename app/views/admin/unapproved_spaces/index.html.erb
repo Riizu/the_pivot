@@ -1,0 +1,37 @@
+<div class="container">
+  <h1> All Unapproved Spaces </h1>
+
+  <table id="unapproved-spaces-table" class="table table-hover">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Climate</th>
+      <th>Planet</th>
+      <th>Description</th>
+      <th>Occupancy</th>
+      <th>Approved</th>
+      <th>Edit</th>
+      <th>Approve</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spaces.each do |space| %>
+      <tr>
+      <td><%= space.id %></td>
+      <td><%= space.name %></td>
+      <td><%= space.price %></td>
+      <td><%= space.style_id %></td>
+      <td><%= space.planet_id %></td>
+      <td><%= space.description %></td>
+      <td><%= space.occupancy %></td>
+      <td><%= space.approved %></td>
+      <td><%= link_to "Edit", edit_admin_space_path(space.id) %></td>
+      <td><%= link_to "Approve", admin_unapproved_space_path(space.id), method: "PUT" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
