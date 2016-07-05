@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
   def destroy
     space = Space.find(params[:id])
     @cart.remove_reservation(space.id)
-    link = %Q[<a href="/spaces/#{space.id}"> #{space.name}</a>]
+    link = %Q[<a href="/spaces/#{space.slug}"> #{space.name}</a>]
     flash[:success] = "Successfully removed #{link} from your cart."
     redirect_to "/cart"
   end
