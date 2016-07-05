@@ -13,7 +13,6 @@ RSpec.feature "admin can go to all climates view" do
     expect(page).to have_content("All Climates")
     expect(page).to have_content("Name")
     expect(page).to have_content("Edit")
-    expect(page).to have_content("Delete")
 
     expect(page).to have_content(style.name)
   end

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :unapproved_spaces, only: [:index, :update]
     resources :reservations, only: [:index]
     resources :planets, only: [:index, :edit]
-    resources :styles, only: [:index]
+    resources :styles, only: [:index, :edit]
     resources :users, only: [:index, :edit, :update]
   end
 
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   patch "/planets/:planets_slug", to: "planets#update"
 
   get "styles/:style_slug", to: "styles#show", as: :style
+  patch "/styles/:slug", to: "styles#update"
 
   get "/:id", to: "users#show", as: :listings
 
