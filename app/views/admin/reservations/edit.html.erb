@@ -1,0 +1,13 @@
+<div class="form-box">
+<%= form_for [:admin, @reservation] do |f| %>
+  <h4><%= f.label :space %><br>
+  <span class="select-foot"><%= f.select :space, Space.all.pluck(:name) %></span></h4>
+  <h4><%= f.label :total, "Total Cost" %><br>
+  <span class="form-field-name"><%= f.text_field :total %></span></h4>
+  <h4><%= f.label :start_date, "Check in Date" %><br>
+  <span class="form-field"><%= f.text_field :start_date %></span></h4>
+  <h4><%= f.label :end_date, "Check out Date" %><br>
+  <span class="form-field"><%= f.text_field :end_date %></span></h4>
+  <%= f.submit %>
+<% end %>
+</div>

@@ -28,7 +28,7 @@ class ReservationsController < ApplicationController
   end
 
   def update
-    space = space.find(params[:id])
+    space = Space.find(params[:id])
     @cart.update_quantity(space.id, params[:direction])
     redirect_to "/cart"
   end
