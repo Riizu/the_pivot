@@ -59,12 +59,15 @@ FactoryGirl.define do
       transient do
         orders_count 5
       end
-
       after(:create) do |user, evaluator|
         create_list(:order, evaluator.orders_count, user: user)
       end
     end
   end
+
+  # factory :user_with_a_reservation do
+  #
+  # end
 
   sequence :username do |n|
     "person#{n}"

@@ -13,7 +13,7 @@
     <% @styles.each do |style| %>
       <tr>
       <td><%= style.name %></td>
-      <td><%= link_to "Edit #{style.name}", edit_admin_style_path(style) %></td>
+      <td><%= link_to "Edit", edit_admin_style_path(style) %></td>
       </tr>
     <% end %>
   </tbody>
