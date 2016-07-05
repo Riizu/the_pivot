@@ -64,7 +64,7 @@ class SpacesController < ApplicationController
   def update
     @space = Space.find_by(slug: params[:space_slug])
     if @space.update_space(space_params)
-      flash[:success] = "You space has been successfully updated!"
+      flash[:success] = "Your space has been successfully updated!"
       redirect_to space_path(@space)
     else
       flash.now[:error] = @space.errors.full_messages.join(", ")
