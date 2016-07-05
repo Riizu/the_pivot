@@ -4,8 +4,9 @@
   <table id="trips-table" class="table table-hover">
     <thead>
     <tr>
-      <th>Space ID</th>
-      <th>User ID</th>
+      <th>Space</th>
+      <th>Owner</th>
+      <th>Guest</th>
       <th>Check in</th>
       <th>Check out</th>
       <th>Total</th>
@@ -17,12 +18,14 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-      <td><%= reservation.space_id %></td>
+      <td><%= reservation.space.name %></td>
+      <td><%= reservation.space.users.pluck(:username).join(", ") %>
+      <td><%= reservation.order.user.username %>
       <td><%= reservation.start_date %></td>
       <td><%= reservation.end_date %></td>
-      <td><%= reservation.total %></td>
-      <td><%= %></td>
-      <td><%= %></td>
+      <td><%= number_to_currency(reservation.total) %></td>
+      <td><%= link_to "Edit", edit_admin_reservation_path(reservation), method: :get %></td>
+      <td><%= link_to "Delete", "/reservations/#{reservation.id}", method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get "/dashboard", to: "users#show"
     resources :spaces, only: [:index, :edit]
     resources :unapproved_spaces, only: [:index, :update]
-    resources :reservations, only: [:index]
+    resources :reservations, only: [:index, :edit, :update]
     resources :planets, only: [:index, :edit]
     resources :styles, only: [:index, :edit]
     resources :users, only: [:index, :edit, :update]
