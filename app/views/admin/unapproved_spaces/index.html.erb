@@ -12,7 +12,8 @@
       <th>Description</th>
       <th>Occupancy</th>
       <th>Approved</th>
-      <th></th>
+      <th>Edit</th>
+      <th>Approve</th>
     </tr>
   </thead>
 
@@ -28,6 +29,7 @@
       <td><%= space.occupancy %></td>
       <td><%= space.approved %></td>
       <td><%= link_to "Edit", edit_admin_space_path(space.id) %></td>
+      <td><%= link_to "Approve", admin_unapproved_space_path(space.id), method: "PUT" %></td>
       </tr>
     <% end %>
   </tbody>

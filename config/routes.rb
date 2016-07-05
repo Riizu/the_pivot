@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "users#show"
     resources :spaces, only: [:index, :edit]
-    resources :unapproved_spaces, only: [:index]
+    resources :unapproved_spaces, only: [:index, :update]
     resources :reservations, only: [:index]
     resources :planets, only: [:index]
     resources :styles, only: [:index]
