@@ -4,7 +4,6 @@ html {
   height: 100%;
 
   body {
-    position: relative;
     height: 100%;
 
     &:after {
@@ -48,6 +47,10 @@ html {
 #filter-nav {
   margin-top: 5px;
   padding-bottom: 5px;
+}
+
+.container {
+  margin-top: 80px;
 }
 
 .vertical-center {

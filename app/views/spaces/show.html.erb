@@ -1,3 +1,4 @@
+<div class="container">
 <div>
   <%= image_tag @space.image_url.url(:medium) %><br><br>
 </div>
@@ -24,4 +25,5 @@
   <% if @space.users.include?(current_user) %>
     <%= button_to "Edit Space", "/spaces/#{@space.slug}/edit", method: :get, class: "btn btn-default" %><br><br>
   <% end %>
+</div>
 </div>
