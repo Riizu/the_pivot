@@ -1,6 +1,4 @@
-<%= render 'shared/search_bar' %>
-<%= render 'shared/filter_nav' %>
-
+<%= render 'shared/search_bar', search_hash: @search_hash %>
 <div class="container socks row-well" id="all_socks">
   <% @spaces.each do |space| %>
   <div class="col-md-4 col-sm-6 one-sock" data-style="<%= space.style.name %>">
