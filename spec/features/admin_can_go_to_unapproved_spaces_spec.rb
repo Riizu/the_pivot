@@ -8,7 +8,7 @@ RSpec.feature "Admin can go to the unapproved spaces page" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit '/admin/dashboard'
-    click_on 'All Unapproved Spaces'
+    click_link 'All Unapproved Spaces'
 
     expect(current_path).to eq("/admin/unapproved_spaces")
 
