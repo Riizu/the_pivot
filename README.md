@@ -9,7 +9,7 @@ This project was created as a part of the curriculum for the [Turing School of S
 
 ### Overview
 
-This Rails application is a star wars themed lodging site. A user can create a space as a host or book a space. An admin can edit spaces and manage approvals for new spaces submitted by hosts.
+This Rails application is a Star Wars themed lodging site. A user can reserve a space on different planets or add a new space for approval as a host. Users can also add additional users as hosts to any of their spaces. An admin can access and edit all info through and Admin Dashboard as well as manage approvals for new spaces submitted by hosts.
 
 ### Live Version
 
@@ -19,10 +19,10 @@ You can find a live version of this application on Heroku at: [https://wookienig
 
 To set up a local copy of this project, perform the following:
 
-  1. Clone the repository: `git clone https://github.com/kristindiannefoss/little_shop.git`
+  1. Clone the repository: `git clone https://github.com/Riizu/the_pivot.git`
   2. `cd` into the project's directory
   3. Run `bundle install`
-  4. Run `rake db:create db:migrate db:seed` to set up the postgres database and seed it with users, items, and categories.
+  4. Run `rake db:create db:migrate db:seed` to set up the postgres database and seed it with users, planets, spaces, and climates orders, and categories.
     - If you would like to create your own users, artist, items, and categories do not run `db:seed`
     - The seed file does not include any setup for admins, so those must be created manually by running `rails c` and adding a user to the database with role = 2
   5. Run the application in the dev environment by running `rails s`
