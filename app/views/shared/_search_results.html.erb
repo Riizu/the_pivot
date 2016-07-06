@@ -5,7 +5,7 @@
       <%= image_tag space.image_url.url(:medium), size: "250x300" %>
     </div>
     <div class="well well-lg">
-      <h4 class="space-label" style="float:left"><%= link_to space.name, space_path(space) %></h4>&nbsp;<h4 style="float:right"><%= number_to_currency(space.price) %></h4>
+      <h4 class="space-label" style="float:left"><%= link_to space.name, space_path(space_slug: space.slug, check_in: @search_hash[:start_date], check_out: @search_hash[:end_date]) %></h4>&nbsp;<h4 style="float:right"><%= number_to_currency(space.price) %></h4>
     </div>
   </div>
   <% end %>

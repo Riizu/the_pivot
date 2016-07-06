@@ -25,6 +25,7 @@ class SpacesController < ApplicationController
     @space = Space.find_by(slug: params[:space_slug])
     if @space.approved
       @space
+      @search_hash = { start_date: params[:check_in], end_date: params[:check_out] }
     else
       flash[:warning] = "That space is currently not available."
       redirect_to root_url
