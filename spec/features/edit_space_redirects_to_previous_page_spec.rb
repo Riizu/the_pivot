@@ -15,7 +15,7 @@ RSpec.feature "edit space redirects to previous page" do
       fill_in "Name", with: "The best name"
       click_on "Update Space"
 
-      expect(current_path).to eq "/spaces/the-best-name"
+      expect(current_path).to eq space_path(space)
     end
   end
 
