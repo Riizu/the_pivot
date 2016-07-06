@@ -10,8 +10,8 @@
   <%= form_tag(reservations_path, method: "post") do %>
     <p class="price">Nightly Rate: <%= number_to_currency(@space.price) %></p><br>
     <p>
-      Check in Date: <%= text_field_tag "start_date", nil, value: @search_hash[:start_date], placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkin" %><br><br>
-      Check out Date: <%= text_field_tag "end_date", nil, value: @search_hash[:end_date], placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkout" %><br><br>
+      Check in Date: <%= text_field_tag "start_date", value: @search_hash[:start_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %><br><br>
+      Check out Date: <%= text_field_tag "end_date", value: @search_hash[:end_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %><br><br>
       Occupancy: <%= @space.occupancy %><br><br>
       Planet: <%= @space.planet.name %><br><br>
       Style: <%= @space.style.name %><br><br>

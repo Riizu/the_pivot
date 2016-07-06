@@ -12,12 +12,12 @@
 
 <div class="col-md-2" id="no-gutter-home">
   <%= label_tag "Check in" %><br/>
-  <%= text_field_tag "start_date", (search_hash[:start_date] unless !defined?(search_hash)), placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkin" %>
+  <%= text_field_tag "start_date", (search_hash[:start_date] unless !defined?(search_hash)), placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %>
 </div>
 
 <div class="col-md-2" id="no-gutter-home">
   <%= label_tag "Check out" %><br/>
-  <%= text_field_tag "end_date", (search_hash[:end_date] unless !defined?(search_hash)), placeholder: "mm/dd/yyyy", class: "form-control", id: "datepicker-checkout" %>
+  <%= text_field_tag "end_date", (search_hash[:end_date] unless !defined?(search_hash)), placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %>
 </div>
 
 <div class="col-md-1 button-padding" id="no-gutter-home">
