@@ -50,6 +50,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'simplecov'
 end
 
 group :development do
