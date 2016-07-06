@@ -1,6 +1,6 @@
 <div class="container spaces row-well" id="all_spaces">
   <% @spaces.each do |space| %>
-  <div class="col-md-4 col-sm-6 one-planet">
+  <div class="col-md-4 col-sm-6 space" data-climate="<%= space.style.name %>">
     <div id="space-index-image">
       <%=link_to (image_tag space.image_url.url(:medium)), space_path(space), class: "img-responsive center-block" %>
     </div>
