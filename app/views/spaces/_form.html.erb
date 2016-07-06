@@ -9,9 +9,9 @@
   <h4><%= f.label :price, "Nightly Rate" %><br>
   <span class="form-field-price"><%= f.text_field :price %></span></h4>
   <h4><%= f.label :planet %><br>
-  <span class="select-foot"><%= f.select :planet, Planet.all.pluck(:name) %></span></h4>
+  <span class="select-foot"><%= f.select :planet, Planet.all.pluck(:name), prompt:  "Select Planet", selected: (space.planet.name if space.planet) %></span></h4>
   <h4><%= f.label :style, "Climate" %><br>
-  <span class="select-style"><%= f.select :style, Style.all.pluck(:name) %></span></h4>
+  <span class="select-style"><%= f.select :style, Style.all.pluck(:name), prompt: "Select Climate", selected: (space.style.name if space.style) %></span></h4>
   <h4><%= f.label :image_url %><br>
   <span class="form-field-image"><%= f.file_field :image_url %></span></h4>
   <%= f.submit %>

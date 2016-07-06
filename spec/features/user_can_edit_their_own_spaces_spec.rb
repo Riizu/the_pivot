@@ -13,6 +13,8 @@ RSpec.feature "User edits existing space that they own" do
       click_on "Edit Space"
 
       expect(current_path).to eq edit_space_path(space)
+      expect(page).to have_content space.style.name
+      expect(page).to have_content space.planet.name
       fill_in "Name", with: "New Name"
       fill_in "Nightly Rate", with: 123.45
       click_on "Update Space"
