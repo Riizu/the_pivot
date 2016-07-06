@@ -9,6 +9,6 @@
   <%= button_to "All Climates", admin_styles_path, method: :get, class: "btn btn-custom btn-person" %>
   <%= button_to "All Users", admin_users_path, method: :get, class: "btn btn-custom btn-person" %>
   <a href="/admin/unapproved_spaces?"><button class="btn btn-custom btn-person link_text" type="button">
-    All Unapproved Spaces <span class="badge">4</span>
+    All Unapproved Spaces <span class="badge"> <%= @unapproved_spaces.count %> </span>
   </button></a>
 </div>
