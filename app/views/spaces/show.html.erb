@@ -15,7 +15,7 @@
       Occupancy: <%= @space.occupancy %><br><br>
       Planet: <%= @space.planet.name %><br><br>
       Style: <%= @space.style.name %><br><br>
-      Hosts: <%= @space.users.map { |user| user.username }.join(", ") %>
+      Hosts: <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ") %>
     </p>
     <div class="quantity-button">
       <%= hidden_field_tag :space_id, @space.id %>

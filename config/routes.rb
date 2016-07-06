@@ -47,6 +47,6 @@ Rails.application.routes.draw do
   get "styles/:style_slug", to: "styles#show", as: :style
   patch "/styles/:slug", to: "styles#update"
 
-  get "/:id", to: "users#show", as: :listings
+  get "/:username", to: "users#show", as: :listings
 
 end

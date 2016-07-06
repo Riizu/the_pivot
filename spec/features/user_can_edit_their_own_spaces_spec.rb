@@ -17,7 +17,7 @@ RSpec.feature "User edits existing space that they own" do
       fill_in "Nightly Rate", with: 123.45
       click_on "Update Space"
 
-      expect(current_path).to eq "/spaces/new-name"
+      expect(current_path).to eq space_path(space)
       expect(page).to have_content "New Name"
       expect(page).to have_content "$123.45"
     end
@@ -43,7 +43,7 @@ RSpec.feature "User edits existing space that they own" do
 
       login(other_user)
       visit "/spaces/#{space.slug}/edit"
-      
+
       expect(page).to have_content "You are not authorized to edit this space."
       expect(current_path).to eq space_path(space)
     end

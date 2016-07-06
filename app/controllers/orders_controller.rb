@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     order.create_reservations(@cart.reservations)
     session.delete(:cart)
     flash[:success] = "Order was successfully placed"
-    redirect_to "/orders"
+    redirect_to order_path(order)
   end
 
   private

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_secure_password validations: false
   validates :first_name, presence: true
   validates :last_name, presence: true, if: "uid.nil?"
-  validates :username, presence: true, uniqueness: true, if: "uid.nil?", on: :create
+  validates :username, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }, if: "uid.nil?", on: :create
   validates :password, presence: true, confirmation: true, if: "uid.nil?", on: :create
   validates :email, presence: true, uniqueness: true, confirmation: true, if: "uid.nil?", on: :create
 

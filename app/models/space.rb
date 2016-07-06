@@ -8,7 +8,7 @@ class Space < ActiveRecord::Base
   has_many :orders, through: :reservations
   has_many :users, through: :spaces_users
 
-  before_validation :create_slug
+  before_create :create_slug
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :price, presence: true

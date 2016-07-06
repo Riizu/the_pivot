@@ -16,7 +16,7 @@ RSpec.feature "admin can edit a planet" do
 
     click_on "Update Planet"
 
-    expect(current_path).to eq("/planets/pluto")
+    expect(current_path).to eq planet_path(planet)
 
     expect(page).to have_content("Pluto")
     expect(page).to_not have_content(planet.name)
