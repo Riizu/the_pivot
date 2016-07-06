@@ -41,7 +41,9 @@ Admins can create and edit spaces. This includes managing each spaces approval s
 
 #### Other Features
 
-The app implements Paperclip and uses Amazon Web Services S3 to store and host any image uploads.
+Paperclip and Amazon Web Services S3: Stores and hosts any image uploads.
+Twitter: Single Sign On and Social Media integration.
+Stripe: Payment.
 
 ### Test Suite
 
@@ -51,4 +53,4 @@ The project also utilizes leverages a bootstrap theme called 'twitter bootstrap'
 
 ### Dependencies
 
-This application depends on many ruby gems, all of which are found in the `Gemfile` and can be installed by running `bundle install` from the terminal in the main directory of the project.
+This application depends on many ruby gems, all of which are found in the `Gemfile` and can be installed by running `bundle install` from the terminal in the main directory of the project. The app also relies on Twitter, Stripe, and AWS API keys, which must be provided on a per-site-admin basis.
