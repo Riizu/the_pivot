@@ -18,5 +18,5 @@
 /config/application.yml
 
 /features_old
-
+/coverage
 .byebug_history

@@ -16,6 +16,7 @@
       <tr>
         <td><%= @order.id %></td>
         <td><%= @order.created_at.strftime("Order placed on %A, %B %d, %Y at %I:%M %p") %></td>
+        <td><%= number_to_currency(@order.total_price) %></td>
       </tr>
     </tbody>
   </table>
@@ -23,26 +24,31 @@
 
 
 <div class="container">
-  <h3 class="text-center">Reservations</h3>
+  <h3 class="text-center">Reservations (<%= @order.reservations.count %>)</h3>
   <table id="order-item-table" class="table table-hover">
     <thead>
       <tr>
         <th>Space</th>
         <th>Occupancy</th>
         <th>Price Per Night</th>
+        <th>Check In Date</th>
+        <th>Check Out Date</th>
+        <th>Nights</th>
+        <th>Reservation Total</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
         <% @order.reservations.each do |reservation| %>
-        <td><%= link_to "#{reservation.space.name}", space_path(reservation.space_id) %></td>
-        <td><%= reservation.order.spaces.first.occupancy %></td>
-        <td>$<%= reservation.total.round(2) %></td>
+          <td><%= link_to "#{reservation.space.name}", space_path(reservation.space) %></td>
+          <td><%= reservation.space.occupancy %></td>
+          <td><%= number_to_currency(reservation.space.price) %></td>
+          <td><%= reservation.start_date.strftime("%a %B %d, %Y") %></td>
+          <td><%= reservation.end_date.strftime("%a %B %d, %Y") %></td>
+          <td><%= reservation.total_nights.to_i %></td>
+          <td><%= number_to_currency(reservation.total_price) %></td>
+        <% end %>
     </tbody>
   </table>
-
-      <th><strong>Totals: </strong></th>
-        <tr><%= (reservation.order.spaces.first.occupancy * reservation.total).to_f.round(2) %></tr>
-        <% end %>
 </div>
