@@ -10,6 +10,7 @@ class SpacesController < ApplicationController
 
       if @spaces.count > 0
         @styles = @spaces.map {|space| space.style.name }.uniq
+        @styles.unshift("All Spaces")
         @search_hash = { planet: params[:planet], occupancy: params[:occupancy], start_date: params[:start_date], end_date: params[:end_date] }
       else
         flash[:warning] = "There were no valid search results."
