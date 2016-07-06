@@ -24,4 +24,26 @@ RSpec.describe User, type: :model do
       expect(user2).to_not be_valid
     end
   end
+
+  context "username can't have spaces" do
+    it "is not valid" do
+      user = User.new(username: "test invalid", first_name: "first", last_name: "last", password: "password", email: "test1@test.com")
+      expect(user).to_not be_valid
+    end
+  end
+
+
+  context "username can't have special characters" do
+    it "is not valid" do
+      user = User.new(username: "test!!!invalid", first_name: "first", last_name: "last", password: "password", email: "test1@test.com")
+      expect(user).to_not be_valid
+    end
+  end
+
+  context "username can have a-z, A-Z and 0-9" do
+    it "is not valid" do
+      user = User.new(username: "VALid99", first_name: "first", last_name: "last", password: "password", email: "test1@test.com")
+      expect(user).to be_valid
+    end
+  end
 end

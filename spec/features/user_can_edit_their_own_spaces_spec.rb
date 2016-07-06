@@ -43,7 +43,7 @@ RSpec.feature "User edits existing space that they own" do
 
       login(other_user)
       visit "/spaces/#{space.slug}/edit"
-      
+
       expect(page).to have_content "You are not authorized to edit this space."
       expect(current_path).to eq space_path(space)
     end

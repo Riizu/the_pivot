@@ -56,6 +56,8 @@ class SpacesController < ApplicationController
     @space = Space.find_by(slug: params[:space_slug])
     if @space.users.include?(current_user)
       @space
+      session[:return_to] = request.referer
+      session[:old_slug] = @space.slug if session[:return_to] && session[:return_to].include?(@space.slug)
     else
       flash[:warning] = "You are not authorized to edit this space."
       redirect_to space_path(@space)
@@ -66,7 +68,8 @@ class SpacesController < ApplicationController
     @space = Space.find_by(slug: params[:space_slug])
     if @space.update_space(space_params)
       flash[:success] = "Your space has been successfully updated!"
-      redirect_to space_path(@space)
+      last_page = session[:old_slug] ? session[:return_to].gsub(session[:old_slug], @space.slug) : session[:return_to]
+      redirect_to last_page
     else
       flash.now[:error] = @space.errors.full_messages.join(", ")
       render :edit
