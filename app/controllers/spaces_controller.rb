@@ -25,6 +25,7 @@ class SpacesController < ApplicationController
     @space = Space.find_by(slug: params[:space_slug])
     if @space.approved
       @space
+      @search_hash = { start_date: params[:check_in], end_date: params[:check_out] }
     else
       flash[:warning] = "That space is currently not available."
       redirect_to root_url
@@ -56,6 +57,7 @@ class SpacesController < ApplicationController
     @space = Space.find_by(slug: params[:space_slug])
     if @space.users.include?(current_user)
       @space
+      session[:return_to] = request.referer
     else
       flash[:warning] = "You are not authorized to edit this space."
       redirect_to space_path(@space)
@@ -66,7 +68,7 @@ class SpacesController < ApplicationController
     @space = Space.find_by(slug: params[:space_slug])
     if @space.update_space(space_params)
       flash[:success] = "Your space has been successfully updated!"
-      redirect_to space_path(@space)
+      redirect_to session[:return_to]
     else
       flash.now[:error] = @space.errors.full_messages.join(", ")
       render :edit

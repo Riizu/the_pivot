@@ -10,12 +10,12 @@
   <%= form_tag(reservations_path, method: "post") do %>
     <p class="price">Nightly Rate: <%= number_to_currency(@space.price) %></p><br>
     <p>
-      Check in Date: <%= text_field_tag "start_date", nil, placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %><br><br>
-      Check out Date: <%= text_field_tag "end_date", nil, placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %><br><br>
+      Check in Date: <%= text_field_tag "start_date", value: @search_hash[:start_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %><br><br>
+      Check out Date: <%= text_field_tag "end_date", value: @search_hash[:end_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %><br><br>
       Occupancy: <%= @space.occupancy %><br><br>
       Planet: <%= @space.planet.name %><br><br>
       Style: <%= @space.style.name %><br><br>
-      Hosts: <%= @space.users.map { |user| user.username }.join(", ") %>
+      Hosts: <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ") %>
     </p>
     <div class="quantity-button">
       <%= hidden_field_tag :space_id, @space.id %>
