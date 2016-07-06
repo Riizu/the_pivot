@@ -11,25 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629210530) do
+ActiveRecord::Schema.define(version: 20160706223252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "status"
+    t.boolean  "active",     default: true
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "planets", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "slug"
+    t.boolean  "active",     default: true
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160629210530) do
     t.string   "description"
     t.string   "slug"
     t.integer  "occupancy"
+    t.boolean  "active",                 default: true
   end
 
   add_index "spaces", ["planet_id"], name: "index_spaces_on_planet_id", using: :btree
@@ -72,9 +75,10 @@ ActiveRecord::Schema.define(version: 20160629210530) do
 
   create_table "styles", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "slug"
+    t.boolean  "active",     default: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160629210530) do
     t.string  "phone_number"
     t.string  "first_name"
     t.string  "last_name"
+    t.boolean "active",                default: true
   end
 
   add_foreign_key "orders", "users"
