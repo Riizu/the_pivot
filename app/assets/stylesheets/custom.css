@@ -260,3 +260,7 @@
 .link_text {
   color: black;
 }
+
+.filter-padding {
+  padding-right: 100px;
+}
