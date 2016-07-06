@@ -33,11 +33,11 @@ Some of the main features of the app include:
 
 #### Users
 
-Users can browse the items by category. Each item has a name, description, image, and price associated with it. Users can add any items that are not retired to their cart. Users do not need to be signed in to browse items or add them to their cart. However, upon checkout, if a user is not signed in they will be asked to create an account or login before being allowed to check out. A user cannot add any items, but can choose to change their account to an "artist" account at any point. However, once they are signed up as an artist, they cannot change back to a default user. Users can also view any of their past orders and the order status.
+Users can browse the spaces by planet. Each space has a name, description, image, and price associated with it. Users can reserve spaces into their cart. Users do not need to be signed in to browse items but do need to be logged in to reserve a space. A space must be approved by the platform admin before it is available for reservations. Users view any of their past reservations and their listings.
 
 #### Admins
 
-Admins can create and edit items. This includes managing each item's retired status.
+Admins can create and edit spaces. This includes managing each spaces approval status.
 
 #### Other Features
 
@@ -45,9 +45,9 @@ The app implements Paperclip and uses Amazon Web Services S3 to store and host a
 
 ### Test Suite
 
-The test suite tests the application on multiple levels. To run all of the tests, run `rake test` from the terminal in the main directory of the project. The feature tests (integration tests) rely mainly on the [capybara gem](https://github.com/jnicklas/capybara) for navigating the various application views.
+The test suite tests the application on multiple levels. To run all of the tests, run `rspec` from the terminal in the main directory of the project. The feature tests rely mainly on the [capybara gem](https://github.com/jnicklas/capybara) for navigating the various application views.
 
-The project also utilizes leverages a bootstrap theme called 'bikeshop'.
+The project also utilizes leverages a bootstrap theme called 'twitter bootstrap'.
 
 ### Dependencies
 
