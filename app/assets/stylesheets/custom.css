@@ -268,3 +268,7 @@
 .filter-padding {
   padding-right: 100px;
 }
+
+.show-image {
+  border: 125px solid #e3e3e3;
+}
