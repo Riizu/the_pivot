@@ -7,6 +7,8 @@ $(document).ready(function () {
       $space = $(space);
       if ($space.data('climate') === currentStyle) {
         $space.show();
+      } else if (currentStyle === "All Spaces") {
+        $space.show();
       } else {
         $space.hide();
       }
