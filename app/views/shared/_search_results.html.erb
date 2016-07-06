@@ -1,6 +1,7 @@
 <div class="container spaces row-well" id="all_spaces">
   <% @spaces.each do |space| %>
   <div class="col-md-4 col-sm-6 one-planet">
+    <div class="well">
     <div id="space-index-image">
       <%=link_to (image_tag space.image_url.url(:medium)), space_path(space), class: "img-responsive center-block" %>
     </div>
@@ -12,7 +13,8 @@
         <h4 style="float:right"><%= number_to_currency(space.price) %></h4>
       </div>
     </div>
-
+    <br><br><br>
   </div>
+</div>
   <% end %>
 </div>

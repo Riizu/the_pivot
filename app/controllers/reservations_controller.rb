@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
     if reservation.valid?
       @cart.add_reservation(space.id, space.price, params[:start_date], params[:end_date])
       session[:cart] = @cart.contents
-      flash[:notice] = "You have added a booking for #{space.name}."
+      flash[:success] = "You have added a booking for #{space.name}."
       redirect_to space_path(space)
     else
       flash[:notice] = "That date range is invalid."
