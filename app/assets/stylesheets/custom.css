@@ -205,11 +205,6 @@
   background-color: rgba(255,255,255,0.4)
 }
 
-.img-responsive {
-  height: 100px;
-  width: 80px;
-}
-
 .price {
   font-size: 26px;
 }
@@ -260,4 +255,12 @@
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
   width: 105%
+}
+
+.link_text {
+  color: black;
+}
+
+.filter-padding {
+  padding-right: 100px;
 }

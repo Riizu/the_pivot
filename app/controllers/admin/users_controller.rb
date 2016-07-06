@@ -1,6 +1,7 @@
 class Admin::UsersController < Admin::BaseController
   def show
     @admin = current_user
+    @unapproved_spaces = Space.where(approved: false)
   end
 
   def index
