@@ -3,8 +3,12 @@
   <%= image_tag @space.image_url.url(:medium),class: "center-block show-image" %><br><br>
 </div>
 <div class="col-md-4 col-md-offset-2">
-  <h2><%= @space.name %></h2><br>
-  <p>Description: <%= @space.description %></p>
+  <h3 class="text-center">About <%= @space.name %></h3><br>
+  <p class="text-center"><strong>Description:</strong> <%= @space.description %></p>
+  <p class="text-center"><strong>Occupancy:</strong> <%= @space.occupancy %><br></p>
+  <p class="text-center"><strong>Planet: </strong><%= @space.planet.name %><br></p>
+  <p class="text-center"><strong>Style:</strong> <%= @space.style.name %><br></p>
+  <p class="text-center"><strong>Hosts:</strong> <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ") %> </p>
 </div>
 <div class="col-md-3 col-md-offset-2">
   <%= form_tag(reservations_path, method: "post") do %>
@@ -12,10 +16,6 @@
     <p>
       Check in Date: <%= text_field_tag "start_date", @search_hash[:start_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %><br><br>
       Check out Date: <%= text_field_tag "end_date", @search_hash[:end_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %><br><br>
-      Occupancy: <%= @space.occupancy %><br><br>
-      Planet: <%= @space.planet.name %><br><br>
-      Style: <%= @space.style.name %><br><br>
-      Hosts: <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ") %>
     </p>
     <div class="quantity-button">
       <%= hidden_field_tag :space_id, @space.id %>
@@ -27,3 +27,4 @@
   <% end %>
 </div>
 </div>
+<br>
