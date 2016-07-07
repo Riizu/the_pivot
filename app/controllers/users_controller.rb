@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:username])
+    @user = User.find_by(username: params[:username], active: true)
     @search_hash = {username: params[:username]}
     if @user && @user.spaces
       @spaces = @user.spaces

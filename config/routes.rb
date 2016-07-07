@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
     get "/api/getplanetnames", to: "home#index"
 
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :update]
 
   resources :spaces, only: [:index, :new, :create]
 
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get "styles/:style_slug", to: "styles#show", as: :style
   patch "/styles/:slug", to: "styles#update"
 
+  get "users/:username/edit", to: "users#edit", as: :edit_user
   get "/:username", to: "users#show", as: :listings
 
 end
