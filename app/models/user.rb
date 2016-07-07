@@ -34,4 +34,21 @@ class User < ActiveRecord::Base
     end
     client.update(tweet)
   end
+
+  def toggle_active
+    toggle_dependencies
+    self.active = !self.active
+    save
+  end
+
+  def toggle_dependencies
+    self.spaces.each do |space|
+      if self.active
+        space.active = false
+      else
+        space.active = true
+      end
+      space.save
+    end
+  end
 end

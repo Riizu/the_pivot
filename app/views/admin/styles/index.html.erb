@@ -7,7 +7,8 @@
     <thead>
     <tr>
       <th>Name</th>
-      <th></th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
@@ -16,6 +17,9 @@
       <tr>
       <td><%= style.name %></td>
       <td><%= link_to "Edit", edit_admin_style_path(style), class: "btn btn-custom btn-person link_text" %></td>
+      <td>
+      <%= link_to "Delete", admin_style_path(id: style, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
+      </td>
       </tr>
     <% end %>
   </tbody>

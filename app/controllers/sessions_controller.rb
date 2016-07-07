@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     if params[:commit]
-      @user = User.find_by(username: params[:session][:username])
+      @user = User.find_by(username: params[:session][:username], active: true)
       route_guest_or_user
     elsif @user = User.from_omniauth(request.env["omniauth.auth"])
       session[:user_id] = @user.id
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
+    session.clear
     flash[:notice] = "Successfully logged out."
     redirect_to login_path
   end

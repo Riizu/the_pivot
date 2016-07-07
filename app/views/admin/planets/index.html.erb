@@ -7,17 +7,23 @@
     <thead>
     <tr>
       <th>Name</th>
-      <th></th>
+      <th>Edit</th>
       <th>Delete</th>
     </tr>
   </thead>
 
   <tbody>
     <% @planets.each do |planet| %>
-      <tr>
-      <td><h5><%= planet.name %></td></h5>
-        <td><%= link_to "Edit", edit_admin_planet_path(planet.id), class: "btn btn-custom btn-person link_text" %></td>
-      <td><%= %></td>
+      <tr id="row-<%= planet.name %>">
+      <td><%= planet.name %></td>
+      <td><%= link_to "Edit", edit_admin_planet_path(planet.id), class: "btn btn-custom btn-person link_text" %></td>
+      <td>
+      <% if planet.active %>
+        <%= link_to "Deactivate", admin_planet_path(id: planet.id, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
+      <% else %>
+        <%= link_to "Activate", admin_planet_path(id: planet.id, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
+      <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>
