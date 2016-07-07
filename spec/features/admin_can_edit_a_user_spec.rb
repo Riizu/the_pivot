@@ -20,7 +20,7 @@ RSpec.feature "Admin can edit a user" do
     click_on "Update User"
 
     visit '/admin/users'
-    
+
     expect(page).to have_content("test_user")
 
   end
