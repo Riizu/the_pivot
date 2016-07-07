@@ -2,8 +2,8 @@
     <div class="col-md-4 col-sm-12 login-title">
       <h2 class="login-title" >Login</h2>
       <%= form_for(:session, url: login_path) do |f| %>
-      <span class="username"><%= f.label :username %></span>
-      <%= f.text_field :username %><br>
+      <span class="username"><%= f.label :email, "e-mail" %></span>
+      <%= f.text_field :email %><br>
       <span class="password"><%= f.label :password %></span>
       <%= f.password_field :password %><br>
       <%= f.submit "Login", :class => "btn btn-custom"%>
