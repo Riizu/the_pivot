@@ -15,9 +15,6 @@ RSpec.feature "User can checkout" do
       expect(page).to have_content(space.style.name)
       expect(page).to have_content("August 1, 2016")
       expect(page).to have_content("August 3, 2016")
-      click_on "Checkout"
-
-      expect(current_path).to eq('/charges/new')
     end
   end
 end

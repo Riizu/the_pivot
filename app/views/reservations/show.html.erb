@@ -43,7 +43,20 @@
       <h4>Total Items in Cart: <%= @cart.total %></h4>
       <h4>Cart Total: <%= number_to_currency(@cart.total_price) %></h4>
       <div class="quantity-button">
-        <%= checkout_option %>
+        <% if !current_user %>
+          <%= button_to("Login or Create Account to Reserve Spaces", login_path(previous_page: "cart" ), method: :get, class: "btn btn-custom btn-person") %>
+        <% else %>
+          <%= form_tag orders_path do %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="Enjoy your stay!"
+                    data-amount="<%= @cart.total_price * 100 %>"
+                    data-locale="auto"
+                    window.location.href = "/orders"></script>
+          <% end %>
+        <% end %>
+      </div>
+        <div>
         <%= button_to "Browse More Spaces", root_url, method: :get, class: "btn btn-custom btn-person" %>
       </div>
     </div>
