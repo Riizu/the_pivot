@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :unapproved_spaces, only: [:index, :update]
     resources :reservations, only: [:index, :edit, :update]
     resources :planets, only: [:index, :edit, :update]
-    resources :styles, only: [:index, :edit]
+    resources :styles, only: [:index, :edit, :update]
     resources :users, only: [:index, :edit, :update]
   end
 

@@ -12,4 +12,8 @@ class Style < ActiveRecord::Base
   def create_slug
     self.slug = name.parameterize if !name.nil?
   end
+
+  def no_dependencies?
+    return true if self.spaces.empty?
+  end
 end

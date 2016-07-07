@@ -55,7 +55,7 @@ RSpec.feature "The admin can deactivate various models" do
       click_on "Delete"
 
       expect(current_path).to eq('/admin/styles')
-      expect(space).to_not eq(false)
+      expect(Space.find(space.id)).to_not eq(false)
     end
 
     scenario "They attempt to delete a style that doesn't have dependencies" do
@@ -67,7 +67,7 @@ RSpec.feature "The admin can deactivate various models" do
       click_on "Delete"
 
       expect(current_path).to eq('/admin/styles')
-      expect(style).to eq(false)
+      expect{Style.find(style.id)}.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     scenario "They deactivate a user" do
