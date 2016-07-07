@@ -1,6 +1,9 @@
 class SpacesController < ApplicationController
   def index
-    if planet = Planet.find_by(name: params[:planet])
+    if (params[:start_date] == "") || (params[:end_date] == "")
+      flash[:warning] = "Please enter a date."
+      redirect_to root_url
+    elsif planet = Planet.find_by(name: params[:planet])
       @spaces = Space.where("planet_id = ? AND occupancy >= ?", planet.id, params[:occupancy].to_i)
       @spaces = @spaces.map do |space|
         if space.reservations.new(start_date: params[:start_date], end_date: params[:end_date]).valid?
