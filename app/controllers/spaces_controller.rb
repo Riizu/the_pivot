@@ -27,11 +27,21 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find_by(slug: params[:space_slug])
+    # byebug
     if @space.approved
       @space
       @search_hash = { start_date: params[:check_in], end_date: params[:check_out] }
     else
-      flash[:warning] = "That space is currently not available."
+      flash[:notice] = "This space is currently not available."
+      request.referer ? (redirect_to request.referer) : (redirect_to root_url)
+    end
+  end
+
+  def route_unapproved_spaces
+    # byebug
+    if request.referer
+      redirect_to request.referer
+    else
       redirect_to root_url
     end
   end
