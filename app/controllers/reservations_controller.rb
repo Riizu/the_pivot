@@ -7,10 +7,10 @@ class ReservationsController < ApplicationController
     if reservation.valid?
       @cart.add_reservation(space.id, space.price, params[:start_date], params[:end_date])
       session[:cart] = @cart.contents
-      flash[:success] = "You have added a booking for #{space.name}."
+      flash[:success] = "#{space.name} has been reserved and stashed in your cart!  Please proceed to your cart when you are ready to complete this booking!"
       redirect_to space_path(space)
     else
-      flash[:notice] = "That date range is invalid."
+      flash[:notice] = "Your current date range is invalid."
       redirect_to space_path(space)
     end
   end
@@ -23,7 +23,7 @@ class ReservationsController < ApplicationController
     space = Space.find(params[:id])
     @cart.remove_reservation(space.id)
     link = %Q[<a href="/spaces/#{space.slug}"> #{space.name}</a>]
-    flash[:success] = "Successfully removed #{link} from your cart."
+    flash[:success] = "Your reservation for #{link} has been removed from this trip."
     redirect_to "/cart"
   end
 

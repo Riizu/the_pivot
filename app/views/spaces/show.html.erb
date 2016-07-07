@@ -8,7 +8,7 @@
   <p><strong>Occupancy:</strong> <%= @space.occupancy %></p>
   <p><strong>Planet: </strong><%= @space.planet.name %></p>
   <p><strong>Style:</strong> <%= @space.style.name %></p>
-  <p><strong>Hosts:</strong> <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ") %> </p>
+  <p><strong><%= "Host".pluralize(@space.users.count) %>:</strong> <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ") %> </p>
 </div>
 <div class="col-md-3 col-md-offset-2">
   <%= form_tag(reservations_path, method: "post") do %>

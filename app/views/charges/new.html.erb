@@ -13,7 +13,7 @@
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="Fulfilling Your One-Sock Needs!"
+            data-description="Enjoy your stay!"
             data-amount="<%= @amount * 100 %>"
             data-locale="auto"
             window.location.href = "/orders"></script>
