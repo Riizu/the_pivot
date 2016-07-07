@@ -15,7 +15,7 @@ RSpec.feature "admin can edit a style" do
     expect(current_path).to eq("/admin/styles/#{style.slug}/edit")
 
     fill_in "Name", with: "New Name"
-    click_on "Update Style"
+    click_on "Update Climate"
 
     expect(current_path).to eq(admin_styles_path)
 

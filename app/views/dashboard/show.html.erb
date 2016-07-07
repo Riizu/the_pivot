@@ -1,13 +1,15 @@
-<div class="container dashboard-header">
-  <h1>
-    Welcome, <%= current_user.first_name.capitalize %>
-  </h1>
+<div class="container">
+  <div class="dashboard-header">
+    <h1>
+      Welcome, <%= current_user.first_name.capitalize %>
+    </h1>
 
-  <div class="dashboard-buttons">
-    <%= button_to "Tweet About Us", new_tweet_path, class: "btn btn-custom btn-person", method: :get %>
-    <%= button_to "Edit Account Info", edit_user_path(@user), method: :get, class: "btn btn-custom btn-person" %>
-    <%= button_to "My Trips", orders_path, method: :get, class: "btn btn-custom btn-person" %>
-    <%= button_to "My Listings", listings_path(@user), method: :get, class: "btn btn-custom btn-person" %>
-    <%= button_to "Post Your Space!", new_space_path, method: :get, class: "btn btn-custom btn-person" %>
+    <div class="dashboard-buttons">
+      <%= button_to "Tweet About Us", new_tweet_path, class: "btn btn-custom btn-person", method: :get %>
+      <%= button_to "Edit Account Info", edit_user_path(@user), method: :get, class: "btn btn-custom btn-person" %>
+      <%= button_to "My Trips", orders_path, method: :get, class: "btn btn-custom btn-person" %>
+      <%= button_to "My Listings", listings_path(@user), method: :get, class: "btn btn-custom btn-person" %>
+      <%= button_to "Post Your Space!", new_space_path, method: :get, class: "btn btn-custom btn-person" %>
+    </div>
   </div>
 </div>

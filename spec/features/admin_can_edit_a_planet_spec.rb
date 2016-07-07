@@ -9,7 +9,7 @@ RSpec.feature "admin can edit a planet" do
 
     visit "admin/dashboard"
     click_on "All Planets"
-    click_on "Edit #{planet.name}"
+    click_on "Edit"
 
     expect(current_path).to eq(edit_admin_planet_path(planet.id))
     fill_in "Name", with: "Pluto"

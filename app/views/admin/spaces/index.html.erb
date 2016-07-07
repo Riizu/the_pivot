@@ -1,5 +1,5 @@
 <div class="container">
-  <h1> All Spaces </h1>
+  <h1 class="text-center"> All Spaces </h1>
 
   <table id="listings-table" class="table table-hover">
     <thead>
@@ -18,14 +18,14 @@
   <tbody>
     <% @spaces.each do |space| %>
       <tr>
-      <td><%= space.name %></td>
+      <td><h5><%= space.name %></h2></td>
       <td><%= space.price %></td>
       <td><%= space.style_id %></td>
       <td><%= space.planet_id %></td>
       <td><%= space.description %></td>
       <td><%= space.occupancy %></td>
       <td><%= space.approved %></td>
-      <td><%= link_to "Edit", edit_admin_space_path(space.id) %></td>
+      <td><%= link_to "Edit", edit_admin_space_path(space.id), class: "btn btn-custom btn-default" %></td>
       </tr>
     <% end %>
   </tbody>
