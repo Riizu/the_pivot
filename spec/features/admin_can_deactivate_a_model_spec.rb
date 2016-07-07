@@ -11,23 +11,26 @@ RSpec.feature "The admin can deactivate various models" do
       click_on "Deactivate"
 
       expect(current_path).to eq('/admin/reservations')
-      expect(Reservation.find(reservation).active).to eq(false)
+      expect(Reservation.find(reservation.id).active).to eq(false)
     end
 
     scenario "They deactivate a planet" do
       admin = create(:user, role: 1)
       planet = create(:planet)
-      spaces = create_list(:space, 3, approved: true)
+      spaces = create_list(:space, 3, approved: true, planet: planet)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit '/admin/planets'
-      click_on "Deactivate"
+
+      within "#row-#{planet.name}" do
+        click_on "Deactivate"
+      end
 
       expect(current_path).to eq('/admin/planets')
-      expect(planet.active).to eq(false)
-      expect(spaces[0].active).to eq(false)
-      expect(spaces[1].active).to eq(false)
-      expect(spaces[2].active).to eq(false)
+      expect(Planet.find(planet.id).active).to eq(false)
+      expect(Space.find(spaces[0].id).active).to eq(false)
+      expect(Space.find(spaces[1].id).active).to eq(false)
+      expect(Space.find(spaces[2].id).active).to eq(false)
     end
 
     scenario "They deactivate a space" do

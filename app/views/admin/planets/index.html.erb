@@ -12,10 +12,16 @@
 
   <tbody>
     <% @planets.each do |planet| %>
-      <tr>
+      <tr id="row-<%= planet.name %>">
       <td><%= planet.name %></td>
       <td><%= link_to "Edit #{planet.name}", edit_admin_planet_path(planet.id) %></td>
-      <td><%= %></td>
+      <td>
+      <% if planet.active %>
+        <%= link_to "Deactivate", admin_planet_path(id: planet, change_active: "true"), method: :patch %>
+      <% else %>
+        <%= link_to "Activate", admin_planet_path(id: planet, change_active: "true"), method: :patch %>
+      <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>
