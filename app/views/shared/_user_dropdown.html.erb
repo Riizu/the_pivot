@@ -3,6 +3,9 @@
   <ul class="dropdown-menu">
       <% if current_user %>
         <li><%= link_to "Logout", "/logout", method: :delete %></li>
+        <li><%= link_to "Reserve a Space", "/" %></li>
+
+
       <% end %>
       <li><%= link_to "Dashboard", "/dashboard" %></li>
       <% if current_admin? %>
