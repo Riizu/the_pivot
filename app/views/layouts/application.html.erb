@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Weekend at Chewie's</title>
+  <title>Wookie Nights</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -9,12 +9,12 @@
 </head>
 <body>
   <%= render 'shared/navbar' %>
-  <%= render 'shared/footer' %>
 
   <% flash.each do |name, message| %>
     <%= content_tag :div, raw(message), id: "flash_#{name}" %>
   <% end %>
 
   <%= yield %>
+  <%= render 'shared/footer' %>
 </body>
 </html>

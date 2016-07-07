@@ -357,3 +357,7 @@ CSS
 #searchfield form .biginput:focus {
   color: #858585;
 }
+
+.sizing-footer {
+  height: 50px;
+}
