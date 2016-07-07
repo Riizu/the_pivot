@@ -10,7 +10,10 @@ class Admin::ReservationsController < Admin::BaseController
 
   def update
     @reservation = Reservation.find(params[:id])
-    if @reservation.update_reservation(params)
+    if params[:change_active] == "true"
+      @reservation.toggle_active
+      redirect_to admin_reservations_path
+    elsif @reservation.update_reservation(params)
       flash[:success] = "The reservation was successfully updated!"
       redirect_to admin_reservations_path
     else

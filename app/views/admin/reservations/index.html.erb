@@ -25,7 +25,13 @@
       <td><%= reservation.end_date %></td>
       <td><%= number_to_currency(reservation.total) %></td>
       <td><%= link_to "Edit", edit_admin_reservation_path(reservation), method: :get %></td>
-      <td><%= link_to "Delete", "/reservations/#{reservation.id}", method: :delete %></td>
+      <td>
+        <% if reservation.active %>
+          <%= link_to "Deactivate", admin_reservation_path(id: reservation, change_active: "true"), method: :patch %>
+        <% else %>
+          <%= link_to "Activate", admin_reservation_path(id: reservation, change_active: "true"), method: :patch %>
+        <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>
