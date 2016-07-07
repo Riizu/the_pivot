@@ -10,7 +10,7 @@ class Reservation < ActiveRecord::Base
   def total_price
     total_nights * space.price
   end
-
+  
   def toggle_active
     self.active = !self.active
     save
