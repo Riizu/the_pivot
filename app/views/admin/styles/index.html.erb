@@ -14,7 +14,9 @@
       <tr>
       <td><%= style.name %></td>
       <td><%= link_to "Edit", edit_admin_style_path(style) %></td>
+      <td>
       <%= link_to "Delete", admin_style_path(id: style, change_active: "true"), method: :patch %>
+      </td>
       </tr>
     <% end %>
   </tbody>

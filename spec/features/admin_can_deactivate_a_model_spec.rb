@@ -77,14 +77,17 @@ RSpec.feature "The admin can deactivate various models" do
       user.spaces << spaces
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit '/admin/spaces'
-      click_on "Delete"
+      visit '/admin/users'
 
-      expect(current_path).to eq('/admin/spaces')
-      expect(user.active).to eq(false)
-      expect(spaces[0].active).to eq(false)
-      expect(spaces[1].active).to eq(false)
-      expect(spaces[2].active).to eq(false)
+      within "#row-#{user.username}" do
+        click_on "Deactivate"
+      end
+
+      expect(current_path).to eq('/admin/users')
+      expect(User.find(user.id).active).to eq(false)
+      expect(Space.find(spaces[0].id).active).to eq(false)
+      expect(Space.find(spaces[1].id).active).to eq(false)
+      expect(Space.find(spaces[2].id).active).to eq(false)
     end
   end
 end

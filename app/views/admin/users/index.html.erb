@@ -30,6 +30,11 @@
       <td><%= user.email %></td>
       <td><%= user.phone_number %></td>
       <td><%= link_to "Edit", edit_admin_user_path(user) %></td>
+      <% if user.active %>
+        <%= link_to "Deactivate", admin_user_path(id: user, change_active: "true"), method: :patch %>
+      <% else %>
+        <%= link_to "Activate", admin_user_path(id: user, change_active: "true"), method: :patch %>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
