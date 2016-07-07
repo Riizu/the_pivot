@@ -361,3 +361,10 @@ CSS
 .sizing-footer {
   height: 50px;
 }
+
+#cheat-image {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  display: none;
+}
