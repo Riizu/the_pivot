@@ -22,8 +22,8 @@
               <td><p>Planet: <%= reservation.planet.name %> </p>
                   <p>Climate: <%= reservation.style.name %> </p></td>
               </td>
-              <td> <%= reservation.start_date %></td>
-              <td> <%= reservation.end_date %></td>
+              <td> <%= Time.new(reservation.start_date).strftime("%A, %B %e, %Y") %></td>
+              <td> <%= Time.new(reservation.end_date).strftime("%A, %B %e, %Y") %></td>
               <td> <% reservation.users.each do |user| %>
                     <%= user.first_name %>
                     <%= user.last_name %>
