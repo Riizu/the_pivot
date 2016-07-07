@@ -6,7 +6,7 @@ RSpec.feature "visitor browses planet" do
     planet = space_1.planet.slug
     visit "/planets/#{planet}"
 
-    within '.one-planet' do
+    within '.spaces' do
       expect(page).to have_link(space_1.name, href: space_path(space_1))
       expect(page).to have_content space_1.price
       expect(page).to have_css("img[src=\"#{space_1.image_url.url(:medium)}\"]")
