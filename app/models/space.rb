@@ -41,6 +41,11 @@ class Space < ActiveRecord::Base
     self.update(approved: true)
   end
 
+  def toggle_active
+    self.active = !self.active
+    save
+  end
+
   def update_space(space_params)
     update( name:         space_params[:name],
             price:        space_params[:price],

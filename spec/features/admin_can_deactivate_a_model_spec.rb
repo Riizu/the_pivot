@@ -42,7 +42,7 @@ RSpec.feature "The admin can deactivate various models" do
       click_on "Deactivate"
 
       expect(current_path).to eq('/admin/spaces')
-      expect(space.active).to eq(false)
+      expect(Space.find(space.id).active).to eq(false)
     end
 
     scenario "They attempt to delete a style that has dependencies" do

@@ -10,8 +10,11 @@ class Admin::SpacesController < Admin::BaseController
   end
 
   def update
-    @space = Space.find(params[:id])
-    if @space.update_space(space_params)
+    @space = Space.find_by(slug: params[:id])
+    if params[:change_active] == "true"
+      @space.toggle_active
+      redirect_to admin_spaces_path
+    elsif @space.update_space(space_params)
       flash[:success] = "You space has been successfully updated!"
       redirect_to session[:return_to]
     else
