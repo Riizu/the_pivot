@@ -2,23 +2,8 @@ class SpacesController < ApplicationController
   def index
     if planet = Planet.find_by(name: params[:planet], active: true)
       @spaces = Space.where("planet_id = ? AND occupancy >= ?", planet.id, params[:occupancy].to_i)
-      if (params[:start_date] != "") && (params[:end_date] != "")
-        @spaces = @spaces.map do |space|
-          if space.reservations.new(start_date: params[:start_date], end_date: params[:end_date]).valid?
-            space
-          end
-        end.compact
-      end
-
-      if @spaces.count > 0
-        @styles = @spaces.map {|space| space.style.name }.uniq
-        @styles.unshift("All Spaces")
-        @search_hash = { planet: params[:planet], occupancy: params[:occupancy], start_date: params[:start_date], end_date: params[:end_date] }
-      else
-        flash[:warning] = "There were no valid search results."
-        redirect_to root_url
-      end
-
+      query_search_with_dates
+      deliver_query_results
     else
       flash[:warning] = "Please include a planet"
       redirect_to root_url
@@ -31,8 +16,8 @@ class SpacesController < ApplicationController
       @space
       @search_hash = { start_date: params[:check_in], end_date: params[:check_out] }
     else
-      flash[:warning] = "That space is currently not available."
-      redirect_to root_url
+      flash[:notice] = "This space is currently not available."
+      request.referer ? (redirect_to request.referer) : (redirect_to root_url)
     end
   end
 
@@ -86,5 +71,20 @@ class SpacesController < ApplicationController
                                  :image_url, :style, :planet)
   end
 
+  def query_search_with_dates
+    if (params[:start_date] != "") && (params[:end_date] != "")
+      @spaces = Space.find_unreserved_spaces(@spaces, params[:start_date], params[:end_date])
+    end
+  end
+
+  def deliver_query_results
+    if @spaces.count > 0
+      @styles = Space.associated_style_names_list(@spaces)
+      @search_hash = { planet: params[:planet], occupancy: params[:occupancy], start_date: params[:start_date], end_date: params[:end_date] }
+    else
+      flash[:warning] = "There were no valid search results."
+      redirect_to root_url
+    end
+  end
 
 end

@@ -9,6 +9,9 @@
   text-align: center;
   width: 510px;
   position: absolute;
+  top: 10vh;
+  left: 5vh
+  ;
 
 }
 
@@ -19,6 +22,8 @@
   text-align: center;
   width: 510px;
   position: absolute;
+  top: 10vh;
+  left: 5vh;
 }
 
 #flash_error {
@@ -28,6 +33,8 @@
   text-align: center;
   width: 510px;
   position: absolute;
+  top: 10vh;
+  left: 5vh;
 }
 
 .btn-custom {
