@@ -7,7 +7,7 @@ RSpec.feature "spaces can be approved" do
     visit space_path(space)
 
     expect(current_path).to eq '/'
-    expect(page).to have_content("That space is currently not available.")
+    expect(page).to have_content("This space is currently not available.")
   end
 
   scenario "user can see an approved space" do
@@ -15,7 +15,7 @@ RSpec.feature "spaces can be approved" do
     space.update_attributes(approved: true)
 
     visit space_path(space)
-    
+
     expect(page).to have_button("Reserve this Space")
   end
 end

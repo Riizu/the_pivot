@@ -31,8 +31,8 @@ class SpacesController < ApplicationController
       @space
       @search_hash = { start_date: params[:check_in], end_date: params[:check_out] }
     else
-      flash[:warning] = "That space is currently not available."
-      redirect_to root_url
+      flash[:notice] = "This space is currently not available."
+      request.referer ? (redirect_to request.referer) : (redirect_to root_url)
     end
   end
 
@@ -85,6 +85,5 @@ class SpacesController < ApplicationController
     params.require(:space).permit(:name, :occupancy, :description, :price,
                                  :image_url, :style, :planet)
   end
-
 
 end
