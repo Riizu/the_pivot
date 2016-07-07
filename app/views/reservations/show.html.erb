@@ -9,7 +9,7 @@
             <th>Details</th>
             <th>Check In</th>
             <th>Check Out</th>
-            <th>Host</th>
+            <th>Host(s)</th>
             <th>Price per Night</th>
             <th></th>
           </tr>
@@ -44,7 +44,7 @@
       <h4>Cart Total: <%= number_to_currency(@cart.total_price) %></h4>
       <div class="quantity-button">
         <%= checkout_option %>
-        <%= button_to "Keep Shopping", reservations_path, method: :get, class: "btn btn-custom btn-person" %>
+        <%= button_to "Browse More Spaces", root_url, method: :get, class: "btn btn-custom btn-person" %>
       </div>
     </div>
   </div>
