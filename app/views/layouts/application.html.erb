@@ -9,6 +9,7 @@
 </head>
 <body>
   <%= render 'shared/navbar' %>
+  <%= render 'shared/footer' %>
 
   <% flash.each do |name, message| %>
     <%= content_tag :div, raw(message), id: "flash_#{name}" %>
