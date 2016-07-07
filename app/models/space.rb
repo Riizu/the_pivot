@@ -56,4 +56,19 @@ class Space < ActiveRecord::Base
             planet_id:    Planet.find_by(name: space_params[:planet]).id
           )
   end
+
+  private
+
+    def self.find_unreserved_spaces(spaces, start_date, end_date)
+      spaces.map do |space|
+        if space.reservations.new(start_date: start_date, end_date: end_date).valid?
+          space
+        end
+      end.compact
+    end
+
+    def self.associated_style_names_list(spaces)
+      styles = spaces.map { |space| space.style.name }.uniq
+      styles.unshift("All Spaces")
+    end
 end
