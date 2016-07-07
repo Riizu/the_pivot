@@ -3,7 +3,7 @@
   <div class="col-md-4 col-sm-6 space" data-climate="<%= space.style.name %>">
     <div class="well">
       <div id="space-index-image">
-        <%=link_to (image_tag space.image_url.url(:medium)), space_path(space), class: "img-responsive center-block" %>
+        <%=link_to (image_tag space.image_url.url(:medium), class: "img-thumbnail"), space_path(space), class: "img-responsive center-block" %>
       </div>
       <div>
         <div class="col-md-10">

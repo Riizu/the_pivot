@@ -379,3 +379,8 @@ CSS
   left: 30%;
   display: none;
 }
+
+.img-size {
+  max-height: 250px;
+  width: 300px;
+}
