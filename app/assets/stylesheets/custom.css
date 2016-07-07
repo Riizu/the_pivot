@@ -5,6 +5,9 @@
   text-align: center;
   width: 510px;
   position: absolute;
+  top: 10vh;
+  left: 5vh
+  ;
 
 }
 
@@ -15,6 +18,8 @@
   text-align: center;
   width: 510px;
   position: absolute;
+  top: 10vh;
+  left: 5vh;
 }
 
 #flash_error {
@@ -24,6 +29,8 @@
   text-align: center;
   width: 510px;
   position: absolute;
+  top: 10vh;
+  left: 5vh;
 }
 
 .btn-custom {
@@ -360,4 +367,11 @@ CSS
 
 .sizing-footer {
   height: 50px;
+}
+
+#cheat-image {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  display: none;
 }
