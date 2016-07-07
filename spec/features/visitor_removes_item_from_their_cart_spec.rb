@@ -14,7 +14,7 @@ RSpec.feature "visitor removes space from cart" do
 
       expect(current_path).to eq("/cart")
       expect(page).to have_css("#flash_success")
-      expect(page).to have_content("Successfully removed #{space.name} from your cart.")
+      expect(page).to have_content("Your reservation for #{space.name} has been removed from this trip.")
       expect(page).to have_link("#{space.name}")
 
       expect(page).to have_content("Cart Total: $0.00")
