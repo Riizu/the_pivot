@@ -6,16 +6,15 @@ RSpec.feature "User can checkout" do
       user = create(:user)
       space = create(:space, approved: true)
       login(user)
-      add_to_cart(space, 3)
+      add_to_cart(space, 1)
 
       visit '/cart'
 
       expect(page).to have_content(space.price)
       expect(page).to have_content(space.planet.name)
       expect(page).to have_content(space.style.name)
-      expect(page).to have_content("2016/08/03")
-      expect(page).to have_content("2016/08/05")
-
+      expect(page).to have_content("August 1, 2016")
+      expect(page).to have_content("August 3, 2016")
       click_on "Checkout"
 
       expect(current_path).to eq('/charges/new')

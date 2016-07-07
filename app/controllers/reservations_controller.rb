@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
       flash[:success] = "#{space.name} has been reserved and stashed in your cart!  Please proceed to your cart when you are ready to complete this booking!"
       redirect_to space_path(space)
     else
-      flash[:notice] = "Your current date range is invalid."
+      flash[:notice] = "Your current date range is not available."
       redirect_to space_path(space)
     end
   end
