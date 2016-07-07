@@ -11,7 +11,6 @@ class Reservation < ActiveRecord::Base
     total_nights * space.price
   end
 
-
   def update_reservation(reservation_params)
     update( space:       Space.find_by(name: reservation_params[:reservation][:space]),
             total:       reservation_params[:reservation][:total],
