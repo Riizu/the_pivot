@@ -19,9 +19,9 @@
       <td><%= link_to "Edit", edit_admin_planet_path(planet.id), class: "btn btn-custom btn-person link_text" %></td>
       <td>
       <% if planet.active %>
-        <%= link_to "Deactivate", admin_planet_path(id: planet, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
+        <%= link_to "Deactivate", admin_planet_path(id: planet.id, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
       <% else %>
-        <%= link_to "Activate", admin_planet_path(id: planet, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
+        <%= link_to "Activate", admin_planet_path(id: planet.id, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
       <% end %>
       </td>
       </tr>

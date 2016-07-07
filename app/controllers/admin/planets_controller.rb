@@ -8,7 +8,7 @@ class Admin::PlanetsController < Admin::BaseController
   end
 
   def update
-    @planet = Planet.find_by(slug: params[:id])
+    @planet = Planet.find_by(id: params[:id])
     if params[:change_active] == "true"
       @planet.toggle_active
       redirect_to admin_planets_path
@@ -19,5 +19,11 @@ class Admin::PlanetsController < Admin::BaseController
       flash.now[:error] = @planet.errors.full_messages.join(", ")
       render :edit
     end
+  end
+
+  private
+
+  def planet_params
+    params.require(:planet).permit(:name)
   end
 end
