@@ -2,11 +2,14 @@ class SpacesController < ApplicationController
   def index
     if planet = Planet.find_by(name: params[:planet])
       @spaces = Space.where("planet_id = ? AND occupancy >= ?", planet.id, params[:occupancy].to_i)
-      @spaces = @spaces.map do |space|
-        if space.reservations.new(start_date: params[:start_date], end_date: params[:end_date]).valid?
-          space
-        end
-      end.compact
+
+      if (!params[:start_date] == "") && (!params[:end_date] == "")
+        @spaces = @spaces.map do |space|
+          if space.reservations.new(start_date: params[:start_date], end_date: params[:end_date]).valid?
+            space
+          end
+        end.compact
+      end
 
       if @spaces.count > 0
         @styles = @spaces.map {|space| space.style.name }.uniq
@@ -16,6 +19,7 @@ class SpacesController < ApplicationController
         flash[:warning] = "There were no valid search results."
         redirect_to root_url
       end
+
     else
       flash[:warning] = "Please include a planet"
       redirect_to root_url
@@ -80,7 +84,7 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:name, :occupancy, :description, :price,
-                                 :image_url, :style, :planet)
+    :image_url, :style, :planet)
   end
 
 
