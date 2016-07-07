@@ -94,7 +94,7 @@ class Seed
       email:                 "jorge@turing.io",
       password:              "password",
       password_confirmation: "password",
-      username:              "jorge@turing.io",
+      username:              "jorge",
       role:                   1
     )
     # jorge.spaces << create_space
