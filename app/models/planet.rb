@@ -9,14 +9,18 @@ class Planet < ActiveRecord::Base
   end
 
   def toggle_active
-    deactivate_dependent_spaces
+    toggle_dependencies
     self.active = !self.active
     save
   end
 
-  def deactivate_dependent_spaces
+  def toggle_dependencies
     self.spaces.each do |space|
-      space.active = false
+      if self.active
+        space.active = false
+      else
+        space.active = true
+      end
       space.save
     end
   end
