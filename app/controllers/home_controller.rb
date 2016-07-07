@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def index
-    @planet_names = Planet.all
+    @planet_names = Planet.where(active: true)
     respond_with @planet_names
   end
 end

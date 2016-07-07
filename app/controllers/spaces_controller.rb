@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   def index
-    if planet = Planet.find_by(name: params[:planet])
+    if planet = Planet.find_by(name: params[:planet], active: true)
       @spaces = Space.where("planet_id = ? AND occupancy >= ?", planet.id, params[:occupancy].to_i)
       if (params[:start_date] != "") && (params[:end_date] != "")
         @spaces = @spaces.map do |space|
@@ -26,7 +26,7 @@ class SpacesController < ApplicationController
   end
 
   def show
-    @space = Space.find_by(slug: params[:space_slug])
+    @space = Space.find_by(slug: params[:space_slug], active: true)
     if @space.approved
       @space
       @search_hash = { start_date: params[:check_in], end_date: params[:check_out] }
@@ -58,7 +58,7 @@ class SpacesController < ApplicationController
   end
 
   def edit
-    @space = Space.find_by(slug: params[:space_slug])
+    @space = Space.find_by(slug: params[:space_slug], active: true)
     if @space.users.include?(current_user)
       @space
       session[:return_to] = request.referer
@@ -69,7 +69,7 @@ class SpacesController < ApplicationController
   end
 
   def update
-    @space = Space.find_by(slug: params[:space_slug])
+    @space = Space.find_by(slug: params[:space_slug], active: true)
     if @space.update_space(space_params)
       flash[:success] = "Your space has been successfully updated!"
       redirect_to session[:return_to]

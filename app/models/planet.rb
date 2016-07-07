@@ -8,6 +8,23 @@ class Planet < ActiveRecord::Base
     "#{self.slug}"
   end
 
+  def toggle_active
+    toggle_dependencies
+    self.active = !self.active
+    save
+  end
+
+  def toggle_dependencies
+    self.spaces.each do |space|
+      if self.active
+        space.active = false
+      else
+        space.active = true
+      end
+      space.save
+    end
+  end
+
   def create_slug
     self.slug = name.parameterize if !name.nil?
   end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
     get "/api/getplanetnames", to: "home#index"
 
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :update]
 
   resources :spaces, only: [:index, :new, :create]
 
@@ -29,11 +29,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
-    resources :spaces, only: [:index, :edit]
+    resources :spaces, only: [:index, :edit, :update]
     resources :unapproved_spaces, only: [:index, :update]
     resources :reservations, only: [:index, :edit, :update]
-    resources :planets, only: [:index, :edit]
-    resources :styles, only: [:index, :edit]
+    resources :planets, only: [:index, :edit, :update]
+    resources :styles, only: [:index, :edit, :update]
     resources :users, only: [:index, :edit, :update]
   end
 
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get "styles/:style_slug", to: "styles#show", as: :style
   patch "/styles/:slug", to: "styles#update"
 
+  get "users/:username/edit", to: "users#edit", as: :edit_user
   get "/:username", to: "users#show", as: :listings
 
 end

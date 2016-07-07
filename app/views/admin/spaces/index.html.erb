@@ -26,6 +26,13 @@
       <td><%= space.occupancy %></td>
       <td><%= space.approved %></td>
       <td><%= link_to "Edit", edit_admin_space_path(space.id), class: "btn btn-custom btn-default" %></td>
+      <td>
+      <% if space.active %>
+        <%= link_to "Deactivate", admin_space_path(id: space, change_active: "true"), method: :patch, class: "btn btn-custom btn-default" %>
+      <% else %>
+        <%= link_to "Activate", admin_space_path(id: space, change_active: "true"), method: :patch, class: "btn btn-custom btn-default" %>
+      <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>

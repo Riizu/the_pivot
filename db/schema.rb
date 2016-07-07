@@ -11,17 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706223252) do
+ActiveRecord::Schema.define(version: 20160707030518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "status"
-    t.boolean  "active",     default: true
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -38,10 +37,11 @@ ActiveRecord::Schema.define(version: 20160706223252) do
     t.integer  "space_id"
     t.integer  "order_id"
     t.decimal  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.datetime "start_date"
     t.datetime "end_date"
+    t.boolean  "active",     default: true
   end
 
   add_index "reservations", ["order_id"], name: "index_reservations_on_order_id", using: :btree
