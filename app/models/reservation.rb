@@ -2,6 +2,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :space
   belongs_to :order
   validates_with DateValidator
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 
   def total_nights
     (end_date - start_date) / 60 / 60 / 24

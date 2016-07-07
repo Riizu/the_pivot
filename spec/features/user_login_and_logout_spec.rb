@@ -47,7 +47,7 @@ RSpec.feature "User Logs In and Logs Out" do
       click_link user.first_name
       click_link "Logout"
 
-      assert page.has_content?("Goodbye!")
+      assert page.has_content?("Successfully logged out")
       assert page.has_content?("Login")
     end
   end
