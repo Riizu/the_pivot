@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "home#show"
 
+
+    get "/api/getplanetnames", to: "home#index"
+
   resources :users, only: [:new, :create, :edit, :update]
 
   resources :spaces, only: [:index, :new, :create]

@@ -35,6 +35,7 @@ gem 'omniauth-twitter'
 gem 'stripe'
 gem 'jquery-ui-rails'
 gem 'faker'
+gem 'responders', '~> 2.0'
 
 gem 'bootstrap-sass'
 # Use Capistrano for deployment
