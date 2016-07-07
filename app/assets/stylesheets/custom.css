@@ -1,3 +1,7 @@
+.logo {
+  max-width: 38px;
+}
+
 #flash_success {
   background-color: rgba(108,187,76, 0.8);
   color: black;
