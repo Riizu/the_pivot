@@ -18,7 +18,7 @@ end
 
 def login(user)
   visit "/login"
-  fill_in "Username", with: user.username
+  fill_in "e-mail", with: user.email
   fill_in "Password", with: "password"
   click_button "Login"
 end
