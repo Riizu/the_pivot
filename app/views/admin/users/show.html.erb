@@ -2,13 +2,26 @@
   <h1>Admin Dashboard</h1>
 </div>
 
-<div class="dashboard-buttons">
-  <%= button_to "All Reservations", admin_reservations_path, method: :get, class: "btn btn-custom btn-person" %>
-  <%= button_to "All Spaces", admin_spaces_path, method: :get, class: "btn btn-custom btn-person" %>
-  <%= button_to "All Planets", admin_planets_path, method: :get, class: "btn btn-custom btn-person" %>
-  <%= button_to "All Climates", admin_styles_path, method: :get, class: "btn btn-custom btn-person" %>
-  <%= button_to "All Users", admin_users_path, method: :get, class: "btn btn-custom btn-person" %>
-  <a href="/admin/unapproved_spaces?"><button class="btn btn-custom btn-person link_text" type="button">
-    All Unapproved Spaces <span class="badge"> <%= @unapproved_spaces.count %> </span>
-  </button></a>
+<div class="col-sm-4 col-xs-offset-4">
+  <div class="list-group">
+    <a href="/admin/unapproved_spaces?" class="list-group-item active">
+      <h4 class="list-group-item-heading">All Unapproved Spaces</h4><span class="badge"> <%= @unapproved_spaces.count %> </span>
+      <p class="list-group-item-text">&nbsp;</p>
+    </a>
+    <a href="<%= admin_reservations_path %>" class="list-group-item list-group-item-default">
+      <h4 class="list-group-item-heading">All Reservations</h4>
+    </a>
+    <a href="<%= admin_spaces_path %>" class="list-group-item">
+      <h4 class="list-group-item-heading">All Spaces</h4>
+    </a>
+    <a href="<%= admin_planets_path %>" class="list-group-item">
+      <h4 class="list-group-item-heading">All Planets</h4>
+    </a>
+    <a href="<%= admin_styles_path %>" class="list-group-item">
+      <h4 class="list-group-item-heading">All Climates</h4>
+    </a>
+    <a href="<%= admin_users_path %>" class="list-group-item">
+      <h4 class="list-group-item-heading">All Users</h4>
+    </a>
+  </div>
 </div>
