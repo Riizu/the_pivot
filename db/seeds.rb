@@ -112,7 +112,7 @@ class Seed
       style_id:        rand(1..4),
       planet_id:       rand(1..10),
       approved:        true,
-      description:     Faker::Hipster.sentence,
+      description:     Faker::Hipster.paragraph(3),
       occupancy:       rand(2..50)
     )
   end
@@ -127,7 +127,7 @@ class Seed
         style_id:        rand(1..4),
         planet_id:       rand(1..10),
         approved:        true,
-        description:     Faker::Hipster.sentence,
+        description:     Faker::Hipster.paragraph(3),
         occupancy:       rand(2..50),
         image_url:       File.open(File.join(Rails.root, "/app/assets/images/tatouine.jpg"))
       )

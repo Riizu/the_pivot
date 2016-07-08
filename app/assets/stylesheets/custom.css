@@ -145,7 +145,6 @@
 
 .btn-person {
   border: 1px solid rgba(3,67,84,1);
-  margin: 2px;
 }
 
 .dashboard-header {
@@ -377,4 +376,9 @@ CSS
   top: 5%;
   left: 30%;
   display: none;
+}
+
+.img-size {
+  max-height: 250px;
+  width: 300px;
 }
