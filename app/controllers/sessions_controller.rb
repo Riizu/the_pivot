@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  def private
+  private
     def route_guest_or_user
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id

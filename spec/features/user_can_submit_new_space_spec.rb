@@ -17,9 +17,7 @@ RSpec.feature "User can submit a new space" do
       fill_in "Description", with: "My new crib is so cool.  You should definitely stay here and pay me stacks!!!"
       fill_in "Occupancy", with: 6
       fill_in "Nightly Rate", with: 49.99
-      expect(page).to have_content "Select Planet"
       select "#{planet.name}", from: "Planet"
-      expect(page).to have_content "Select Climate"
       select "#{style.name}", from: "Climate"
       click_on "Create Space"
 

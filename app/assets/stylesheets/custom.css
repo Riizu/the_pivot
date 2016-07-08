@@ -2,14 +2,19 @@
   max-width: 38px;
 }
 
+.twitter {
+  max-width: 30px;
+  max-height: 30px;
+}
+
 #flash_success {
   background-color: rgba(108,187,76, 0.8);
   color: black;
   font-size: 16px;
   text-align: center;
-  width: 510px;
+  width: 400px;
   position: absolute;
-  top: 10vh;
+  top: 12vh;
   left: 5vh;
 
 }
@@ -19,9 +24,9 @@
   color: black;
   font-size: 16px;
   text-align: center;
-  width: 510px;
+  width: 400px;
   position: absolute;
-  top: 10vh;
+  top: 12vh;
   left: 5vh;
 }
 
@@ -30,16 +35,16 @@
   color: black;
   font-size: 16px;
   text-align: center;
-  width: 510px;
+  width: 400px;
   position: absolute;
-  top: 10vh;
+  top: 12vh;
   left: 5vh;
 }
 
-.btn-custom {
-  background-color: rgb(176, 224, 236);
-  margin-top: 5px;
-}
+  .btn-custom {
+    background-color: rgb(176, 224, 236);
+    margin-top: 5px;
+  }
 
 .green-theme {
   color: rgb(108,187,76);
@@ -239,8 +244,18 @@
 .tagline_home {
   text-align: center;
   position: fixed;
-  top: 37%;
+  top: 20%;
   left: 35%;
+  color: white;
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+
+.bookline_home {
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 36%;
   color: white;
   /*margin-left: auto;
   margin-right: auto;*/
