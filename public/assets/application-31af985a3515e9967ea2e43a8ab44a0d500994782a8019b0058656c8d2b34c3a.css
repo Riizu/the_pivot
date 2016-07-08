@@ -8312,15 +8312,21 @@ button.close {
   max-width: 38px;
 }
 
+.twitter {
+  max-width: 30px;
+  max-height: 30px;
+}
+
 #flash_success {
   background-color: rgba(108,187,76, 0.8);
   color: black;
   font-size: 16px;
   text-align: center;
-  width: 510px;
+  width: 400px;
   position: absolute;
-  top: 10vh;
+  top: 12vh;
   left: 5vh;
+  z-index: 99;
 
 }
 
@@ -8329,10 +8335,11 @@ button.close {
   color: black;
   font-size: 16px;
   text-align: center;
-  width: 510px;
+  width: 400px;
   position: absolute;
-  top: 10vh;
+  top: 12vh;
   left: 5vh;
+  z-index: 99;
 }
 
 #flash_error {
@@ -8340,16 +8347,17 @@ button.close {
   color: black;
   font-size: 16px;
   text-align: center;
-  width: 510px;
+  width: 400px;
   position: absolute;
-  top: 10vh;
+  top: 12vh;
   left: 5vh;
+  z-index: 99;
 }
 
-.btn-custom {
-  background-color: rgb(176, 224, 236);
-  margin-top: 5px;
-}
+  .btn-custom {
+    background-color: rgb(176, 224, 236);
+    margin-top: 5px;
+  }
 
 .green-theme {
   color: rgb(108,187,76);
@@ -8441,7 +8449,7 @@ button.close {
 }
 
 .username {
-  padding-right: 4px;
+  padding-right: 30px;
 }
 
 .password {
@@ -8549,8 +8557,18 @@ button.close {
 .tagline_home {
   text-align: center;
   position: fixed;
-  top: 37%;
+  top: 20%;
   left: 35%;
+  color: white;
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+
+.bookline_home {
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 36%;
   color: white;
   /*margin-left: auto;
   margin-right: auto;*/
@@ -8692,15 +8710,19 @@ CSS
   max-height: 250px;
   width: 300px;
 }
-/* line 3, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+
+#twitter-button-font {
+  color: black;
+}
+/* line 3, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html {
   height: 100%;
 }
-/* line 6, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 6, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html body {
   height: 100%;
 }
-/* line 9, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 9, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html body:after {
   content: "";
   display: block;
@@ -8714,12 +8736,12 @@ html body:after {
   background-position: 70% center;
   z-index: -1;
 }
-/* line 25, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 25, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html body .navbar {
   box-shadow: 0 0 5px 0 #bcbebf;
 }
 
-/* line 33, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 33, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 #home-splash {
   width: 100%;
   height: 100vh;
@@ -8729,24 +8751,25 @@ html body .navbar {
   overflow: hidden;
 }
 
-/* line 42, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 42, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 .search-bar {
   border-radius: 0px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
-/* line 47, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 47, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 #filter-nav {
   margin-top: 5px;
   padding-bottom: 5px;
 }
 
-/* line 52, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 52, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 .container {
   margin-top: 80px;
+  margin-bottom: 50px;
 }
 
-/* line 56, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 57, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 .vertical-center {
   position: absolute;
   top: 50%;
