@@ -161,7 +161,7 @@
   max-width: 30%;
   border-radius: 5px;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.7);*/
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 25px;
 }
 
@@ -378,4 +378,9 @@ CSS
   top: 5%;
   left: 30%;
   display: none;
+}
+
+.img-size {
+  max-height: 250px;
+  width: 300px;
 }

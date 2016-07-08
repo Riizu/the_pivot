@@ -1,30 +1,46 @@
 <div class="container">
-<div>
-  <%= image_tag @space.image_url.url(:medium),class: "center-block show-image" %><br>
-</div>
-<div class="col-md-5 col-md-offset-1">
-  <h4 class="text-center"><%= @space.name %></h4>
-  <p><strong>Description:</strong> <%= @space.description %></p>
-  <p><strong>Occupancy:</strong> <%= @space.occupancy %></p>
-  <p><strong>Planet: </strong><%= @space.planet.name %></p>
-  <p><strong>Style:</strong> <%= @space.style.name %></p>
-  <p><strong><%= "Host".pluralize(@space.users.count) %>:</strong> <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ") %> </p>
-</div>
-<div class="col-md-3 col-md-offset-2">
-  <%= form_tag(reservations_path, method: "post") do %>
-    <h4>Nightly Rate: <%= number_to_currency(@space.price) %></h4>
-    <p>
-      Check in Date: <%= text_field_tag "start_date", @search_hash[:start_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %><br>
-      Check out Date: <%= text_field_tag "end_date", @search_hash[:end_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %><br>
-    </p>
-    <div class="quantity-button">
-      <%= hidden_field_tag :space_id, @space.id %>
-      <%= submit_tag "Reserve this Space", class: "btn btn-default" %>
+  <h3 class="text-center"><%= @space.name %></h3>
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag @space.image_url.url(:medium),class: "center-block show-image" %><br>
     </div>
-  <% end %>
-  <% if @space.users.include?(current_user) %>
-    <%= button_to "Edit Space", "/spaces/#{@space.slug}/edit", method: :get, class: "btn btn-default" %><br><br>
-  <% end %>
+    <div class="col-md-3">
+      <%= form_tag(reservations_path, method: "post") do %>
+      <h4>Nightly Rate: <%= number_to_currency(@space.price) %></h4>
+      <p>
+        Check in Date: <%= text_field_tag "start_date", @search_hash[:start_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %><br>
+        Check out Date: <%= text_field_tag "end_date", @search_hash[:end_date], placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %><br>
+      </p>
+
+      <div class="quantity-button">
+        <%= hidden_field_tag :space_id, @space.id %>
+        <%= submit_tag "Reserve this Space", class: "btn btn-default" %>
+      </div>
+
+      <div class="row">
+        <p><h4><%= "Host".pluralize(@space.users.count) %>:</h4>
+
+        <div class="col-md-10 text-center">
+        <% @space.users.each do |user| %>
+        <img src="https://robohash.org/<%= user.username %>", class="img-circle img-responsive">
+        <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ")%></p>
+        <% end %>
+      </div>
+      <br>
+    </div>
+  </div>
+  <br>
+
+  <div class="col-md-8 col-md-offset-1">
+    <p><h4>Description:</h4> <%= @space.description %></p>
+      <p><strong>Occupancy:</strong> <%= @space.occupancy %></p>
+      <p><strong>Planet: </strong><%= @space.planet.name %></p>
+      <p><strong>Style:</strong> <%= @space.style.name %></p>
+      <% end %>
+      <% if @space.users.include?(current_user) %>
+      <%= button_to "Edit Space", "/spaces/#{@space.slug}/edit", method: :get, class: "btn btn-default" %><br><br>
+      <% end %>
+    </div>
+  </div>
 </div>
-</div>
-<br>
+<br><br><br>
