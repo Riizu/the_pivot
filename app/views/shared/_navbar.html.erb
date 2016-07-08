@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right" id="navbar-links">
         <li><%= link_to "Cart (#{@cart.contents.count})", cart_path %></li>
+        <li><%= link_to "Login", login_path unless current_user %></li>        
         <%= render "shared/user_dropdown" %>
       </ul>
     </div>

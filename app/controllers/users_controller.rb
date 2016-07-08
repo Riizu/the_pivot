@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username], active: true)
-    @search_hash = {username: params[:username]}
+
     if @user && @user.spaces
       @spaces = @user.spaces
     else
@@ -32,24 +32,16 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      route_update_for_user
+      route_update_by_user
     else
       flash.now[:error] = @user.errors.full_messages.join(", ")
       render :edit
     end
   end
 
-  def route_update_for_user
-    if @user.admin?
-      redirect_to admin_dashboard_path
-    else
-      redirect_to dashboard_path
-    end
-  end
 
   private
-
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :email, :email_confirmation, :phone_number)
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :email, :email_confirmation, :phone_number)
+    end
 end

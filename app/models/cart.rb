@@ -30,8 +30,4 @@ class Cart
   def remove_reservation(space_id)
     contents.delete_if { |id, _quantity| id == space_id.to_s }
   end
-
-  def one?(id)
-    contents[id.to_s] == 1
-  end
 end

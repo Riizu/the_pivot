@@ -16,7 +16,7 @@ class Admin::SpacesController < Admin::BaseController
       redirect_to admin_spaces_path
     elsif @space.update_space(space_params)
       flash[:success] = "You space has been successfully updated!"
-      redirect_to session[:return_to]
+      session[:return_to] ? (redirect_to session[:return_to]) : (redirect_to admin_spaces_path)
     else
       flash.now[:error] = @space.errors.full_messages.join(", ")
       render :edit

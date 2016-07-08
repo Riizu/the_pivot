@@ -2,18 +2,15 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name if current_user %><span class="caret"></span></a>
   <ul class="dropdown-menu">
-      <% if current_user %>
-        <li><%= link_to "Logout", "/logout", method: :delete %></li>
-        <li><%= link_to "Reserve a Space", "/" %></li>
-        <li><%= link_to "Host a Space", new_space_path %></li>
-        <li><%= link_to "Dashboard", "/dashboard" %></li>
-      <% end %>
-      <% if current_admin? %>
-        <li><%= link_to "Admin Dashboard", "/admin/dashboard" %></li>
-      <% end %>
+    <% if current_user %>
+    <li><%= link_to "Reserve a Space", "/" %></li>
+    <li><%= link_to "Host a Space", new_space_path %></li>
+    <li><%= link_to "Dashboard", "/dashboard" %></li>
+    <% if current_admin? %>
+    <li><%= link_to "Admin Dashboard", "/admin/dashboard" %></li>
+    <% end %>
+    <li><%= link_to "Logout", "/logout", method: :delete %></li>
+    <% end %>
   </ul>
 </li>
-<% end %>
-<% user_button_display.each do |button| %>
-  <li><%= button %></li>
 <% end %>
