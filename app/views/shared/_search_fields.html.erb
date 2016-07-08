@@ -2,22 +2,22 @@
 
 <div class="col-md-2" id="no-gutter-home">
   <%= label_tag "Planet" %><br/>
-  <%= text_field_tag "planet", (search_hash[:planet] unless !defined?(search_hash)), class: "form-control", id: "autocomplete" %>
+  <%= text_field_tag "planet", (@search_hash[:planet] unless !defined?(@search_hash)), class: "form-control", id: "autocomplete" %>
 </div>
 
 <div class="col-md-2" id="no-gutter-home">
   <%= label_tag "Occupancy" %><br />
-  <%= text_field_tag "occupancy", (search_hash[:occupancy] unless !defined?(search_hash)), class: "form-control" %>
+  <%= text_field_tag "occupancy", (@search_hash[:occupancy] unless !defined?(@search_hash)), class: "form-control" %>
 </div>
 
 <div class="col-md-2" id="no-gutter-home">
   <%= label_tag "Check in" %><br/>
-  <%= text_field_tag "start_date", (search_hash[:start_date] unless !defined?(search_hash)), placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %>
+  <%= text_field_tag "start_date", (@search_hash[:start_date] unless !defined?(@search_hash)), placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkin" %>
 </div>
 
 <div class="col-md-2" id="no-gutter-home">
   <%= label_tag "Check out" %><br/>
-  <%= text_field_tag "end_date", (search_hash[:end_date] unless !defined?(search_hash)), placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %>
+  <%= text_field_tag "end_date", (@search_hash[:end_date] unless !defined?(@search_hash)), placeholder: "yyyy/mm/dd", class: "form-control", id: "datepicker-checkout" %>
 </div>
 
 <div class="col-md-1 button-padding" id="no-gutter-home">

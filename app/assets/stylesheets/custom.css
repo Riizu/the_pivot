@@ -16,6 +16,7 @@
   position: absolute;
   top: 12vh;
   left: 5vh;
+  z-index: 99;
 
 }
 
@@ -28,6 +29,7 @@
   position: absolute;
   top: 12vh;
   left: 5vh;
+  z-index: 99;
 }
 
 #flash_error {
@@ -39,6 +41,7 @@
   position: absolute;
   top: 12vh;
   left: 5vh;
+  z-index: 99;
 }
 
   .btn-custom {
@@ -136,7 +139,7 @@
 }
 
 .username {
-  padding-right: 4px;
+  padding-right: 30px;
 }
 
 .password {
