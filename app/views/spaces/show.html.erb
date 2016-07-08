@@ -31,7 +31,7 @@
         <div class="col-md-8 text-center">
         <% @space.users.each do |user| %>
         <img src="https://robohash.org/<%= user.username %>", class="img-circle img-responsive">
-        <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ")%></p>
+        <%= user.last_name ? user.first_name + " " +  user.last_name : user.first_name %>
         <% end %>
         <% end %>
       </div>
