@@ -1,5 +1,6 @@
 class Seed
   def initialize
+    create_required_users
     create_style
     create_planets
     create_platform_admin
@@ -42,22 +43,6 @@ class Seed
     josh.orders << add_orders(josh.id)
     josh.save
 
-    # 100.times do
-    #   name = Faker::StarWars.character
-    #   name = name.split
-    #   name = name << "Kenobi" if name.count == 1
-    #   user = User.new(
-    #     first_name:            name.first,
-    #     last_name:             name[1..-1].join(" "),
-    #     email:                 Faker::Internet.email,
-    #     password:              "password",
-    #     password_confirmation: "password",
-    #     username:              Faker::Internet.user_name,
-    #     phone_number:          Faker::Number.number(10)
-    #   )
-    #   user.orders << add_orders(user.id)
-    #   user.save
-    # end
     puts "Created Required User"
   end
 
@@ -132,7 +117,7 @@ class Seed
 
   def create_space
     space = Space.create(
-      name:            Faker::Book.title + Faker::Hipster.word,
+      name:            Faker::Book.title + Faker::Hipster.word + Faker::Hipster.word,
       price:           Faker::Commerce.price,
       style_id:        rand(1..4),
       approved:        true,
