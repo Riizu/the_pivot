@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
       new_user.oauth_token = auth_info.credentials.token
       new_user.oauth_token_secret = auth_info.credentials.secret
     end
-    user.update(username: "tweet-#{auth_info.extra.raw_info.screen_name.parameterize}")
+    user.update(username: "tweet#{auth_info.extra.raw_info.screen_name.parameterize}")
     return user if user.save
   end
 
