@@ -6,10 +6,12 @@
 
     <div class="col-sm-4 col-xs-offset-4">
       <div class="list-group">
-        <a href="<%= new_tweet_path %>" class="list-group-item active">
+        <% if @user.screen_name %>
+        <a href="//twitter.com/home?status=Wookie%20Nights%2C%20a%20warmer%20shopping%20experience%20than%20spending%20the%20night%20in%20the%20belly%20of%20a%20Tauntaun!" class="list-group-item active">
           <h4 class="list-group-item-heading">Tweet About Us</h4>
           <p class="list-group-item-text"> <%= image_tag "twitter_logo.png", class:"twitter" %> </p>
         </a>
+        <% end %>
         <a href="<%= orders_path %>" class="list-group-item list-group-item-default">
           <h4 class="list-group-item-heading">My Trips</h4>
         </a>

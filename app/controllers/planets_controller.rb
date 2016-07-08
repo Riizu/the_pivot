@@ -1,7 +1,4 @@
 class PlanetsController < ApplicationController
-  def index
-  end
-
   def show
     @planet = Planet.find_by(slug: params[:planet_slug], active: true)
 

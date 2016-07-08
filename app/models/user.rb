@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   has_many :spaces, through: :spaces_users
 
   has_secure_password validations: false
-  validates :first_name, presence: true
-  validates :last_name, presence: true, if: "uid.nil?"
-  validates :username, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }, if: "uid.nil?", on: :create
+  validates :first_name, presence: true, on: :create
+  validates :last_name, presence: true, if: "uid.nil?", on: :create
+  validates :username, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }, on: :create
   validates :password, presence: true, confirmation: true, if: "uid.nil?", on: :create
   validates :email, presence: true, uniqueness: true, confirmation: true, if: "uid.nil?", on: :create
 
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
       new_user.oauth_token = auth_info.credentials.token
       new_user.oauth_token_secret = auth_info.credentials.secret
     end
+    user.update(username: "tweet-#{auth_info.extra.raw_info.screen_name.parameterize}")
     return user if user.save
   end
 
