@@ -26,7 +26,7 @@ RSpec.feature "Visitor adds a space to cart" do
 
       within '#total-cart-price' do
         expect(page).to have_content("Cart Total: $#{space.price * 2}")
-        expect(page).to have_content("Total Items in Cart: 1")
+        expect(page).to have_content("Total Spaces: 1")
       end
     end
   end
