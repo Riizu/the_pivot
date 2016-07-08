@@ -115,7 +115,7 @@ class Seed
 
   end
 
-  def create_space
+  def create_space(planet)
     space = Space.create(
       name:            Faker::Book.title + Faker::Hipster.word + Faker::Hipster.word,
       price:           Faker::Commerce.price,
@@ -123,6 +123,7 @@ class Seed
       approved:        true,
       description:     Faker::Hipster.paragraph(3),
       occupancy:       rand(2..50),
+      planet:          planet
     )
     space.users << create_user
     space
@@ -135,7 +136,7 @@ class Seed
     )
     puts "Creating hoth spaces"
     50.times do
-      hoth.spaces << create_space
+      create_space(hoth)
     end
     puts "Created hoth spaces"
 
@@ -144,7 +145,7 @@ class Seed
     )
     puts "Creating tatooine spaces"
     50.times do
-      tatooine.spaces << create_space
+      create_space(tattoine)
     end
     puts "Created tatooine spaces"
 
@@ -153,7 +154,7 @@ class Seed
     )
     puts "Creating coruscant spaces"
     50.times do
-      coruscant.spaces << create_space
+      create_space(coruscant)
     end
     puts "Created coruscant spaces"
 
@@ -163,7 +164,7 @@ class Seed
       )
       puts "Creating #{planet.name} spaces"
       50.times do
-        planet.spaces << create_space
+        create_space(planet)
       end
       puts "Created #{planet.name} spaces"
     end
