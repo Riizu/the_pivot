@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
   resources :spaces, only: [:index, :new, :create]
 
-  resources :reservations, only: [:create, :destroy, :update]
+  resources :reservations, only: [:create, :destroy]
 
   resources :orders, only: [:index, :show, :create]
 
-  resources :tweets, only: [:new, :create]
+  resources :tweets, only: [:create]
 
   resources :charges, only: [:new, :create]
 

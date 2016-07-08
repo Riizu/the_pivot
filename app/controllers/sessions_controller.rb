@@ -20,12 +20,13 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  def route_guest_or_user
-    if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
-      route_by_user_role
-    else
-      invalid_login
+  def private
+    def route_guest_or_user
+      if @user && @user.authenticate(params[:session][:password])
+        session[:user_id] = @user.id
+        route_by_user_role
+      else
+        invalid_login
+      end
     end
-  end
 end

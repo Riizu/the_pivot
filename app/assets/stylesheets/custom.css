@@ -382,3 +382,7 @@ CSS
   max-height: 250px;
   width: 300px;
 }
+
+#twitter-button-font {
+  color: black;
+}

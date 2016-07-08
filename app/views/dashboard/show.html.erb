@@ -5,7 +5,7 @@
     </h1>
 
   <div class="dashboard-buttons">
-    <%= button_to "Tweet About Us", new_tweet_path, class: "btn btn-custom btn-person", method: :get %>
+    <a href="//twitter.com/home?status=Wookie%20Nights%2C%20a%20warmer%20shopping%20experience%20than%20spending%20the%20night%20in%20the%20belly%20of%20a%20Tauntaun!", class="btn btn-custom btn-person", id="twitter-button-font">Tweet About Us!</a>
     <% if @user.username %>
       <%= button_to "Edit Account Info", edit_user_path(@user.username), method: :get, class: "btn btn-custom btn-person" %>
     <% end %>
