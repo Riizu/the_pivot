@@ -4,7 +4,6 @@ class PlanetsController < ApplicationController
 
   def show
     @planet = Planet.find_by(slug: params[:planet_slug], active: true)
-    @search_hash = { planet: params[:planet_slug]}
 
     if @planet && @planet.spaces
       @spaces = @planet.spaces

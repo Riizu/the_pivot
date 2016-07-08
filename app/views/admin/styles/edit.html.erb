@@ -1,12 +1,12 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3">
-  <div class="well">
-    <h2 class="text-center"><%= "Edit #{@style.name}" %></h2>
-<%= form_for(@style) do |f| %>
-  <h4><%= f.label :name %><br>
-  <span class="form-field-sockname"><%= f.text_field :name, class: "form-control" %></span></span></h4>
-  <%= f.submit "Update Climate", class:"btn btn-default center-block" %>
-<% end %>
-</div>
-</div>
-</div>
+    <div class="well">
+      <h2 class="text-center"><%= "Edit #{@style.name}" %></h2>
+      <%= form_for @style, :url => url_for(controller: "admin/styles", action: "update") do |f| %>
+      <h4><%= f.label :name %><br>
+        <span class="form-field-sockname"><%= f.text_field :name, class: "form-control" %></span></span></h4>
+        <%= f.submit "Update Climate", class:"btn btn-default center-block" %>
+        <% end %>
+      </div>
+    </div>
+  </div>

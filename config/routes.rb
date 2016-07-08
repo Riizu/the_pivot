@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#show"
 
-
-    get "/api/getplanetnames", to: "home#index"
+  get "/api/getplanetnames", to: "home#index"
 
   resources :users, only: [:new, :create, :update]
 
@@ -48,7 +47,6 @@ Rails.application.routes.draw do
   patch "/planets/:planets_slug", to: "planets#update"
 
   get "styles/:style_slug", to: "styles#show", as: :style
-  patch "/styles/:slug", to: "styles#update"
 
   get "users/:username/edit", to: "users#edit", as: :edit_user
   get "/:username", to: "users#show", as: :listings

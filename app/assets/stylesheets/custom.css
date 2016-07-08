@@ -10,8 +10,7 @@
   width: 510px;
   position: absolute;
   top: 10vh;
-  left: 5vh
-  ;
+  left: 5vh;
 
 }
 
@@ -161,7 +160,7 @@
   max-width: 30%;
   border-radius: 5px;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.7);*/
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 25px;
 }
 
