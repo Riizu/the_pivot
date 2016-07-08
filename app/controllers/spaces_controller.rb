@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   def index
-    if planet = Planet.find_by(name: params[:planet], active: true)
+    if planet = Planet.find_by(name: params[:planet].capitalize, active: true)
       @spaces = Space.where("planet_id = ? AND occupancy >= ?", planet.id, params[:occupancy].to_i)
       query_search_with_dates
       deliver_query_results
