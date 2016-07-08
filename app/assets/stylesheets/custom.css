@@ -15,8 +15,7 @@
   width: 510px;
   position: absolute;
   top: 10vh;
-  left: 5vh
-  ;
+  left: 5vh;
 
 }
 
@@ -151,7 +150,6 @@
 
 .btn-person {
   border: 1px solid rgba(3,67,84,1);
-  margin: 2px;
 }
 
 .dashboard-header {

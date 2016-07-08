@@ -28862,6 +28862,32 @@ return $.widget( "ui.tooltip", {
 
 
 
+$( document ).ready(function() {
+
+  function parseData(data){
+    var planets = [];
+    data.forEach(function(planet){
+      planets.push({value: planet.name});
+    });
+    $('#autocomplete').autocomplete({
+      source: planets
+    });
+  }
+
+  var handlers = {
+    get: $.ajax({
+      url: "/api/getplanetnames",
+      verb: "GET",
+      success: function(data){
+        parseData(data);
+      },
+      error: function(){
+        alert("We were not able to retrieve any planets");
+      }
+    })
+  };
+
+});
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -31230,6 +31256,29 @@ if (typeof jQuery === 'undefined') {
 
 
 }).call(this);
+var secretCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+    codeIndex = 0;
+
+var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', "http://www.pacdv.com/sounds/fart-sounds/fart-1.wav");
+    $.get();
+    audioElement.addEventListener("load", function() {
+      audioElement.play();
+    }, true);
+
+$(document).keyup(function(e){
+    if (e.which === secretCode[codeIndex]) {
+        codeIndex++;
+    } else {
+        codeIndex = 0;
+    }
+    if (codeIndex === secretCode.length) {
+        codeIndex = 0;
+        $('#cheat-image').fadeIn();
+        audioElement.play();
+        $('#cheat-image').delay(3000).fadeOut();
+    }
+});
 $( document ).ready(function() {
   var checkInInput = $('#datepicker-checkin');
   var checkOutInput = $('#datepicker-checkout');
@@ -31281,14 +31330,15 @@ $( document ).ready(function() {
   }
 });
 $(document).ready(function () {
-  var $spaces = $('.one-sock');
+  var $spaces = $('.space');
 
   $('#space_filter_climates').on('change', function () {
     var currentStyle = this.value;
     $spaces.each(function (index, space) {
       $space = $(space);
-      console.log($space.data('style'));
-      if ($space.data('style') === currentStyle) {
+      if ($space.data('climate') === currentStyle) {
+        $space.show();
+      } else if (currentStyle === "All Spaces") {
         $space.show();
       } else {
         $space.hide();

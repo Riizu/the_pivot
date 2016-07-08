@@ -31,7 +31,13 @@ class ApplicationController < ActionController::Base
   def route_by_user_role
     if @cart.contents.count > 0
       redirect_to cart_path
-    elsif current_admin?
+    else
+      route_update_by_user
+    end
+  end
+
+  def route_update_by_user
+    if current_admin?
       redirect_to admin_dashboard_path
     else
       redirect_to dashboard_path
