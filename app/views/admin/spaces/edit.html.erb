@@ -17,7 +17,7 @@
   <span class="select-style"><%= f.select :style, Style.all.pluck(:name), class: "form-control" %></span></h4>
   <h4><%= f.label :image_url %><br>
   <span class="form-field-image"><%= f.file_field :image_url %></span></h4>
-  <%= f.submit "Update Space", class: "btn btn-default center-block" %>
+  <%= f.submit "Update Space", class: "btn btn-custom btn-person center-block" %>
 <% end %>
 </div>
 </div>

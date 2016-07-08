@@ -3,6 +3,16 @@
   <div class="row">
     <div class="col-md-8">
       <%= image_tag @space.image_url.url(:medium),class: "center-block show-image" %><br>
+      <div class="col-md-8 col-md-offset-2"
+      <p><h4>Description:</h4> <%= @space.description %></p>
+        <p><strong>Occupancy:</strong> <%= @space.occupancy %></p>
+        <p><strong>Planet: </strong><%= @space.planet.name %></p>
+        <p><strong>Style:</strong> <%= @space.style.name %></p>
+        <% if @space.users.include?(current_user) %>
+        <%= button_to "Edit Space", "/spaces/#{@space.slug}/edit", method: :get, class: "btn btn-custom btn-person" %><br><br>
+        <% end %>
+      </div>
+
     </div>
     <div class="col-md-3">
       <%= form_tag(reservations_path, method: "post") do %>
@@ -14,16 +24,15 @@
 
       <div class="quantity-button">
         <%= hidden_field_tag :space_id, @space.id %>
-        <%= submit_tag "Reserve this Space", class: "btn btn-default" %>
+        <%= submit_tag "Reserve this Space", class: "btn btn-custom btn-person" %>
       </div>
-
       <div class="row">
         <p><h4><%= "Host".pluralize(@space.users.count) %>:</h4>
-
-        <div class="col-md-10 text-center">
+        <div class="col-md-8 text-center">
         <% @space.users.each do |user| %>
         <img src="https://robohash.org/<%= user.username %>", class="img-circle img-responsive">
         <%= @space.users.map { |user| user.last_name ? user.first_name + " " + user.last_name : user.first_name }.join(", ")%></p>
+        <% end %>
         <% end %>
       </div>
       <br>
@@ -31,15 +40,8 @@
   </div>
   <br>
 
-  <div class="col-md-8 col-md-offset-1">
-    <p><h4>Description:</h4> <%= @space.description %></p>
-      <p><strong>Occupancy:</strong> <%= @space.occupancy %></p>
-      <p><strong>Planet: </strong><%= @space.planet.name %></p>
-      <p><strong>Style:</strong> <%= @space.style.name %></p>
-      <% end %>
-      <% if @space.users.include?(current_user) %>
-      <%= button_to "Edit Space", "/spaces/#{@space.slug}/edit", method: :get, class: "btn btn-default" %><br><br>
-      <% end %>
+  <div class="col-md-6 col-md-offset-1">
+
     </div>
   </div>
 </div>
