@@ -1,12 +1,13 @@
 $(document).ready(function () {
-  var $spaces = $('.one-sock');
+  var $spaces = $('.space');
 
   $('#space_filter_climates').on('change', function () {
     var currentStyle = this.value;
     $spaces.each(function (index, space) {
       $space = $(space);
-      console.log($space.data('style'));
-      if ($space.data('style') === currentStyle) {
+      if ($space.data('climate') === currentStyle) {
+        $space.show();
+      } else if (currentStyle === "All Spaces") {
         $space.show();
       } else {
         $space.hide();

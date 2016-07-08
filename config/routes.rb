@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
   root to: "home#show"
 
-  resources :users, only: [:new, :create, :edit, :update]
+  get "/api/getplanetnames", to: "home#index"
+
+  resources :users, only: [:new, :create, :update]
 
   resources :spaces, only: [:index, :new, :create]
 
-  resources :reservations, only: [:create, :destroy, :update]
+  resources :reservations, only: [:create, :destroy]
 
   resources :orders, only: [:index, :show, :create]
 
-  resources :tweets, only: [:new, :create]
+  resources :tweets, only: [:create]
 
   resources :charges, only: [:new, :create]
 
@@ -26,11 +28,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
-    resources :spaces, only: [:index, :edit]
+    resources :spaces, only: [:index, :edit, :update]
     resources :unapproved_spaces, only: [:index, :update]
     resources :reservations, only: [:index, :edit, :update]
-    resources :planets, only: [:index, :edit]
-    resources :styles, only: [:index, :edit]
+    resources :planets, only: [:index, :edit, :update]
+    resources :styles, only: [:index, :edit, :update]
     resources :users, only: [:index, :edit, :update]
   end
 
@@ -45,8 +47,8 @@ Rails.application.routes.draw do
   patch "/planets/:planets_slug", to: "planets#update"
 
   get "styles/:style_slug", to: "styles#show", as: :style
-  patch "/styles/:slug", to: "styles#update"
 
-  get "/:id", to: "users#show", as: :listings
+  get "users/:username/edit", to: "users#edit", as: :edit_user
+  get "/:username", to: "users#show", as: :listings
 
 end

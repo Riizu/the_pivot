@@ -5,7 +5,7 @@ RSpec.feature "User Logs In and Logs Out" do
     scenario "existing user can login" do
       user = create(:user)
       visit login_path
-      fill_in "Username", with: user.username
+      fill_in "e-mail", with: user.email
       fill_in "Password", with: "password"
       click_button "Login"
 
@@ -14,7 +14,7 @@ RSpec.feature "User Logs In and Logs Out" do
 
     scenario "guest cannot login" do
       visit login_path
-      fill_in "Username", with: "Clarence"
+      fill_in "e-mail", with: "Clarence"
       fill_in "Password", with: "password"
       click_button "Login"
 
@@ -25,7 +25,7 @@ RSpec.feature "User Logs In and Logs Out" do
     scenario "registered user cannot login with wrong password" do
       user = create(:user)
       visit login_path
-      fill_in "Username", with: user.username
+      fill_in "e-mail", with: user.email
       fill_in "Password", with: "notmypassword"
       click_button "Login"
 
@@ -38,7 +38,7 @@ RSpec.feature "User Logs In and Logs Out" do
     scenario "user is returned to login page" do
       user = create(:user)
       visit login_path
-      fill_in "Username", with: user.username
+      fill_in "e-mail", with: user.email
       fill_in "Password", with: "password"
       click_button "Login"
 
@@ -47,7 +47,7 @@ RSpec.feature "User Logs In and Logs Out" do
       click_link user.first_name
       click_link "Logout"
 
-      assert page.has_content?("Goodbye!")
+      assert page.has_content?("Successfully logged out")
       assert page.has_content?("Login")
     end
   end

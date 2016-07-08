@@ -7,11 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" id="logo" href="/">Weekend at Chewie's</a>
+      <h2 class="brand brand-name navbar-left">
+        <a href="/"> <%= image_tag "wk.png", class: "logo" %> </a>
+      </h2>
+      <a class="navbar-brand" id="logo" href="/"> Wookie Nights</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right" id="navbar-links">
         <li><%= link_to "Cart (#{@cart.contents.count})", cart_path %></li>
+        <li><%= link_to "Login", login_path unless current_user %></li>        
         <%= render "shared/user_dropdown" %>
       </ul>
     </div>

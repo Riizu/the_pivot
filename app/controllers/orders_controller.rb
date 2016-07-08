@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
-    @reservations = @order.reservations
+    @reservations = @order.reservations.where(active: true)
   end
 
   def create
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     order.create_reservations(@cart.reservations)
     session.delete(:cart)
     flash[:success] = "Order was successfully placed"
-    redirect_to "/orders"
+    redirect_to order_path(order)
   end
 
   private

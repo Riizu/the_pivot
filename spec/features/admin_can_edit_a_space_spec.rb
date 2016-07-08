@@ -19,7 +19,7 @@ RSpec.feature "admin can edit a space" do
 
     click_on "Update Space"
 
-    expect(current_path).to eq("/spaces/new-name")
+    expect(current_path).to eq admin_spaces_path
 
     expect(page).to have_content("New Name")
     expect(page).to_not have_content(space.name)

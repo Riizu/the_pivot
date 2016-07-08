@@ -5,12 +5,8 @@ class Order < ActiveRecord::Base
 
   def total_price
     reservations.map do |reservation|
-      reservation.quantity * reservation.space_price.to_f
+      reservation.total_price
     end.reduce(:+)
-  end
-
-  def total_quantity
-    reservations.map(&:quantity).reduce(:+)
   end
 
   def create_reservations(cart_reservations)
@@ -19,13 +15,6 @@ class Order < ActiveRecord::Base
                                total:      reservation.total,
                                start_date: reservation.start_date,
                                end_date:   reservation.end_date)
-    end
-  end
-
-  def updated
-    if status == "completed" || status == "cancelled"
-      "This order was updated to the status of #{status} at
-      #{updated_at.strftime('%A, %B %d, %Y at %I:%M%p')}."
     end
   end
 end

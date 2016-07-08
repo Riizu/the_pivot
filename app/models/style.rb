@@ -1,9 +1,9 @@
 class Style < ActiveRecord::Base
   has_many :spaces
-  before_validation :create_slug
+  before_create :create_slug
 
   validates :name, presence: true, uniqueness: true
-  validates :slug, presence: true, uniqueness: { case_sensitive: false}
+  validates :slug, uniqueness: { case_sensitive: false}
 
   def to_param
     "#{self.slug}"
@@ -11,5 +11,9 @@ class Style < ActiveRecord::Base
 
   def create_slug
     self.slug = name.parameterize if !name.nil?
+  end
+
+  def no_dependencies?
+    return true if self.spaces.empty?
   end
 end

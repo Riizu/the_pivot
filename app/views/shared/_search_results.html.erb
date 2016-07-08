@@ -1,11 +1,19 @@
 <div class="container spaces row-well" id="all_spaces">
   <% @spaces.each do |space| %>
-  <div class="col-md-4 col-sm-6 one-planet">
-    <div id="space-index-image">
-      <%= image_tag space.image_url.url(:medium), size: "250x300" %>
-    </div>
-    <div class="well well-lg">
-      <h4 class="space-label" style="float:left"><%= link_to space.name, space_path(space) %></h4>&nbsp;<h4 style="float:right"><%= number_to_currency(space.price) %></h4>
+  <div class="col-md-4 col-sm-6 space" data-climate="<%= space.style.name %>">
+    <div class="well">
+      <div id="space-index-image">
+        <%=link_to (image_tag space.image_url.url(:medium), class: "img-thumbnail"), space_path(space), class: "img-responsive center-block" %>
+      </div>
+      <div>
+        <div class="col-md-10">
+          <h4 class="space-label text-center" style="float:left"><%= link_to space.name, space_path(space_slug: space.slug, check_in: (@search_hash[:start_date] unless !defined?(@search_hash)), check_out: (@search_hash[:end_date] unless !defined?(@search_hash))) %></h4>&nbsp;<h4 style="float:right"></h4>
+        </div>
+        <div class="col-md-2">
+          <h4 style="float:right"><%= number_to_currency(space.price) %></h4>
+        </div>
+      </div>
+      <br><br><br>
     </div>
   </div>
   <% end %>

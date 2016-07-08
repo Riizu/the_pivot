@@ -1,11 +1,8 @@
 class Seed
   def initialize
     create_style
-    create_users
     create_planets
-    create_business_owners
     create_platform_admin
-    create_spaces
   end
 
   def add_orders(user_id)
@@ -20,8 +17,20 @@ class Seed
     orders
   end
 
-  def create_users
+  def create_required_users
     puts "Creating Users"
+    nate = User.new(
+      first_name:            "Nate",
+      last_name:             "Allen",
+      email:                 "nate@turing.io",
+      password:              "password",
+      password_confirmation: "password",
+      username:              "nate@turing.io"
+    )
+    nate.spaces << create_space
+    nate.orders << add_orders(nate.id)
+    nate.save
+
     josh = User.new(
       first_name:            "Josh",
       last_name:             "Mejia",
@@ -33,7 +42,26 @@ class Seed
     josh.orders << add_orders(josh.id)
     josh.save
 
-    80.times do
+    # 100.times do
+    #   name = Faker::StarWars.character
+    #   name = name.split
+    #   name = name << "Kenobi" if name.count == 1
+    #   user = User.new(
+    #     first_name:            name.first,
+    #     last_name:             name[1..-1].join(" "),
+    #     email:                 Faker::Internet.email,
+    #     password:              "password",
+    #     password_confirmation: "password",
+    #     username:              Faker::Internet.user_name,
+    #     phone_number:          Faker::Number.number(10)
+    #   )
+    #   user.orders << add_orders(user.id)
+    #   user.save
+    # end
+    puts "Created Required User"
+  end
+
+  def create_user
       name = Faker::StarWars.character
       name = name.split
       name = name << "Kenobi" if name.count == 1
@@ -48,8 +76,7 @@ class Seed
       )
       user.orders << add_orders(user.id)
       user.save
-    end
-    puts "Created User"
+      user
   end
 
   def create_business_owners
@@ -94,11 +121,9 @@ class Seed
       email:                 "jorge@turing.io",
       password:              "password",
       password_confirmation: "password",
-      username:              "jorge@turing.io",
+      username:              "jorge",
       role:                   1
     )
-    # jorge.spaces << create_space
-    # jorge.orders << add_orders(jorge.id)
     jorge.save
 
     puts "Created Platform Admin"
@@ -106,55 +131,56 @@ class Seed
   end
 
   def create_space
-    Space.new(
-      name:            Faker::Book.title,
+    space = Space.create(
+      name:            Faker::Book.title + Faker::Hipster.word,
       price:           Faker::Commerce.price,
       style_id:        rand(1..4),
-      planet_id:       rand(1..10),
       approved:        true,
-      description:     Faker::Hipster.sentence,
-      occupancy:       rand(2..50)
+      description:     Faker::Hipster.paragraph(3),
+      occupancy:       rand(2..50),
     )
-  end
-
-  def create_spaces
-    puts "Creating Spaces"
-    # 480.times do
-    20.times do
-      space = Space.new(
-        name:            Faker::Book.title + Faker::Hipster.words(2).join(" "),
-        price:           Faker::Commerce.price,
-        style_id:        rand(1..4),
-        planet_id:       rand(1..10),
-        approved:        true,
-        description:     Faker::Hipster.sentence,
-        occupancy:       rand(2..50),
-        image_url:       File.open(File.join(Rails.root, "/app/assets/images/tatouine.jpg"))
-      )
-      user = User.find(rand(2..20))
-      user.password = "password"
-      user.save
-      space.users << user
-      space.save
-    end
-    puts "Created Spaces"
+    space.users << create_user
+    space
   end
 
   def create_planets
     puts "Creating Planets"
-    Planet.create(
+    hoth = Planet.create(
       name: "Hoth"
     )
-    Planet.create(
+    puts "Creating hoth spaces"
+    50.times do
+      hoth.spaces << create_space
+    end
+    puts "Created hoth spaces"
+
+    tatooine = Planet.create(
       name: "Tatooine"
     )
-    Planet.create(
+    puts "Creating tatooine spaces"
+    50.times do
+      tatooine.spaces << create_space
+    end
+    puts "Created tatooine spaces"
+
+    coruscant = Planet.create(
       name: "Coruscant"
     )
+    puts "Creating coruscant spaces"
+    50.times do
+      coruscant.spaces << create_space
+    end
+    puts "Created coruscant spaces"
+
     20.times do
-      Planet.create(
+      planet = Planet.create(
         name: Faker::StarWars.planet
       )
+      puts "Creating #{planet.name} spaces"
+      50.times do
+        planet.spaces << create_space
+      end
+      puts "Created #{planet.name} spaces"
     end
     puts "Created Planets"
   end

@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
+  context "validations" do
+    it { should validate_presence_of(:start_date) }
+    it { should validate_presence_of(:end_date) }
+  end
+
   context "can calculate total for nights in stay" do
     it "calculates correctly" do
       space = create(:space)

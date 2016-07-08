@@ -1,5 +1,11 @@
 class HomeController < ApplicationController
+  respond_to :json
+
   def show
-    @name = User.display_name(current_user)
+  end
+
+  def index
+    @planet_names = Planet.where(active: true)
+    respond_with @planet_names
   end
 end

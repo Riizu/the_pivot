@@ -11,7 +11,7 @@ RSpec.feature "visitor can filter search results" do
     end
 
     within "#all_spaces" do
-      expect(page).to have_selector('.one-planet', count: 4)
+      expect(page).to have_selector('.space-label', count: 4)
     end
   end
 end

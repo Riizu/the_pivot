@@ -1,16 +1,18 @@
-<h1>Hosts for <%= @space.name %></h1>
+<div class="container">
+<h1 class="text-center">Hosts for <%= @space.name %></h1>
 
-<h3>Existing Hosts:</h3>
+<h3 class="text-center">Existing Hosts:</h3>
 <% @space.users.each do |user| %>
-  <p><%= user.first_name %> <%= user.last_name %></p>
+  <p class="text-center"><%= user.first_name %> <%= user.last_name %></p>
 <% end %>
 
-<h4>Add Hosts</h4>
-<div class="form-box">
+<h4 class="text-center">Add Hosts</h4>
+<div class="col-md-4 col-md-offset-4">
   <%= form_for [@space, @user], :url => url_for(controller: "hosts", action: "create") do |f| %>
     <h4><%= f.label :username, "New Host" %><br>
-    <span class="form-field-sockname"><%= f.text_field :username %></span></h4>
+    <span class="form-field-sockname"><%= f.text_field :username, class: "form-control" %></span></h4>
     <%= hidden_field_tag :space_slug, @space.slug %>
-    <%= f.submit "Add this host!" %>
+    <%= f.submit "Add this host!", class: "btn center-block" %>
   <% end %>
+</div>
 </div>

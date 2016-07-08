@@ -8,14 +8,14 @@ class Space < ActiveRecord::Base
   has_many :orders, through: :reservations
   has_many :users, through: :spaces_users
 
-  before_validation :create_slug
+  before_create :create_slug
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :price, presence: true
   validates :style_id, presence: true
   validates :planet_id, presence: true
   validates :occupancy, presence: true
-  has_attached_file :image_url, styles: { medium: "250x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image_url, styles: { medium: "250x300>", thumb: "100x100>" }, default_url: "https://s3.amazonaws.com/cdjr-pivot-east/wookie_resize.png"
   validates_attachment_content_type :image_url, content_type: /\Aimage\/.*\Z/
 
   def to_param
@@ -41,6 +41,11 @@ class Space < ActiveRecord::Base
     self.update(approved: true)
   end
 
+  def toggle_active
+    self.active = !self.active
+    save
+  end
+
   def update_space(space_params)
     update( name:         space_params[:name],
             price:        space_params[:price],
@@ -51,4 +56,19 @@ class Space < ActiveRecord::Base
             planet_id:    Planet.find_by(name: space_params[:planet]).id
           )
   end
+
+  private
+
+    def self.find_unreserved_spaces(spaces, start_date, end_date)
+      spaces.map do |space|
+        if space.reservations.new(start_date: start_date, end_date: end_date).valid?
+          space
+        end
+      end.compact
+    end
+
+    def self.associated_style_names_list(spaces)
+      styles = spaces.map { |space| space.style.name }.uniq
+      styles.unshift("All Spaces")
+    end
 end

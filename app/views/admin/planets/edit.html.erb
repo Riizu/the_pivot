@@ -1,7 +1,12 @@
-<div class="form-box">
-<%= form_for(@planet) do |f| %>
-  <h4><%= f.label :name %><br>
-  <span class="form-field-sockname"><%= f.text_field :name %></span></span></h4>
-  <%= f.submit %>
-<% end %>
-</div>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+      <h2 class="text-center">Edit Planet</h2>
+      <%= form_for(@planet, url: admin_planet_path) do |f| %>
+      <h4><%= f.label :name %><br>
+        <span class="form-field-sockname"><%= f.text_field :name, class: "form-control" %></span></h4>
+        <%= f.submit "Update Planet", class: "btn btn-person btn-custom center-block" %>
+        <% end %>
+      </div>
+    </div>
+  </div>

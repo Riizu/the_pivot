@@ -1,5 +1,5 @@
 <div class="container">
-  <h1> All Users </h1>
+  <h1 class="text-center"> All Users </h1>
 
   <table id="users-table" class="table table-hover">
     <thead>
@@ -14,6 +14,7 @@
       <th>Email</th>
       <th>Phone Number</th>
       <th>Edit</th>
+      <th>Activate</th>
     </tr>
   </thead>
 
@@ -29,7 +30,14 @@
       <td><%= user.uid %></td>
       <td><%= user.email %></td>
       <td><%= user.phone_number %></td>
-      <td><%= link_to "Edit", edit_admin_user_path(user) %></td>
+      <td><%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-custom btn-person link_text" %></td>
+      <td>
+        <% if user.active %>
+          <%= link_to "Deactivate", admin_user_path(id: user, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
+        <% else %>
+          <%= link_to "Activate", admin_user_path(id: user, change_active: "true"), method: :patch, class: "btn btn-custom btn-person link_text" %>
+        <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>

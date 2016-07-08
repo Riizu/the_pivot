@@ -8308,34 +8308,56 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+.logo {
+  max-width: 38px;
+}
+
+.twitter {
+  max-width: 30px;
+  max-height: 30px;
+}
+
 #flash_success {
   background-color: rgba(108,187,76, 0.8);
-  color: white;
+  color: black;
+  font-size: 16px;
   text-align: center;
-  width: 320px;
+  width: 400px;
   position: absolute;
+  top: 12vh;
+  left: 5vh;
+  z-index: 99;
+
 }
 
 #flash_notice {
   background-color: rgb(248, 238, 100);
-  color: white;
+  color: black;
+  font-size: 16px;
   text-align: center;
-  width: 320px;
+  width: 400px;
   position: absolute;
+  top: 12vh;
+  left: 5vh;
+  z-index: 99;
 }
 
 #flash_error {
   background-color: rgb(237, 74, 78);
-  color: white;
+  color: black;
+  font-size: 16px;
   text-align: center;
-  width: 320px;
+  width: 400px;
   position: absolute;
+  top: 12vh;
+  left: 5vh;
+  z-index: 99;
 }
 
-.btn-custom {
-  background-color: rgb(176, 224, 236);
-  margin-top: 5px;
-}
+  .btn-custom {
+    background-color: rgb(176, 224, 236);
+    margin-top: 5px;
+  }
 
 .green-theme {
   color: rgb(108,187,76);
@@ -8427,7 +8449,7 @@ button.close {
 }
 
 .username {
-  padding-right: 4px;
+  padding-right: 30px;
 }
 
 .password {
@@ -8441,7 +8463,6 @@ button.close {
 
 .btn-person {
   border: 1px solid rgba(3,67,84,1);
-  margin: 2px;
 }
 
 .dashboard-header {
@@ -8515,11 +8536,6 @@ button.close {
   background-color: rgba(255,255,255,0.4)
 }
 
-.img-responsive {
-  height: 100px;
-  width: 80px;
-}
-
 .price {
   font-size: 26px;
 }
@@ -8541,8 +8557,18 @@ button.close {
 .tagline_home {
   text-align: center;
   position: fixed;
-  top: 37%;
+  top: 20%;
   left: 35%;
+  color: white;
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+
+.bookline_home {
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 36%;
   color: white;
   /*margin-left: auto;
   margin-right: auto;*/
@@ -8571,15 +8597,132 @@ button.close {
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
   width: 105%
 }
-/* line 3, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+
+.link_text {
+  color: black;
+}
+
+.filter-padding {
+  padding-right: 75px;
+}
+
+.show-image {
+    width:550px;
+    height: auto;
+    border: 4px solid #e3e3e3;
+}
+
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #fff;
+  cursor: default;
+  overflow: auto;
+}
+
+.autocomplete-suggestion {
+  padding: 10px 5px;
+  font-size: 1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.autocomplete-selected {
+  background: #f0f0f0;
+}
+
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399ff;
+}
+
+CSS
+
+#searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }
+
+#searchfield form {
+  display: inline-block;
+  background: #eeefed;
+  padding: 0;
+  margin: 0;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 5px 0 0 0;
+}
+#searchfield form .biginput {
+  width: 600px;
+  height: 40px;
+  padding: 0 10px 0 10px;
+  background-color: #fff;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  color: #aeaeae;
+  font-weight:normal;
+  font-size: 1.5em;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#searchfield form .biginput:focus {
+  color: #858585;
+}
+
+#searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }
+
+#searchfield form {
+  display: inline-block;
+  background: #eeefed;
+  padding: 0;
+  margin: 0;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 5px 0 0 0;
+}
+#searchfield form .biginput {
+  width: 600px;
+  height: 40px;
+  padding: 0 10px 0 10px;
+  background-color: #fff;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  color: #aeaeae;
+  font-weight:normal;
+  font-size: 1.5em;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#searchfield form .biginput:focus {
+  color: #858585;
+}
+
+.sizing-footer {
+  height: 50px;
+}
+
+#cheat-image {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  display: none;
+}
+
+.img-size {
+  max-height: 250px;
+  width: 300px;
+}
+
+#twitter-button-font {
+  color: black;
+}
+/* line 3, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html {
   height: 100%;
 }
-/* line 6, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 6, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html body {
   height: 100%;
 }
-/* line 9, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 9, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html body:after {
   content: "";
   display: block;
@@ -8593,12 +8736,12 @@ html body:after {
   background-position: 70% center;
   z-index: -1;
 }
-/* line 25, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 25, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 html body .navbar {
   box-shadow: 0 0 5px 0 #bcbebf;
 }
 
-/* line 33, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 33, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 #home-splash {
   width: 100%;
   height: 100vh;
@@ -8608,24 +8751,25 @@ html body .navbar {
   overflow: hidden;
 }
 
-/* line 42, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 42, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 .search-bar {
   border-radius: 0px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
-/* line 47, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 47, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 #filter-nav {
   margin-top: 5px;
   padding-bottom: 5px;
 }
 
-/* line 52, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 52, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 .container {
   margin-top: 80px;
+  margin-bottom: 50px;
 }
 
-/* line 56, /Users/Riizu/Turing/mod3/projects/the_pivot/app/assets/stylesheets/layout.scss */
+/* line 57, /Users/charleskaminer/Turing/3module/projects/the_pivot/app/assets/stylesheets/layout.scss */
 .vertical-center {
   position: absolute;
   top: 50%;
@@ -8649,3 +8793,4 @@ html body .navbar {
 
  */
 
+ 

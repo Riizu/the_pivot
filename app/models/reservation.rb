@@ -2,6 +2,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :space
   belongs_to :order
   validates_with DateValidator
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 
   def total_nights
     (end_date - start_date) / 60 / 60 / 24
@@ -10,7 +12,11 @@ class Reservation < ActiveRecord::Base
   def total_price
     total_nights * space.price
   end
-
+  
+  def toggle_active
+    self.active = !self.active
+    save
+  end
 
   def update_reservation(reservation_params)
     update( space:       Space.find_by(name: reservation_params[:reservation][:space]),

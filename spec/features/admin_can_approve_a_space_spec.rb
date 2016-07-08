@@ -9,7 +9,7 @@ RSpec.feature "admin can edit a space" do
 
     visit "admin/dashboard"
 
-    click_on "All Unapproved Spaces"
+    click_link "All Unapproved Spaces"
 
     click_on "Approve"
 

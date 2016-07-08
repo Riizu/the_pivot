@@ -8,7 +8,8 @@ RSpec.feature "user can add other users as hosts of their space" do
     user_1.spaces << space
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
-    visit edit_space_path(space)
+    visit space_path(space)
+    click_on "Edit Space"
 
     click_button "Add Another Host"
 

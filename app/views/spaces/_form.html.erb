@@ -1,19 +1,27 @@
-<div class="form-box">
-<%= form_for(space) do |f| %>
-  <h4><%= f.label :name %><br>
-  <span class="form-field-sockname"><%= f.text_field :name %></span></span></h4>
-  <h4><%= f.label :description %><br>
-  <span class="form-field-price"><%= f.text_area :description %></span></h4>
-  <h4><%= f.label :occupancy %><br>
-  <span class="form-field-price"><%= f.text_field :occupancy %></span></h4>
-  <h4><%= f.label :price, "Nightly Rate" %><br>
-  <span class="form-field-price"><%= f.text_field :price %></span></h4>
-  <h4><%= f.label :planet %><br>
-  <span class="select-foot"><%= f.select :planet, Planet.all.pluck(:name) %></span></h4>
-  <h4><%= f.label :style, "Climate" %><br>
-  <span class="select-style"><%= f.select :style, Style.all.pluck(:name) %></span></h4>
-  <h4><%= f.label :image_url %><br>
-  <span class="form-field-image"><%= f.file_field :image_url %></span></h4>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="well">
+      <%= form_for(space) do |f| %>
+      <fieldset class="form-group">
+
+        <h4><%= f.label :name %><br>
+        <span class="form-field-sockname"><%= f.text_field :name, class: "form-control" %></span></span></h4>
+        <h4><%= f.label :description %><br>
+        <span class="form-field-price"><%= f.text_area :description, class: "form-control" %></span></h4>
+        <h4><%= f.label :occupancy %><br>
+        <span class="form-field-price"><%= f.text_field :occupancy, class: "form-control" %></span></h4>
+        <h4><%= f.label :price, "Nightly Rate" %><br>
+        <span class="form-field-price"><%= f.text_field :price, class: "form-control" %></span></h4>
+        <h4><%= f.label :planet %><br>
+        <span class="select-foot"><%= f.select :planet, Planet.all.pluck(:name), selected: (space.planet.name if space.planet), class: "form-control" %></span></h4>
+        <h4><%= f.label :style, "Climate" %><br>
+        <span class="select-style"><%= f.select :style, Style.all.pluck(:name), selected: (space.style.name if space.style), class: "form-control" %></span></h4>
+        <h4><%= f.label :image_url %><br>
+        <span class="form-field-image"><%= f.file_field :image_url %></span></h4>
+      </fieldset>
+      <%= f.submit class: "btn btn-custom btn-person center-block"%>
+    <% end %>
+    </div>
+  </div>
 </div>
+<br><br><br>

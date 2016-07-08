@@ -6,18 +6,11 @@ RSpec.describe Planet, type: :model do
     it { should validate_uniqueness_of(:name) }
   end
 
-  context "planet not valid without validations" do
-    planet = Planet.new(name: "")
-    it "is not valid" do
-      expect(planet).to_not be_valid
-    end
-  end
-
-  context "planet not valid if not unique" do
-    planet = Planet.create(name: "test")
-    planet2 = Planet.create(name: planet.name)
-    it "is not valid" do
-      expect(planet2).to_not be_valid
+  context "it can toggle active status" do
+    it "toggles correctly" do
+      planet = Planet.create(name: "test", active: true)
+      planet.toggle_active
+      expect(planet.active).to eq false
     end
   end
 end

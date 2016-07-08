@@ -11,21 +11,11 @@ RSpec.describe Order, type: :model do
     expect(Reservation.all.count).to eq(3)
   end
 
-  # scenario "total price finds total of all items in order for multiple types of items" do
-  #   user = create(:user)
-  #   order = Order.create(user_id: user.id, status: "ordered")
-  #   space1, space2 = create_list(:space, 2)
-  #   reservation_1 = order.reservations.create(space_id: space1.id, quantity: 3, space_price: space1.price)
-  #   reservation_2 = order.reservations.create(space_id: space2.id, quantity: 5, space_price: space2.price)
-  #   expect(order.total_price).to eq(reservation_1.quantity * reservation_1.space_price + reservation_2.quantity * reservation_2.space_price)
-  # end
+  scenario "total price finds total of all items in order for multiple types of items" do
+    order = create(:order)
+    reservation_1 = create(:reservation, order: order)
+    reservation_2 = create(:reservation, order: order)
+    expect(order.total_price).to eq(reservation_1.total_price + reservation_2.total_price)
+  end
 
-  # scenario "total quantity finds sum of all items in order" do
-  #   user = create(:user)
-  #   order = Order.create(user_id: user.id, status: "ordered")
-  #   space1, space2 = create_list(:space, 2)
-  #   reservation_1 = order.reservations.create(space_id: space1.id, quantity: 3, space_price: space1.price)
-  #   reservation_2 = order.reservations.create(space_id: space2.id, quantity: 5, space_price: space2.price)
-  #   expect(order.total_quantity).to eq(reservation_1.quantity + reservation_2.quantity)
-  # end
 end
