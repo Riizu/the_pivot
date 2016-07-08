@@ -1,9 +1,20 @@
 class Seed
   def initialize
-    create_required_users
     create_style
     create_planets
+    create_required_users
     create_platform_admin
+  end
+
+  def create_style
+    puts "Creating Styles"
+    styles = ["Hot", "Cold", "Dry", "Tropical"]
+    styles.each do |style|
+      Style.create(
+        name: style
+      )
+    end
+    puts "Created Styles"
   end
 
   def add_orders(user_id)
@@ -28,7 +39,7 @@ class Seed
       password_confirmation: "password",
       username:              "nate"
     )
-    nate.spaces << create_space
+    nate.spaces << create_space(Planet.find(1))
     nate.orders << add_orders(nate.id)
     nate.save
 
@@ -50,52 +61,18 @@ class Seed
       name = Faker::StarWars.character
       name = name.split
       name = name << "Kenobi" if name.count == 1
-      user = User.new(
+      user = User.create(
         first_name:            name.first,
         last_name:             name[1..-1].join(" "),
         email:                 Faker::Internet.email,
         password:              "password",
         password_confirmation: "password",
-        username:              Faker::Internet.user_name,
+        username:              "username#{rand(1..10000)}#{rand(1..10000)}",
         phone_number:          Faker::Number.number(10)
       )
       user.orders << add_orders(user.id)
-      user.save
+
       user
-  end
-
-  def create_business_owners
-    puts "Creating Business Owners"
-    nate = User.new(
-      first_name:            "Nate",
-      last_name:             "Allen",
-      email:                 "nate@turing.io",
-      password:              "password",
-      password_confirmation: "password",
-      username:              "nate@turing.io"
-    )
-    nate.spaces << create_space
-    nate.orders << add_orders(nate.id)
-    nate.save
-
-    20.times do
-      name = Faker::StarWars.character
-      name = name.split
-      name = name << "Kenobi" if name.count == 1
-      user = User.new(
-        first_name:            name.first,
-        last_name:             name[1..-1].join(" "),
-        email:                 Faker::Internet.email,
-        password:              "password",
-        password_confirmation: "password",
-        username:              Faker::Internet.user_name,
-        phone_number:          Faker::Number.number(10)
-      )
-      user.spaces << create_space
-      user.orders << add_orders(user.id)
-      user.save
-    end
-    puts "Created Business Owners"
   end
 
   def create_platform_admin
@@ -145,7 +122,7 @@ class Seed
     )
     puts "Creating tatooine spaces"
     50.times do
-      create_space(tattoine)
+      create_space(tatooine)
     end
     puts "Created tatooine spaces"
 
@@ -171,16 +148,7 @@ class Seed
     puts "Created Planets"
   end
 
-  def create_style
-    puts "Creating Styles"
-    styles = ["Hot", "Cold", "Dry", "Tropical"]
-    styles.each do |style|
-      Style.create(
-        name: style
-      )
-    end
-    puts "Created Styles"
-  end
+
 end
 
 Seed.new
