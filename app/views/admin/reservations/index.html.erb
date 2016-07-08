@@ -10,8 +10,8 @@
       <th>Check in</th>
       <th>Check out</th>
       <th>Total</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -21,15 +21,15 @@
       <td><%= reservation.space.name %></td>
       <td><%= reservation.space.users.pluck(:username).join(", ") %>
       <td><%= reservation.order.user.username %>
-      <td><%= reservation.start_date %></td>
-      <td><%= reservation.end_date %></td>
+      <td><%= Time.parse(reservation.start_date.to_s).strftime("%D") %></td>
+      <td><%= Time.parse(reservation.end_date.to_s).strftime("%D") %></td>
       <td><%= number_to_currency(reservation.total) %></td>
-      <td><%= link_to "Edit", edit_admin_reservation_path(reservation), method: :get %></td>
+      <td><%= link_to "Edit", edit_admin_reservation_path(reservation), method: :get, class: "btn btn-custom btn-person" %></td>
       <td>
         <% if reservation.active %>
-          <%= link_to "Deactivate", admin_reservation_path(id: reservation, change_active: "true"), method: :patch %>
+          <%= link_to "Deactivate", admin_reservation_path(id: reservation, change_active: "true"), method: :patch, class: "btn btn-custom btn-person" %>
         <% else %>
-          <%= link_to "Activate", admin_reservation_path(id: reservation, change_active: "true"), method: :patch %>
+          <%= link_to "Activate", admin_reservation_path(id: reservation, change_active: "true"), method: :patch, class: "btn btn-custom btn-person" %>
         <% end %>
       </td>
       </tr>

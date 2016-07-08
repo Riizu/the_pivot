@@ -1,8 +1,6 @@
 <div class="container">
   <h2 class="text-center">Update <%= @space.name %></h2>
-  <div class="col-md-6 col-md-offset-5">
-    <%= button_to "Add Another Host", "/hosts/#{@space.slug}/new", method: :get, class: "btn btn-custom btn-person" %>
-  </div>
+    <%= button_to "Add Another Host", "/hosts/#{@space.slug}/new", method: :get, class: "btn btn-custom btn-person center-block" %>
 <%= render partial: "form", locals: { space: @space } %>
 
 </div>
