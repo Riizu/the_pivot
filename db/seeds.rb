@@ -25,7 +25,7 @@ class Seed
       email:                 "nate@turing.io",
       password:              "password",
       password_confirmation: "password",
-      username:              "nate@turing.io"
+      username:              "nate"
     )
     nate.spaces << create_space
     nate.orders << add_orders(nate.id)
@@ -37,7 +37,7 @@ class Seed
       email:                 "jmejia@turing.io",
       password:              "password",
       password_confirmation: "password",
-      username:              "jmejia@turing.io"
+      username:              "jmejia"
     )
     josh.orders << add_orders(josh.id)
     josh.save
